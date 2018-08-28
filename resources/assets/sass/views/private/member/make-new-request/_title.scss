@@ -1,0 +1,21 @@
+.title{
+    display: block;
+    margin-top: 140px;
+    margin-bottom: 70px;
+    h2{
+        color: #656668;
+        font-family: 'Gotham';        
+        font-size: em(24);
+        text-transform: uppercase;
+        line-height: 1;
+        margin: 0px;
+    }
+    h1{
+        color: $purple;
+        font-family: 'Gotham';        
+        font-size: em(44);
+        text-transform: uppercase;
+        line-height: 1;
+        margin: 0px;
+    }
+}

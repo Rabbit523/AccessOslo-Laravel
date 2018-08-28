@@ -1,0 +1,135 @@
+<div class="step step-1" ng-show="visible_step1">
+    <h3>GET A CHARTER QUOTE TODAY</h3>
+    <p>You will receive a booking confirmation by email.</p>
+    <div class="timeline">
+        <img src="/assets/img/light-line.png" alt="">
+        <span><img src="/assets/img/airplane.png" alt=""></span>
+        <p class="text-left active">Contact Details</p>
+        <p class="text-right">Flight Details</p>
+    </div>
+    <form id="step1_form">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">DEPARTURE AIRPORT</label>
+                    <input type="text" name="departure" placeholder="Oslo, Gardermoen" id="" class="form-control" ng-model="quoteDetails.goods.departure" required>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">DESTINATION AIRPORT</label>
+                    <input type="text" name="destination" placeholder="Destination Airport" id="" class="form-control" ng-model="quoteDetails.goods.destination" required>                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">Date</label>
+                    <input type="text" name="datepicker" id="datepicker" class="form-control date" placeholder="(mm/dd/yyyy)" ng-model="quoteDetails.goods.date" required>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">TYPE OF CARGO</label>
+                    <select name="cargoType" id="cargoType" class="form-control" ng-model="quoteDetails.goods.cargoType" required>
+                        <option value="">Select Cargo</option>
+                        <option value="Equipment">Equipment</option>
+                        <option value="Parts">Parts</option>
+                        <option value="Personal">Personal</option>
+                        <option value="Crew">Crew</option>
+                    </select>                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">DIMENSIONS (CM)</label>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4"><input type="text" name="width" placeholder="Width" id="width" class="form-control" ng-model="quoteDetails.goods.width" required></div>
+                        <div class="col-xs-12 col-sm-4"><input type="text" name="height" placeholder="Height" id="height" class="form-control" ng-model="quoteDetails.goods.height" required></div>
+                        <div class="col-xs-12 col-sm-4"><input type="text" name="depth" placeholder="Depth" id="depth" class="form-control" ng-model="quoteDetails.goods.depth" required></div>
+                    </div>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">Weight (kg)</label>
+                    <input type="text" name="weight" id="weight" class="form-control" placeholder="e.g 60 kg" ng-model="quoteDetails.goods.weight" required>                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">DANGEROUS GOODS</label>
+                    <div class="clearfix"></div>
+                    <label class="radio-inline"><input type="radio" value="yes"  name="danger" ng-model="quoteDetails.goods.is_danger" required>Yes</label>
+                    <label class="radio-inline"><input type="radio" value="no" name="danger" ng-model="quoteDetails.goods.is_danger" required>No</label>                   
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="text-right">
+                    <button type="submit" class="btn btn-yellow" ng-click="OnContinue()">Continue</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="step step-2" ng-show="visible_step2">
+    <h3>GET A CHARTER QUOTE TODAY</h3>
+    <p>You will receive a booking confirmation by email.</p>
+    <div class="timeline">
+        <img src="/assets/img/gold-line.png" alt="" style="width: 95%;">
+        <span><img src="/assets/img/airplane.png" alt="" style="margin-left:470px;"></span>
+        <p class="text-left active">Contact Details</p>
+        <p class="text-right active">Flight Details</p>
+    </div>
+    <form id="step2_form">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">COMPANY NAME</label>
+                    <input type="text" name="company" placeholder="e.g FantasyLab" id="company" class="form-control" ng-model="quoteDetails.contact.company"  required>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">CONTACT PERSON</label>
+                    <input type="text" name="contact_person" placeholder="e.g. Aryan Wallace" id="contact_person" class="form-control" ng-model="quoteDetails.contact.person" required>                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">PHONE</label>                    
+                    <input type="tel" name="phone" id="mobile-number" class="form-control" required>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">EMAIL</label>
+                    <input type="email" name="email" placeholder="e.g. arya@wallace.com" id="email" class="form-control" ng-model="quoteDetails.contact.email" required>                                  
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 text-right">
+                <button type="submit" class="btn btn-yellow" ng-click="OnConfirm()">GET FREE QUOTE</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="step thanks text-center" ng-show="visible_step3">
+    <figure>
+        <img src="/assets/img/icon-check.png" class="img-responsive center-block" alt="">
+    </figure>
+    <h2 class="text-uppercase">Thank you <br> for your request</h2>
+    <p>We have sent a booking confirmation to your email. <br>
+    Our crew will get in touch with you in a short time. <br><br>
+
+    To see more details about your request go to your <a ng-click="Upcoming()">Upcoming Requests.</a></p>
+    <a class="btn btn-border-gold" ng-click="NewRequest()">Make a new request</a>
+</div>

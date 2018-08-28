@@ -1,0 +1,110 @@
+<div class="step step-1" ng-show="step1">
+  <form id="cargo1_form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>DEPARTURE AIRPORT</label>
+                <input type="text" name="cargo_departure" placeholder="Departure Airport" id="cargo_departure" class="form-control" ng-model="cargoflight.departure" required>                
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>DESTINATION AIRPORT</label>
+                <input type="text" name="destination" placeholder="Destination Airport" id="cargo_destination" class="form-control" ng-model="cargoflight.destination" required>                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>DATE</label>
+                <input type="text" name="cargo_datepicker" id="cargo_datepicker" class="form-control date" placeholder="(dd/mm/yyyy)" ng-model="cargoflight.date" required>                
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label for="">TYPE OF CARGO</label>
+                <select name="cargoType" id="cargoType" class="form-control" ng-model="cargoflight.cargo_type" required>
+                    <option value="">Select Cargo</option>
+                    <option value="Equipment">Equipment</option>
+                    <option value="Parts">Parts</option>
+                    <option value="Personal">Personal</option>
+                    <option value="Crew">Crew</option>
+                </select>                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>DIMENSIONS (CM)</label>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-4">
+                        <input type="text" name="cargo_width" placeholder="Width" id="cargo_width" class="form-control" ng-model="cargoflight.width" required>
+                    </div>
+                    <div class="col-xs-12 col-sm-4">
+                        <input type="text" name="cargo_height" placeholder="height" id="cargo_height" class="form-control" ng-model="cargoflight.height" required>                        
+                    </div>
+                    <div class="col-xs-12 col-sm-4">                        
+                        <input type="text" name="cargo_depth" placeholder="depth" id="cargo_depth" class="form-control" ng-model="cargoflight.depth" required>                        
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>WEIGHT (KG)</label>
+                <input type="text" name="cargo_weight" id="cargo_weight" class="form-control" placeholder="60 kg" ng-model="cargoflight.weight" required>                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="radio">              
+                <label class="radio-inline"><input type="radio" value="yes"  name="danger" ng-model="cargoflight.is_danger" required>DANGER</label>
+                <label class="radio-inline"><input type="radio" value="no" name="danger" ng-model="cargoflight.is_danger" required>SAFE</label>                
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 text-right">
+            <button type="submit" class="btn btn-yellow" ng-click="OnContinue()">Continue <img src="/assets/img/arrow-right.png" alt=""></button>
+        </div>
+    </div>
+  </form>
+</div>
+<div class="step step-2" ng-show="step2">
+    <form id="cargo2_form">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label>Contact Person</label>
+                    <input type="text" name="cargo_contact_person" placeholder="Nohman Janjua" id="cargo_contact_person" class="form-control" ng-model="cargoflight.contact_person" required>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" name="cargo_phone" id="cargo_phone" class="form-control" required>                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="cargo_email" placeholder="nohman@janjua.net" id="cargo_email" class="form-control" ng-model="cargoflight.email" required>                   
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label>COMPANY NAME</label>
+                    <input type="text" name="cargo_company" placeholder="FantasyLab" id="cargo_company" class="form-control" ng-model="cargoflight.company"  required>                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <button type="submit" class="btn btn-yellow" ng-click="OnBook()">Get Free Quote</button>              
+            </div>
+        </div>
+    </form>
+</div>

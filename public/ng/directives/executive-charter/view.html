@@ -1,0 +1,148 @@
+<div class="step step-1" ng-show="visible_step1">
+    <h3>GET A CHARTER QUOTE TODAY</h3>
+    <p>You will receive a booking confirmation by email.</p>
+    <div class="timeline">
+        <img src="/assets/img/light-line.png" alt="">
+        <span><img src="/assets/img/airplane.png" alt=""></span>
+        <p class="text-left active">Contact Details</p>
+        <p class="text-right">Flight Details</p>
+    </div>
+    <form id="step1_form">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+                <div class="form-group">
+                    <label for="">GENDER</label>
+                    <select name="Mr" id="Mr" class="form-control" ng-model="quoteDetails.contact.gender" required>
+                        <option disabled selected value>Gender</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Sir">Sir</option>
+                    </select>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+                <div class="form-group">
+                    <label for="">CONTACT PERSON</label>
+                    <input type="text" name="full_name" class="form-control" ng-model="quoteDetails.contact.full_name" placeholder="Nohman Janjua" required>                   
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-5">
+                <div class="form-group">
+                    <label for="">COMPANY</label>
+                    <input type="text" name="company" class="form-control" ng-model="quoteDetails.contact.company" placeholder="Fantasylab" required>                    
+                </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">PHONE</label>
+                    <input type="tel" name="phone" id="mobile-number" class="form-control" required>                   
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">EMAIL</label>
+                    <input type="email" name="email" id="email" class="form-control" ng-model="quoteDetails.contact.email" placeholder="nohman@janjua.net" required>                  
+                </div>
+            </div>
+        </div> 
+        <div class="text-right">
+            <button type="submit" class="btn btn-yellow" ng-click="OnContinue()">Continue</button>
+        </div>
+    </form>
+</div>
+<div class="step step-2" ng-show="visible_step2">
+    <h3>GET A CHARTER QUOTE TODAY</h3>
+    <p>You will receive a booking confirmation by email.</p>
+    <div class="timeline">
+        <img src="/assets/img/gold-line.png" alt="" style="width: 95%;">
+        <span><img src="/assets/img/airplane.png" alt="" style="margin-left:470px;"></span>
+        <p class="text-left active">Contact Details</p>
+        <p class="text-right active">Flight Details</p>
+    </div>
+    <form id="step2_form">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <div class="input-group">
+                        <label for="">DEPARTURE TIME</label>
+                        <input type="text" id="datepicker" name="time" class="form-control" placeholder="Time of Departure" ng-model="quoteDetails.flight.depature_time">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"><i class="fa fa-calendar" aria-hidden="true"></i></button>
+                        </span>
+                    </div><!-- /input-group -->
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">TRAVELERS</label>
+                    <select name="travellers" id="travellers" class="form-control" ng-model="quoteDetails.flight.passenger_num" required>
+                        <option disabled selected value>Passengers</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>                    
+                </div>
+            </div>
+        </div> 
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">DEPARTURE AIRPORT</label>
+                    <input type="text" name="departure" class="form-control" ng-model="quoteDetails.flight.from_airport" required>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">DESTINATION AIRPORT</label>
+                    <input type="text" name="destination" class="form-control" ng-model="quoteDetails.flight.to_airport" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">FLIGHT SERVICE</label>
+                    <select name="flight_type" class="form-control" ng-model="quoteDetails.flight.flight_type" required>
+                        <option disabled selected value>Flight Service</option>
+                        <option value="One Way">OneWay</option>
+                        <option value="Round Way">RoundWay</option>
+                    </select>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">FLIGHT BONUS</label>
+                    <input type="text" name="flight_bonous" class="form-control" placeholder="Number of bonus points to use for this flight" ng-model="quoteDetails.flight.bonus" required>
+                </div>
+            </div>            
+        </div>       
+        <div class="row">
+            <div class="col-xs-12 col-sm-6 text-left">
+                <a class="btn btn-border-gold" ng-click="OnPrevious()">Previous Step</a>
+            </div>
+            <div class="col-xs-12 col-sm-6 text-right">
+                <button type="submit" class="btn btn-yellow" ng-click="OnConfirm()">Confirm</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="step thanks text-center" ng-if="visible_step3">
+    <span><img src="/assets/img/icon-check.png" alt="" style="margin-top:-2px;"></span>
+    <h2 class="text-uppercase">Thank you <br> for your request</h2>
+    <p>We have sent a booking confirmation to your email. <br>
+    Our crew will get in touch with you in a short time. <br><br>
+    
+    To see more details about your request go to your <a ng-click="UpcomingRequest()">Upcoming Requests.</a></p>
+    <a ng-click="NewRequest()" class="btn btn-border-gold">Make a new request</a>
+</div> 

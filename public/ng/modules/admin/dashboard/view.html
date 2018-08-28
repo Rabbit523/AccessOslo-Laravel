@@ -1,0 +1,106 @@
+<div class="content-box">
+  <div class="form-box">
+      <div class="row">
+          <div class="col-xs-12 col-sm-4 col-md-3">           
+            <input type="text" name="datepicker" id="datepicker" class="form-control date-input" placeholder="05/02/18  -  05/03/18" >
+          </div>
+      </div>
+  </div>
+  <div class="boxes-list">
+      <div class="row">
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.executive_count}}</strong>
+                  <h3>EXECUTIVE CHARTER</h3>
+                  <a ng-click="executiveView()">View all</a>
+              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.group_count}}</strong>
+                  <h3>Group CHARTER</h3>
+                  <a ng-click="groupView()">View all</a>
+              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.helicopter_count}}</strong>
+                  <h3>Helicopter CHARTER</h3>
+                  <a ng-click="helicopterView()">View all</a>
+              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.cargo_count}}</strong>
+                  <h3>Cargo CHARTER</h3>
+                  <a ng-click="cargoView()">View all</a>
+              </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.meet_count}}</strong>
+                  <h3>Meet & Greet</h3>
+                  <a ng-click="meetView()">View all</a>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.limousine_count}}</strong>
+                  <h3>Airport Limousine</h3>
+                  <a ng-click="limousineView()">View all</a>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.handling_count}}</strong>
+                  <h3>Handling</h3>
+                  <a ng-click="handlingView()">View all</a>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.airpassenger_count}}</strong>
+                  <h3>Air passenger tax</h3>
+                  <a ng-click="passengerView()">View all</a>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.private_count}}</strong>
+                  <h3>Destination Oslo</h3>
+                  <a ng-click="privateView()">View all</a>
+              </div>
+          </div>
+
+          <div class="col-xs-12 col-sm-6 col-custom">
+              <div class="box">
+                  <h4>Requests</h4>
+                  <strong>{{counts.event_count}}</strong>
+                  <h3>EVENT & GROUP TRAVEL</h3>
+                  <a ng-click="eventView()">View all</a>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="clearfix"></div>
+  <div class="box-chart">
+      <div class="row">
+          <div class="col-xs-12">
+              <div class="box" style="height: 200px;"></div>
+          </div>
+      </div>
+  </div>
+</div><!-- content-box -->

@@ -1,0 +1,67 @@
+<div class="step step-1" ng-show="visible_step1">
+    <h2 class="text-uppercase">Register for Air Passenger Tax</h2>
+    <form id="input_form">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                    <input type="text" name="company" class="form-control company" placeholder="Company name*" ng-model="passenger.company" required>                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="input-group" style="width:100%;">
+                    <div class="form-group">
+                        <input id="country" type="text" name="country" class="form-control" placeholder="Country*" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                    <input type="text" name="person" class="form-control contact-person" placeholder="Contact Person*" ng-model="passenger.contact_person" required>                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                    <input type="email" name="email" class="form-control email" placeholder="Email*" ng-model="passenger.email" required>                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                    <input type="tel" name="phone" id="mobile-number" class="form-control" required>                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="form-group">
+                    <input type="text" name="approx_no" class="form-control departures" placeholder="Approx no. of departures from Norway per year*" ng-model="passenger.approx_no" required>                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-sm-12">
+            <div class="text-right">
+                <button type="submit" class="btn btn-yellow" ng-click="OnRegister()">SEND TAX REGISTRATION</button>
+            </div>
+          </div>
+        </div>
+    </form>
+</div>
+<div class="step thanks text-center" ng-show="visible_step2">
+    <figure>
+        <img src="/assets/img/icon-check.png" class="img-responsive center-block" alt="">
+    </figure>
+    <h2 class="text-uppercase">Thank you <br> for your request</h2>
+    <p>We have sent a booking confirmation to your email. <br>
+    Our crew will get in touch with you in a short time. <br><br>
+
+    To see more details about your request go to your <a ng-click="upcomingRequest()">Upcoming Requests.</a></p>
+    <a class="btn btn-border-gold" ng-click="OnNew()">Make a new request</a>
+</div>

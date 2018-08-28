@@ -1,0 +1,461 @@
+<section class="content-box">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
+          <div class="row">
+            <div class="col-xs-12 col-sm-6 box-left">
+              <h2>Profile Settings</h2>
+              <h3 class="full">Basic Information</h3>
+              <p>Please add the information about the people you travel with. Add as many as you may need.</p>
+              <form name="input_form" id="input_form">
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Gender</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <select name="gender" id="gender" class="form-control" ng-model="profile_data.gender" required>
+                        <option disabled selected value>Gender</option>
+                        <option value="Mr">Mr</option>
+                        <option value="Mrs">Mrs</option>
+                        <option value="Miss">Miss</option>
+                        <option value="Sir">Sir</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">First name</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="first_name" id="first_name" class="form-control" ng-model="profile_data.first_name" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Last name</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="last_name" id="last_name" class="form-control" ng-model="profile_data.last_name" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Email</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="email" name="email" id="email" class="form-control" ng-model="profile_data.email" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Date of Birth</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="datepicker" id="datepicker" class="form-control" placeholder="dd/mm/yyyy" ng-model="profile_data.date_birth" required>
+                    </div>
+                  </div>
+                </div>
+  
+                <h3>Contact information</h3>
+  
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Company Name</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="company" id="company" class="form-control" ng-model="profile_data.company" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Job Title</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="job" id="job" class="form-control" ng-model="profile_data.job" required>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Home Phone</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="tel" name="home_phone" id="home-number" class="form-control" ng-model="profile_data.home_phone" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Mobile Phone</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <div class="input-group">
+                        <input type="tel" name="mobile_phone" id="mobile-number" class="form-control" ng-model="profile_data.mobile_phone" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Business Phone</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="input-group">
+                      <div class="form-group">
+                        <input type="tel" name="business_phone" id="business-number" class="form-control" ng-model="profile_data.business_phone" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Primary mobile device</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <select name="mobile" id="mobile_type" class="form-control" ng-model="profile_data.mobile_type" required>
+                        <option disabled selected value>Apple iPhone</option>
+                        <option value="apple">Option1</option>
+                        <option value="android">Option2</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+  
+                <h3>Address Information</h3>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Address line 1</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="address1" id="addInfo_address1" class="form-control" ng-model="profile_data.addInfo_address1" required>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Address line 2</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="address2" id="addInfo_address2" class="form-control" ng-model="profile_data.addInfo_address2" required>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Town/City</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="city" id="addInfo_city" class="form-control" ng-model="profile_data.addInfo_city" required>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Region</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="region" id="addInfo_region" class="form-control" ng-model="profile_data.addInfo_region" required>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Postcode</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="postcode" id="addInfo_code" class="form-control" ng-model="profile_data.addInfo_code" required>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Country</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="input-group">
+                      <div class="form-group">
+                        <input id="country_address" type="text" name="country" class="form-control" ng-model="profile_data.addInfo_country" required>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <h3>Billing Information</h3>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 col-sm-offset-6">
+                    <div class="form-group">
+                      <div class="checkbox">
+                        <label>
+                          <input type="checkbox" value="">Use my home Address</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Address line 1</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="billing_address1" id="billInfo_address1" class="form-control" ng-model="profile_data.billInfo_address1">
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Address line 2</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="billing_address2" id="billInfo_address2" class="form-control" ng-model="profile_data.billInfo_address2">
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Town/City</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="billing_city" id="billInfo_city" class="form-control" ng-model="profile_data.billInfo_city">
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Region</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="billing_region" id="billInfo_region" class="form-control" ng-model="profile_data.billInfo_region">
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Postcode</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                      <input type="text" name="billing_postcode" id="billInfo_code" class="form-control" ng-model="profile_data.billInfo_code">
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="row">
+                  <div class="col-xs-12 col-sm-6 text-right">
+                    <label for="">Country</label>
+                  </div>
+                  <div class="col-xs-12 col-sm-6">
+                    <div class="input-group">
+                      <div class="form-group">
+                        <input id="country_billing" type="text" name="country" class="form-control" ng-model="profile_data.billInfo_country">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="col-xs-12 col-sm-6 box-right">
+              <h2>Profile Strength</h2>
+              <h3>Missing Information</h3>
+              <div class="box-wrapper">
+                <div class="box">
+                  <div class="info-box">
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Gender</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>First Name</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Last Name</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Email</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Date of Birth</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Company Name</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Job Title</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Home Phone</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Mobile Phone</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Business Phone</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Primary Mobile Device</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Address line 1</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Town/City</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Region</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Postcode</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-sm-6 text-left">
+                        <b>Country</b>
+                      </div>
+                      <div class="col-xs-6 col-sm-6 text-right">
+                        <p>(+6.25 %)</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <div class="bar-loading">
+                          <div>
+                            <span id="low" ng-style="{'width':percentage() + '%'}"></span>
+                          </div>
+                            <p id="percentage">{{percentage()}}%</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>            
+          </div>
+          <div class="col-xs-12 box-botton">
+            <div class="row">
+              <div class="col-xs-12 col-sm-9 col-sm-offset-3">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" id="policy" value="">I wish to receive Access Oslo emails with special offers and more.</label>
+                </div>
+                <p>We promise to respect your privacy and not share your details.
+                  <br> Look at our
+                  <a class="link" href="">privacy policy</a> for more details.</p>
+                <a id="save" class="btn btn-yellow">Save profile settings</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

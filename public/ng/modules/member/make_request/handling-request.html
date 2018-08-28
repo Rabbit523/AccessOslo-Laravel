@@ -1,0 +1,215 @@
+<div class="step step-1 current">
+    <form id="handling_form">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">AIRPORT</label>
+                    <input type="text" name="handling_airport" id="handling_airport" class="form-control" placeholder="Oslo Gradermoen" ng-model="handlingData.airport" required>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">COMPANY</label>
+                    <input type="text" name="handling_company" id="handling_company" class="form-control" placeholder="FantasyLab" ng-model="handlingData.company" required>                    
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">AIRCRAFT REG. / TYPE</label>
+                    <input type="text" name="handling_aircraft" placeholder="Variable" id="handling_aircraft" class="form-control" ng-model="handlingData.aircraft" required>                   
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">CREW CONFIGURATION:</label>
+                    <div class="row">
+                        <div class="special-blocks">
+                            <div class="col-xs-5 col-sm-5">
+                                <input type="text" name="handling_configure1" id="handling_configure1" class="form-control" placeholder="Variable" ng-model="handlingData.crew_config1" required>
+                            </div>
+                            <div class="col-xs-2 col-sm-2">
+                                <span class="special">/</span>
+                            </div>
+                            <div class="col-xs-5 col-sm-5">
+                                <input type="text" name="handling_configure2" id="handling_configure2" class="form-control" placeholder="Variable" ng-model="handlingData.crew_config2" required>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-5">
+                <div class="form-group" id="flightType">
+                    <label for="">FLIGHT TYPE</label>
+                    <div class="clearfix"></div>
+                    <label class="radio-inline"><input type="radio" value="private" name="flight" ng-model="handlingData.flight_type" required>Private</label>
+                    <label class="radio-inline"><input type="radio" value="comercial" name="flight" ng-model="handlingData.flight_type" required>Comercial</label>                                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-3">
+                <div class="form-group" id="hotac">
+                    <label for="">HOTAC:</label>
+                    <div class="clearfix"></div>
+                    <label class="radio-inline"><input type="radio" value="yes" name="hotac" ng-model="handlingData.hotac" required>Yes</label>
+                    <label class="radio-inline"><input type="radio" value="no" name="hotac" ng-model="handlingData.hotac" required>No</label>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-4">
+                <div class="form-group" id="catering">
+                    <label for="">CATERING | VIEW MENU:</label>
+                    <div class="clearfix"></div>
+                    <label class="radio-inline"><input type="radio" value="yes" name="catering" ng-model="handlingData.catering" required>Yes</label>
+                    <label class="radio-inline"><input type="radio" value="no" name="catering" ng-model="handlingData.catering" required>No</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">CONTACT PERSON</label>
+                    <input type="text" name="handling_person" id="handling_person" class="form-control" placeholder="Nohman Janjua" ng-model="handlingData.person" required>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">PHONE:</label>
+                    <input type="tel" name="handling_phone" id="handling_phone" class="form-control" required>    
+                </div>             
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">FAX:</label>
+                    <input type="text" name="handling_fax" id="handling_fax" class="form-control" placeholder="Number" ng-model="handlingData.fax" required>                    
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label for="">EMAIL:</label>
+                    <input type="email" name="handling_email" id="handling_email" class="form-control" placeholder="nohman@janjua.net" ng-model="handlingData.email" required>                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <h5>INBOUND:</h5>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">FLIGHT NO.</label>
+                            <input type="text" name="inbound_flight" id="inbound_flight" class="form-control" placeholder="DF498JSO" ng-model="handlingData.inbound_flight" required>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">DATE:</label>
+                            <input type="text" name="inbound_date" id="inbound_date" class="form-control" placeholder="25.03.2018" ng-model="handlingData.inbound_date" required>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">ORIG. / DEST.</label>
+                            <input type="text" name="inbound_orig" id="inbound_orig" class="form-control" placeholder="Variable" ng-model="handlingData.inbound_orig" required>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">CAPTAIN:</label>
+                            <input type="text" name="inbound_captain" id="inbound_captain" class="form-control" placeholder="Nohman Janjua" ng-model="handlingData.inbound_captain" required>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">STA / STD (UTC):</label>
+                            <input type="text" name="inbound_utc" id="inbound_utc" class="form-control" placeholder="Variable" ng-model="handlingData.inbound_utc" required>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">PAX:</label>
+                            <input type="text" name="inbound_pax" id="inbound_pax" class="form-control" placeholder="Variable" ng-model="handlingData.inbound_pax" required>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <h5>OUTBOUND:</h5>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">FLIGHT NO.</label>
+                            <input type="text" name="outbound_flight" id="outbound_flight" class="form-control" placeholder="DF498JSO" ng-model="handlingData.outbound_flight" required>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">DATE:</label>
+                            <input type="text" name="outbound_date" id="outbound_date" class="form-control" placeholder="25.03.2018" ng-model="handlingData.outbound_date" required>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">ORIG. / DEST.</label>
+                            <input type="text" name="outbound_orig" id="outbound_orig" class="form-control" placeholder="Variable" ng-model="handlingData.outbound_orig" required>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">CAPTAIN:</label>
+                            <input type="text" name="outbound_captain" id="outbound_captain" class="form-control" placeholder="Nohman Janjua" ng-model="handlingData.outbound_captain" required>                            
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">STA / STD (UTC):</label>
+                            <input type="text" name="outbound_utc" id="outbound_utc" class="form-control" placeholder="Variable" ng-model="handlingData.outbound_utc" required>                           
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label for="">PAX:</label>
+                            <input type="text" name="outbound_pax" id="outbound_pax" class="form-control" placeholder="Variable" ng-model="handlingData.outbound_pax" required>                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="">COMMENTS:</label>
+                    <textarea name="comments" id="comments" class="form-control" placeholder="Lorem ipsum dolor sit amet consectetur ipsum dolor remi lorrim." ng-model="handlingData.comments"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <button id="request-button" type="submit" class="btn btn-yellow" ng-click="OnSend()">Send Request</button>
+            </div>
+        </div>
+    </form>
+</div>

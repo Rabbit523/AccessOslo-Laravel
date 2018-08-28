@@ -1,0 +1,39 @@
+.accessoslo-cargo{
+    @import "header-list";
+    @import "items-list";
+    .label-table{
+        display: block;
+        float: left;
+        &.booking-id{
+            width: 11%;
+        }
+        &.departure{
+            width: 15%;
+        }
+        &.destination{
+            width: 14%;
+        }
+        &.date{
+            width: 6%;
+        }
+        &.cargo-type{
+            width: 10%;
+        }
+        &.dimensions{
+            width: 12%;
+        }
+        &.weight{
+            width: 8%;
+        }
+        &.dangerous{
+            width: 10%;
+        }
+        &.status{
+            width: 8%;
+        }
+        &.toggle{
+            text-align: center;
+            width: 6%;
+        }
+    }
+}

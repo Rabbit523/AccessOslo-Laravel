@@ -1,0 +1,110 @@
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="title-box">
+                    <h1>Edit Page</h1>                      
+                    <a id="save" class="btn btn-gray" ng-click="Save()">Save</a>
+                    <a id="publish" class="btn btn-purple" ng-click="Publish()">Publish</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="info-user">
+                    <p class="name-user">{{user.first_name}} {{user.last_name}}</p>
+                    <span class="avatar">
+                        <img src="/assets/img/admin/avatar.svg" class="img-responsive center-block" alt="" ng-show="!is_img">
+                        <img src="{{user.img}}" class="img-responsive center-block" alt="" ng-show="is_img">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>  
+<div class="page-content accessoslo-single-page">
+    <div class="container-fluid">
+        <div class="content-box">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="module type-wysiwyge">
+                                <div class="title">
+                                    <h6>Page TITLE</h6>
+                                </div>
+                                <div class="content">
+                                    <div id="page_title"></div>     
+                                </div>                                                      
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="module type-wysiwyg">
+                                <div class="title">
+                                    <h6>Page content</h6>
+                                </div>
+                                <div class="content">
+                                    <div id="page_content"></div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="display:none;" id="extra_content">
+                        <div class="col-xs-12">
+                            <div class="module type-wysiwyg">
+                                <div class="title">
+                                    <h6>Page content</h6>
+                                </div>
+                                <div class="content">
+                                    <div id="page_content1"></div>                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="module type-wysiwyg">
+                                <div class="title">
+                                    <h6>META TITLE</h6>
+                                </div>
+                                <div class="content">
+                                    <div id="meta_title"></div>          
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="module type-default">
+                                <div class="title">
+                                    <h6>META DESCRIPTIONS</h6>
+                                </div>
+                                <div class="content">
+                                    <div id="meta_description"></div>                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="module type-upload-image">
+                                <div class="title">
+                                    <h6>Banner IMAGE</h6>
+                                </div>
+                                <div class="content">
+                                    <form action="/file-upload" class="dropzone no-margin" id="image-uploader">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- content-box -->
+    </div>
+</div>

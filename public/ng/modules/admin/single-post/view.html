@@ -1,0 +1,120 @@
+<header>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="title-box">
+                    <h1 class="post_title"></h1>                      
+                    <a class="btn btn-gray save" ng-click="Save()">Save</a>
+                    <a class="btn btn-purple publish" ng-click="Publish()">Publish</a>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="info-user">
+                    <p class="name-user">{{user.first_name}} {{user.last_name}}</p>
+                    <span class="avatar">
+                        <img src="/assets/img/admin/avatar.svg" class="img-responsive center-block" alt="" ng-show="!is_img">
+                        <img src="{{user.img}}" class="img-responsive center-block" alt="" ng-show="is_img">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>  
+<div class="page-content accessoslo-single-post">
+    <div class="container-fluid">
+        <div class="content-box">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="module">
+                                <div class="title">
+                                    <h6>POST TITLE</h6>
+                                </div>
+                                <div class="content type-default">
+                                    <div class="form-group">
+                                        <input type="text" name="post-title" id="post-title" class="form-control" ng-model="postData.post_title">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="module type-wysiwyg">
+                                <div class="title">
+                                    <h6>POST DESCRIPTION</h6>
+                                </div>
+                                <div class="content">
+                                    <textarea id="post_description"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="module type-default">
+                                <div class="title">
+                                    <h6>META TITLE</h6>
+                                </div>
+                                <div class="content">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Maximum 60 characters" name="meta-title" id="meta-title" ng-model="postData.meta_title">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="module type-default">
+                                <div class="title">
+                                    <h6>META DESCRIPTIONS</h6>
+                                </div>
+                                <div class="content">
+                                    <div class="form-group">
+                                        <textarea id="meta_description"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-4">
+                    <div class="row section_post">
+                        <div class="col-xs-12">
+                            <div class="module type-upload-image">
+                                <div class="title">
+                                    <h6>POST PAGE IMAGE</h6>
+                                </div>
+                                <div class="content">
+                                    <form action="/file-upload" class="dropzone no-margin" id="post-image">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row section_single">
+                        <div class="col-xs-12">
+                            <div class="module type-upload-image">
+                                <div class="title">
+                                    <h6>SINGLE POST IMAGE</h6>
+                                </div>
+                                <div class="content">
+                                    <form action="/file-upload" class="dropzone no-margin" id="single-image">
+                                        <div class="fallback">
+                                            <input name="file" type="file" multiple/>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- content-box -->
+    </div>
+</div>
