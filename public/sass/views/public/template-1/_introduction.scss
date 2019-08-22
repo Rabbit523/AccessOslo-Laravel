@@ -16,11 +16,10 @@
             padding: 10px;
         }
         h1{
-            text-transform: uppercase;
             color: $purple;
             margin: 0px 0px 20px 0px;
             font-family: 'Gotham-book';
-            font-size: 40px;
+            font-size: 35px;
             @include breakpoint(md_pc){
                 font-size: 30px;
             }

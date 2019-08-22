@@ -1,6 +1,12 @@
-@extends('layouts.public') 
-@section('title', $data->meta_title) 
-@section('description', $data->meta_description)
+<?php $lang = app()->getLocale();?>
+@extends('layouts.public')
+@if ($lang == "nb")
+@section('title', $data->nb_meta_title)
+@section('description', $data->nb_meta_description)
+@else
+@section('title', $data->en_meta_title)
+@section('description', $data->en_meta_description)
+@endif
 @section('content')
 <div class="wrapper-general">
   <section class="introduction">
@@ -9,8 +15,11 @@
               <div class="col-xs-12 col-sm-4">
                   <div class="box">
                       @if ($data->status == "published")
-                      {!! $data->page_title !!}
-                      {!! $data->page_content !!}
+                            @if($lang == "nb")
+                            {!! $data->nb_page_title !!}
+                            @else
+                            {!! $data->en_page_title !!}
+                            @endif
                       @else
                       <h1>Event & Group travel</h1>
                       <p>Lorem ipsum dolor sit amet consectetur ipsum dolor remi obligado remi opsum. This is just a dummy text for you to.</p>
@@ -20,7 +29,7 @@
               </div>
               <div class="col-xs-12 col-sm-8">
                   <div class="slider">
-                      <img src="/assets/img/slider.jpg" class="img-responsive" alt="">
+                      <img src="{{$data->banner_img}}" class="img-responsive" alt="">
                   </div>
               </div>
           </div>
@@ -32,7 +41,11 @@
               <div class="col-xs-12 col-sm-6">
                   <div class="box box-left">
                     @if ($data->status == "published")
-                      {!! $data->extra_content !!}
+                        @if($lang == "nb")
+                        {!! $data->nb_page_content !!}
+                        @else
+                        {!! $data->en_page_content !!}
+                        @endif
                     @else
                       <h3>WHY EVENT & GROUP TRAVEL?</h3>
                       <ul>
@@ -51,6 +64,15 @@
                   <div class="box box-right">
                     <accessoslo-eventtravel></accessoslo-eventtravel>
                   </div>
+                  <div class="aux-img" style="margin-top: 30px;">
+                      <img src="/assets/img/dmc-banner-11.jpg" class="img-responsive center-block" alt="" style="margin-top: 30px; box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);">
+                  </div>
+                  <div class="aux-img" style="margin-top: 30px;">
+                      <img src="/assets/img/dmc-banner-33.jpg" class="img-responsive center-block" alt="" style="margin-top: 30px; box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);">
+                  </div>
+                  <div class="aux-img" style="margin-top: 30px;">
+                      <img src="/assets/img/dmc-banner-22.jpg" class="img-responsive center-block" alt="" style="margin-top: 30px; box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);">
+                  </div>
               </div>
           </div>
       </div>
@@ -62,5 +84,6 @@
 <script src="/js/vendor/utils.js"></script>
 <script src="/js/vendor/data.js"></script>
 <script src="/js/vendor/intlTelInput.js"></script>
+@include('sweet::alert')
 <script src="/ng/directives/event-travel/event-travel.js"></script>
 @endsection

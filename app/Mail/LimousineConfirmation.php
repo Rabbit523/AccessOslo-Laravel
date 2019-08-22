@@ -30,7 +30,7 @@ class LimousineConfirmation extends Mailable
     public function build()
     {
         return $this->view('email.limousine-booking-confirmation', compact('limousine'))
-        ->from("contact@accessoslo.no", "AccessOslo")
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('Limousine Transport - Booking Confirmation');
     }
 }

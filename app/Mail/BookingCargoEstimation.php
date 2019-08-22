@@ -29,7 +29,7 @@ class BookingCargoEstimation extends Mailable
     public function build()
     {
         return $this->view('email.booking-cargo-estimation', compact('cargo_charter'))
-        ->from("contact@accessoslo.no", "AccessOslo")
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('Cargo Chater- Booking Estimation');
     }
 }

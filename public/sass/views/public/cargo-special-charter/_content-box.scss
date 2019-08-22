@@ -1,6 +1,6 @@
 .content-box{
     display: block;
-    margin: 50px 0px 0px;
+    margin: 30px 0px 0px;
     padding-bottom: 50px;
     .box {
         background: #FFF;
@@ -21,7 +21,7 @@
                     color: #5f6062;
                     font-family: 'Gotham-book';
                     font-weight: normal;
-                    font-size: 12px;
+                    font-size: 16px;
                     line-height: 20px;
                     position: relative;
                     padding-left: 15px;
@@ -38,12 +38,7 @@
                     }
                 }
             }
-        }
-        .step{
-            &.thanks {
-                padding-top: 60px;
-            }
-        }
+        }        
         .timeline {
             position: relative;
             width: 100%;
@@ -76,8 +71,7 @@
             color: $yellow;
         }
         h3 {
-            @include title($yellow, 22);
-            text-transform: uppercase;
+            @include title($yellow, 26);
             margin-bottom: 20px;
         }
         h4 {
@@ -89,16 +83,14 @@
             color: #5f6062;
             font-family: 'Gotham-book';
             font-weight: normal;
-            font-size: 12px;
+            font-size: 16px;
             line-height: 24px;
             margin-bottom: 30px;
             a {
                 color: $yellow;
             }
         }
-        .form-group{
-            margin-bottom: 30px;
-			position: relative;
+        .form-group{            
             .info-alert{
                 position: absolute;
                 z-index: 5;
@@ -157,17 +149,23 @@
                 background-repeat: no-repeat;
                 background-position: right center;
                 background-size: auto 100%;
-            }
-			&.success:after, &.error:after {				
-				top: 39px!important;						
-			}
+            }			
         }
+		.demension_options.form-group {
+			label {
+				font-size: 12px;				
+				font-weight: normal;
+			}
+			&.success:after, &.error:after {
+				top: 45px;
+				padding-top: 5px;				
+			}
+		}
         .btn-yellow, .btn-border-gold{
             padding: 15px 30px;
             margin-top: 10px;
         }
-        .thanks {
-            padding-top: 60px;
+        .thanks {            
             figure{
                 margin: 0px auto 30px;
             }

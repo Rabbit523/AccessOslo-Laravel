@@ -24,7 +24,7 @@ class BookingCharters extends Model
      * @var array
      */
 
-    protected $fillable = ['booking_type', 'departure', 'destination', 'contact_person', 'date', 'flight_type', 'travellers', 'status', 'phone', 'email', 'company', 'bonus'];
+    protected $fillable = ['booking_type', 'departure', 'destination', 'contact_person', 'date', 'time', 'return_date', 'return_time', 'flight_type', 'travellers', 'status', 'phone', 'email', 'company', 'bonus', 'payment_id', 'total_estimations', 'is_review', 'additional_service'];
 
     /**
      * The attributes that should be hidden for arrays.

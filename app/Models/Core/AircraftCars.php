@@ -24,7 +24,7 @@ class AircraftCars extends Model
      * @var array
      */
 
-    protected $fillable = ['partner_name', 'type', 'capacity', 'img'];
+    protected $fillable = ['partner_name', 'type', 'capacity', 'max_range', 'wifi', 'manufacture', 'flight_attendant', 'img'];
 
     /**
      * The attributes that should be hidden for arrays.

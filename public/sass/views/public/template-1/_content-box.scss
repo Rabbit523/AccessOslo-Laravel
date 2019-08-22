@@ -7,13 +7,13 @@
         margin: 0px 0px 20px 0px;
         font-family: 'Gotham';
         font-weight: normal;
-        font-size: 24px;
+        font-size: 26px;
     }
     p{
         color: #5f6062;
         font-family: 'Gotham-book';
         font-weight: normal;
-        font-size: 12px;
+        font-size: 16px;
         line-height: 24px;
         margin-bottom: 30px;
     }
@@ -22,7 +22,7 @@
         box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);
         padding: 30px;
         &.box-left {
-            height: 465px;
+            height: 720px;
             .btn-border-gold{
                 position: absolute;
                 bottom: 40px;
@@ -31,10 +31,7 @@
         }
         &.box-right{
             .step {
-                height: 405px;
-                &.thanks {
-                    padding-top: 60px;
-                }
+                height: 405px;                
             }
             p {
                 margin-bottom: 10px;
@@ -88,15 +85,15 @@
                 color: #b0b0b0;
                 padding: 7px 10px;
                 height: auto;
-            }			
+            }
 			.form-group {
 				label {
-					font-size: 0.875em;
+					font-size: 12px;
 					text-transform: uppercase;
 					color: #656668;
 					font-weight: normal;
-				}		
-			}					
+				}
+			}
             [class^="col-"] {
                 padding-right: 0px;
                 &:last-child {
@@ -118,7 +115,7 @@
                 margin-top: 20px;
                 img {
                     width: 18px;
-                    margin-left: 10px;                
+                    margin-left: 10px;
                 }
             }
         }

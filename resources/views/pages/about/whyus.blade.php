@@ -1,14 +1,24 @@
-@extends('layouts.public') 
-@section('title', $data->meta_title) 
-@section('description', $data->meta_description)
+<?php $lang = app()->getLocale();?>
+@extends('layouts.public')
+@if ($lang == "nb")
+@section('title', $data->nb_meta_title)
+@section('description', $data->nb_meta_description)
+@else
+@section('title', $data->en_meta_title)
+@section('description', $data->en_meta_description)
+@endif
 @section('content')
 <div class="wrapper-general">
         <section class="introduction">
-            <img src="/assets/img/bg/executive-charter.jpg" alt="" class="img-responsive">
+            <img src="{{$data->banner_img}}" alt="" class="img-responsive">
             <div class="container wrapper-content">
                 <div class="col-xs-12">
                     @if ($data->status == "published")
-                    {!! $data->page_title !!}
+                        @if ($lang == "nb")
+                        {!! $data->nb_page_title !!}
+                        @else
+                        {!! $data->en_page_title !!}
+                        @endif
                     @else
                     <h1>Why us</h1>
                     @endif
@@ -18,10 +28,14 @@
         <section class="content-box">
             <div class="container">
                 <div class="row">
-                    <div class="col-xs-12">
-                        <div class="box box-top">
+                    <div class="col-xs-12 col-sm-6">
+                        <div class="box box-left">
                             @if ($data->status == "published")
-                            {!! $data->page_content !!}
+                                @if ($lang == "nb")
+                                {!! $data->nb_page_content !!}
+                                @else
+                                {!! $data->en_page_content !!}
+                                @endif
                             @else
                             <h3>A SOLUTION THAT SUITS YOU</h3>
                             <h4 class="text-justify">We will find the right solution that suits your needs. We have staff with over 40 years of experience in  commercial aviation, managing flights and making sure everything runs safely, smooth and efficient. Experience runs from ground handlers to professional pilots keeping in mind the safety aspect.</h4>
@@ -30,8 +44,56 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col-xs-12 col-sm-6 members">
+                    @for($i = 0; $i < $count; $i ++)
+                    @if($i % 2 == 0)
+                    <div class="col-xs-12 col-sm-6 type1">
+                        <div class="box box-right">
+                            <div class="item">
+                                <div class="avatar">
+                                    <img src="{{$members[$i]->avatar}}" class="img-responsive center-block" alt="">
+                                </div>
+                                <div class="details">
+                                    <div class="profile">
+                                        <h5>{{$members[$i]->name}}</h5>
+                                        <p>{{$members[$i]->position}}</p>
+                                        <p>{{$members[$i]->email}}</p>
+                                    </div>
+                                    <div class="description">
+                                        <p>{{$members[$i]->description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @else
+                    <div class="col-xs-12 col-sm-6 type2">
+                        <div class="box box-right">
+                            <div class="item">
+                                <div class="avatar">
+                                    <img src="{{$members[$i]->avatar}}" class="img-responsive center-block" alt="">
+                                </div>
+                                <div class="details">
+                                    <div class="profile">
+                                        <h5>{{$members[$i]->name}}</h5>
+                                        <p>{{$members[$i]->position}}</p>
+                                        <p>{{$members[$i]->email}}</p>
+                                    </div>
+                                    <div class="description">
+                                        <p>{{$members[$i]->description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endif
+                    @endfor
+                    </div>
                 </div>
             </div>
-        </section>  
+        </section>
     </div>
+@endsection
+@section ('scripts')
+@include('sweet::alert')
 @endsection

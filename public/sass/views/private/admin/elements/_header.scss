@@ -4,10 +4,11 @@ header{
     padding: 20px 0px;
     border-bottom: solid 1px #d3d3d3;
     .title-box{
+		padding-left: $sidebar-width;
         h1{
-            font-weight: 400;
-            font-size: em(36);
-            margin: 5px 25px 0px 0px;
+            font-weight: bold;
+            font-size: 25px;
+            margin: 13px 25px 0px 0px;
             display: block;
             float: left;
             text-transform: uppercase;
@@ -21,6 +22,18 @@ header{
             padding-right: 30px;
         }
     }
+	.cms-header {
+		display: flex;
+		justify-content: flex-end;
+		.change_lang {
+			padding-top: 4px;
+			.country-list {
+				height: 70px;
+				width: 226px;
+				overflow: hidden;
+			}
+		}
+	}
     .info-user{
         float: right;
         .name-user{

@@ -1,4 +1,4 @@
-@extends('layouts.private') @section('title', 'Hjem') @section('content')
+@extends('layouts.private') @section('title', 'Admin Portal') @section('content')
 <div class="page-container">
     <header>
         <div class="container-fluid">

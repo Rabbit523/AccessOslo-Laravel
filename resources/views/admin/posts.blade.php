@@ -1,4 +1,4 @@
-@extends('layouts.private') @section('title', 'Hjem') @section('content')
+@extends('layouts.private') @section('title', 'Admin Portal') @section('content')
 <div class="page-container">
     <header>
         <div class="container-fluid">
@@ -40,7 +40,7 @@
                             @foreach($datas as $data)
                             <div class="item">
                                 <div class="row">
-                                    <div class="label-table title">{{$data->post_title}} <a class="edit" data-id="{{$data->id}}">Edit</a> <a class="delete" data-id="{{$data->id}}">Delete</a></div>
+                                    <div class="label-table title">{{$data->post_title_plain}} <a class="edit" data-id="{{$data->id}}">Edit</a> <a class="delete" data-id="{{$data->id}}">Delete</a></div>
                                     <div class="label-table author">{{$data->author}}</div>
                                     <div class="label-table published">{{$data->published_date}}</div>
                                     <div class="label-table updated">{{$data->updated_at}}</div>

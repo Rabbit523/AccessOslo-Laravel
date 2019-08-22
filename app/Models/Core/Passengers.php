@@ -24,7 +24,7 @@ class Passengers extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'gender', 'first_name', 'last_name', 'birth', 'nationality'
+        'user_id', 'gender', 'first_name', 'last_name', 'birth', 'nationality', 'passport_no', 'passport_expiry'
     ];
 
     /**

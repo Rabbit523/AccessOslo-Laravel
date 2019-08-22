@@ -33,7 +33,16 @@
         label{
             @include title(#333333, 12);
             margin-top: 15px;
+			@include breakpoint (mobile) {
+				text-align: left !important;
+				font-size: 15px;
+			}
         }
+		.text-right {
+			@include breakpoint(mobile) {
+				text-align: left !important;
+			}
+		}
         select {
             background-image: url('../assets/img/arrow-select-only.jpg');
             background-repeat: no-repeat;
@@ -42,10 +51,6 @@
         }
 		.form-group {
 			position: relative;
-			&.success:after, &.error:after {				
-				top: 13px!important;		
-				right: 10px!important;
-			}
 			.form-control {
 				@include placeholderColor(#333333);
 				background-color: #FFF;

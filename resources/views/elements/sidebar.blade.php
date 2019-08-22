@@ -14,13 +14,11 @@
                     <li class="{{$title =='Executive Charter'?'active':''}}"><a href="{{url('/admin/executive-charter')}}">EXECUTIVE CHARTER<small class="executive_badge" style="display:none;"></small></a></li>
                     <li class="{{$title =='Group Charter'?'active':''}}"><a href="{{url('/admin/group-charter')}}">GROUP CHARTER <small class="group_badge" style="display:none;"></small></a></li>
                     <li class="{{$title =='Helicopter Charter'?'active':''}}"><a href="{{url('/admin/helicopter-charter')}}">HELICOPTER CHARTER <small class="helicopter_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='Cargo & Special Charter'?'active':''}}"><a href="{{url('/admin/cargo-charter')}}">CARGO & SPECIAL CHARTER <small class="cargo_badge" style="display:none;"></small></a></li>
+                    <li class="{{$title =='Cargo & Special Charter'?'active':''}}"><a href="{{url('/admin/cargo-charter')}}">CARGO CHARTER <small class="cargo_badge" style="display:none;"></small></a></li>
                     <li class="{{$title =='MEET & GREET'?'active':''}}"><a href="{{url('/admin/meet-greet')}}">MEET & GREET <small class="meet_badge" style="display:none;"></small></a></li>
                     <li class="{{$title =='BOOK AIRPORT LIMOUSINE'?'active':''}}"><a href="{{url('/admin/airport-limousine')}}">AIRPORT LIMOUSINE <small class="limousine_badge" style="display:none;"></small></a></li>
                     <li class="{{$title =='HANDLING REQUEST'?'active':''}}"><a href="{{url('/admin/handling-requests')}}">HANDLING REQUESTS <small class="handling_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='AIR PASSENGER TAX'?'active':''}}"><a href="{{url('/admin/air-passenger')}}">AIR PASSENGER TAX <small class="passenger_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='Destination Oslo'?'active':''}}"><a href="{{url('/admin/private-travel')}}">Destination Oslo<small class="private_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='EVENT & GROUP TRAVEL'?'active':''}}"><a href="{{url('/admin/group-travel')}}">EVENT & GROUP TRAVEL <small class="event_badge" style="display:none;"></small></a></li>
+                    <li class="{{$title =='AIR PASSENGER TAX'?'active':''}}"><a href="{{url('/admin/air-passenger')}}">AIR PASSENGER TAX <small class="passenger_badge" style="display:none;"></small></a></li>                    
                     <li class="{{$title =='Emptyleg Charter'?'active':''}}"><a href="{{url('/admin/emptyleg')}}"> Emptyleg Charter <small class="emptyleg_badge" style="display:none;"></small></a></li>
                 </ul>
             </li>
@@ -29,7 +27,7 @@
             <li class="{{$title =='PARTNERS'?'active':''}}"><a href="{{url('/admin/partners')}}">PARTNERS</a></li>
             <li class="{{$title =='PAGES'?'active':''}}"><a href="{{url('/admin/pages')}}">PAGES</a></li>
             <li class="{{$title =='POSTS'?'active':''}}"><a href="{{url('/admin/posts')}}">POSTS</a></li>  
-            <li class="{{$title =='AIRCRAFTS & CARS'?'active':''}}"><a href="{{url('/admin/aircrafts-cars')}}">AIRCRAFTS & CARS</a></li>  
+            <li class="{{$title =='AIRCRAFTS'?'active':''}}"><a href="{{url('/admin/aircrafts')}}">Fleet</a></li>  
             <li class="{{$title =='settings'?'active':''}}"><a href="{{url('/admin/settings')}}">SETTINGS</a></li>
             <li class="{{$title =='logout'?'active':''}}"><a href="{{url('/admin/logout')}}">LOG OUT</a></li>
             @endif
@@ -40,20 +38,13 @@
                     <li class="{{$title =='Executive Charter'?'active':''}}"><a href="{{url('/admin/executive-charter')}}">EXECUTIVE CHARTER<small class="executive_badge" style="display:none;"></small></a></li>
                     <li class="{{$title =='Group Charter'?'active':''}}"><a href="{{url('/admin/group-charter')}}">GROUP CHARTER<small class="group_badge" style="display:none;"></small></a></li>
                     <li class="{{$title =='Helicopter Charter'?'active':''}}"><a href="{{url('/admin/helicopter-charter')}}">HELICOPTER CHARTER <small class="helicopter_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='Cargo & Special Charter'?'active':''}}"><a href="{{url('/admin/cargo-charter')}}">CARGO & SPECIAL CHARTER <small class="cargo_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='MEET & GREET'?'active':''}}"><a href="{{url('/admin/meet-greet')}}">MEET & GREET <small class="meet_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='BOOK AIRPORT LIMOUSINE'?'active':''}}"><a href="{{url('/admin/airport-limousine')}}">AIRPORT LIMOUSINE<small class="limousine_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='HANDLING REQUEST'?'active':''}}"><a href="{{url('/admin/handling-requests')}}">HANDLING REQUESTS<small class="handling_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='AIR PASSENGER TAX'?'active':''}}"><a href="{{url('/admin/air-passenger')}}">AIR PASSENGER TAX<small class="passenger_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='Destination Oslo'?'active':''}}"><a href="{{url('/admin/private-travel')}}">Destination Oslo<small class="private_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='EVENT & GROUP TRAVEL'?'active':''}}"><a href="{{url('/admin/group-travel')}}">EVENT & GROUP TRAVEL<small class="event_badge" style="display:none;"></small></a></li>
-                    <li class="{{$title =='Emptyleg Charter'?'active':''}}"><a href="{{url('/admin/emptyleg')}}"> Emptyleg Charter <small class="emptyleg_badge" style="display:none;"></small></a></li>
+                    <li class="{{$title =='Cargo & Special Charter'?'active':''}}"><a href="{{url('/admin/cargo-charter')}}">CARGO CHARTER <small class="cargo_badge" style="display:none;"></small></a></li>                   
                 </ul>
             </li>
-            @if(auth()->user()->permission == "true")
-            <li class="{{$title =='EMPTY LEG FLIGHT'?'active':''}}"><a href="{{url('/admin/empty-leg')}}">EMPTY LEG FLIGHTS</a></li>
+            @if (auth()->user()->partner_permission == 'true')
+            <li class="{{$title =='EMPTY LEG FLIGHT'?'active':''}}"><a href="{{url('/admin/empty-leg')}}">EMPTY LEG FLIGHTS</a></li>            
             @endif
-            <li class="{{$title =='AIRCRAFTS & CARS'?'active':''}}"><a href="{{url('/admin/aircrafts-cars')}}">AIRCRAFTS & CARS</a></li>  
+            <li class="{{$title =='AIRCRAFTS'?'active':''}}"><a href="{{url('/admin/aircrafts')}}">Fleet</a></li>  
             <li class="{{$title =='settings'?'active':''}}"><a href="{{url('/admin/settings')}}">SETTINGS</a></li>
             <li class="{{$title =='logout'?'active':''}}"><a href="{{url('/admin/logout')}}">LOG OUT</a></li>
             @endif

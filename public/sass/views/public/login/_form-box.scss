@@ -1,79 +1,96 @@
 .form-box{
     display: block;
     padding: 100px 0px;
+	@include breakpoint (mobile) {
+		padding: 20px;
+	}
     .box {
         border-bottom: solid 3px #c29834;
+        box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);
         .box-left{
-            background: rgba(255, 246, 225, 0.85);
+            background: #fff;
             padding: 0px;
             h1{
-                font-family: 'Gotham-book';
-                font-size: 30px;
-                color: #61480e;
+                font-family: 'Gotham';
+                font-size: 26px;
+                color: $yellow;
                 font-weight: 300;
-                text-transform: uppercase;
-                border-bottom: solid 2px #fff;
-                padding: 20px;
+                border-bottom: solid 2px #f8f6f0;
+                padding: 20px 30px 30px 30px;
             }
             form{
-                padding: 20px;
+                padding: 30px 30px 105px 30px;
                 display: block;
+				&#reset-email-form {
+					padding: 30px 30px 165px 30px;
+				}
             }
             .wrapper-btns{
-                margin-top: 61px;                
+                margin-top: 35px;
             }
             .btn-yellow {
                 padding: 10px 35px;
+                font-weight: normal;
             }
             .link{
-                color: $purple;
+                color: #61480e;
+                font-family: "Gotham-Book";
                 margin-top: 10px;
                 display: block;
-                font-size: 12px;
+                font-size: 16px;
+				cursor: pointer;
             }
 			.form-group {
 				position: relative;
-				&.success:after, &.error:after {	
-					right: 7px;
-					top: 13px;		
+				&.success:after, &.error:after {					
+					top: 46px;
 				}
 			}
             .form-control {
                 @include placeholderColor(#61480e);
                 background-color: #fff;
-                font-size: 14px;
+                font-size: 15px;
                 color: #61480e;
                 padding: 7px 10px;
                 height: auto;
-                border-radius: 0px;                
+                border-radius: 0px;
             }
+			#reset-email-form {
+				display: none;
+			}
+			#reset-password-form {
+				display: none;
+			}
         }
         .box-right {
             background: #c29834;
             padding: 0px;
             h2{
-                font-family: 'Gotham-book';
-                font-size: 30px;
+                font-family: 'Gotham';
+                font-size: 26px;
                 color: #FFF;
-                font-weight: 300;
-                text-transform: uppercase;
                 border-bottom: solid 2px #e8c674;
-                padding: 20px;
+                padding: 20px 30px 30px 30px;
             }
             ul{
                 list-style: none;
-                padding: 0px 20px;
-                margin: 20px 0px 20px;
+                padding: 20px 30px 25px 30px;
+                margin: 10px 0px 20px;
                 color: #fff;
                 font-size: 14px;
                 font-family: 'Gotham-book';
                 li{
                     margin-bottom: 10px;
+                    font-size: 16px;
                 }
             }
             .btn-white {
                 padding: 10px 35px;
                 margin-top: 20px;
+                font-size: 16px;
+                &:hover,&:focus {
+                  background: #f5f5f5;
+                }
             }
         }
     }

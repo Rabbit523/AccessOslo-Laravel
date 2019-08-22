@@ -24,7 +24,7 @@ class PostPages extends Model
      * @var array
      */
 
-    protected $fillable = ['post_title', 'post_description', 'author', 'published_date', 'status', 'meta_title', 'meta_description', 'post_img', 'single_img'];
+    protected $fillable = ['post_title_plain', 'en_post_title', 'en_post_description', 'author', 'published_date', 'status', 'en_meta_title', 'en_meta_description', 'post_img', 'single_img', 'nb_post_title', 'nb_post_description', 'nb_meta_title', 'nb_meta_description'];
 
     /**
      * The attributes that should be hidden for arrays.

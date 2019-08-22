@@ -5,7 +5,7 @@
         color: #333333;
         padding: 20px 15px 0px;
         border: solid 1px #e2cfd3;
-        margin-bottom: 20px;
+        margin-bottom: 3px;
         transition: all 0.3s ease-Out;
         -moz-transition: all 0.3s ease-Out;
         -o-transition: all 0.3s ease-Out;
@@ -22,31 +22,8 @@
                     top: -5px;
                     padding-bottom: 0px;
                     a{
-                        font-size: em(16);
-                        color: $purple;
-                        margin-right: 10px;
-                        opacity: 0;
-                        visibility: hidden;
-                        transition: all 0.3s ease-Out;
-                        -moz-transition: all 0.3s ease-Out;
-                        -o-transition: all 0.3s ease-Out;
-                        -webkit-transition: all 0.3s ease-Out;
-                    }
-                    span{
-                        background: $purple;
-                        transform: rotate(0deg);
-                        color: white;
-                        display: inline-block;
-                        border-radius: 5px;
-                        padding: 5px 10px;
-                        font-size: 20px;
-                        line-height: 1;
-                        text-align: center;
-                        border: solid 2px $purple;
-                        transition: all 0.3s ease-Out;
-                        -moz-transition: all 0.3s ease-Out;
-                        -o-transition: all 0.3s ease-Out;
-                        -webkit-transition: all 0.3s ease-Out;
+                        font-size: 11px;
+						margin-top: 3px;
                     }
                 }
             }

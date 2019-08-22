@@ -3,8 +3,13 @@
 namespace App\Http\Controllers\Api;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Http\Request;
 use App\Services\Core\Users;
+use App\Models\Core\User;
+use App\Mail\ResetPasswordSuccessMail;
 
 class UsersController extends ApiController {
 
@@ -47,6 +52,12 @@ class UsersController extends ApiController {
   public function getCustomer (Request $request) {
     return $this->json(
       Users::getCustomer($request)
+    );
+  }
+
+  public function deleteCustomer (Request $request) {
+    return $this->json(
+      Users::deleteCustomer($request)
     );
   }
 
@@ -98,10 +109,64 @@ class UsersController extends ApiController {
     );
   }
 
+  public function updatePartner (Request $request) {
+    return $this->json(
+      Users::updatePartner($request)
+    );
+  }
+
+  public function partner_logo_img(Request $request) {
+    return $this->json(
+      Users::PartnerLogoUpload($request)
+    );
+  }
+
+  public function deletePartner (Request $request) {    
+    return $this->json(
+      Users::deletePartner($request)
+    );
+  }
+
+  public function getPartner (Request $request) {
+    return $this->json(
+      Users::getPartner($request)
+    );
+  }
   public function find (Request $request) {
     return $this->json(
       Users::find($request)
     );
+  }
+
+  public function resetPassword (Request $request) {
+    return $this->json(
+      Users::resetPassword($request)
+    );
+  }
+
+  public function reset_Password (Request $request) {    
+    if($request->password == $request->confirm_password){
+      $user = User::where('remember_token',$request->token)->first();
+      $count = User::where('remember_token',$request->token)->count();
+      if($count > 0){        
+        if (strlen($request->password) <= '8') {
+          return redirect()->back()->with('error','Password must be over 8 characters.');
+        } else if (!preg_match("#[0-9]+#",$request->password)) {
+          return redirect()->back()->with('error','Password must contain 1 number.');
+        } else if (!preg_match("#[A-Z]+#",$request->password)) {
+          return redirect()->back()->with('error','Password must contain 1 capital letter.');
+        } else if (!preg_match("#[a-z]+#",$request->password)) {
+          return redirect()->back()->with('error','Password must contain 1 lowercase letter.');
+        } else {
+          $user->password = Hash::make($request->password);
+          $user->save();
+          Mail::to($user->email)->send(new ResetPasswordSuccessMail($user->first_name));
+          return redirect('/login')->with('success','Your password has been updated.');
+        }
+      }
+    }else{
+      return redirect()->back()->with('error','The password did not match. Please try again.');
+    }
   }
 
   public function getPartners (){
@@ -134,12 +199,6 @@ class UsersController extends ApiController {
     return $this->json(
       Users::addProfileImage($request)
     );
-  }
-
-  public function start_signup (Request $request) {    
-    if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
-      return redirect('/member/profile-settings'); 
-    }    
   }
 }
 

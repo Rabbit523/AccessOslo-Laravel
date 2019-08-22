@@ -1,11 +1,14 @@
 .introduction{
     display: block;
     width: 100%;
-    padding: 0px;
-    margin: 30px 0px 30px;
+    padding: 100px 0px 0px;
+    margin: 0px 0px 30px;
     @include breakpoint(sm_pc){
         margin-top: 0px;
     }
+	@include breakpoint(mobile) {
+		padding: 55px 0px 0px;
+	}
     .wrapper-content {
         margin: auto;
         left: 0px;
@@ -30,6 +33,7 @@
             }
             @include breakpoint(mobile){
                 font-size: 20px;
+				margin-left: 0px;
             }
         }
         p {

@@ -26,6 +26,8 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')
         //          ->hourly();
+        // $schedule->command('command:setreviewstatus')->dailyAt('00:00');
+        $schedule->call('App\Http\Controllers\PaymentController@setReviewStatus')->dailyAt('00:00');
     }
 
     /**

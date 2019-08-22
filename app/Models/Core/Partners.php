@@ -24,7 +24,7 @@ class Partners extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'phone', 'email', 'post_box', 'site_url', 'partner_name', 'contact_person', 'last_audit', 'permission', 'coverage', 'average_flight', 'operate_since', 'valid'
+        'user_id', 'partner_name', 'contact_person', 'phone', 'email', 'last_audit', 'permission', 'coverage', 'average_flight', 'operate_since', 'valid', 'description', 'type', 'main_img', 'sub_img', 'additional_fee', 'norway_description'
     ];
 
     /**

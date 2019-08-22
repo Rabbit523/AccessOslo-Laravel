@@ -58,7 +58,7 @@
     }
 }
 .content-box {
-    padding-top: 120px;
+    padding-top: 30px;
     padding-bottom: 50px;
     @include breakpoint(tablet){
         padding-top: 30px;
@@ -66,9 +66,16 @@
             padding-left: 15px;
         }
     }
+	.alert-box {
+		box-shadow: 0px 2px 5px 1px rgba(79, 79, 79, 0.15);
+		background: #fff;
+		text-align: center;
+		color: #48539b;
+		padding: 10px;
+	}
     .box-left {
         .info-box {
-            padding-left: 30px;
+            padding-left: 40px;
         }
     }
     .box-right {
@@ -79,42 +86,134 @@
             }
         }
     }
-    .item {
-        display: block;
-        width: 100%;
-        background: #FFF;
-        margin-bottom: 70px;
-        box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);
-        .info-box{
-            padding-top: 20px;
-            @include breakpoint(tablet){
-                margin-bottom: 20px;
-            }
-            p{
-                font-family: 'Gotham-book';
-                font-size: 12px;
-                color: #333333;
-                margin: 0px 0px 30px 0px;
-                @include breakpoint(md_pc){
-                    margin-bottom: 15px;
-                }
-            }
-            h2{
-                text-transform: uppercase;
-                color: $purple;
-                margin: 0px 0px 20px 0px;
-                font-family: 'Gotham-book';
-                font-size: 40px;
-                span {
-                    color: $yellow;
-                }
-                @include breakpoint(md_pc){
-                    font-size: 28px;
-                    margin-bottom: 10px;
-                }
-            }
-        }
-    }
+	.body-row {
+		display: flex;
+		margin-bottom: 20px;
+		margin-left: 20px;
+		margin-right: 20px;
+		@include breakpoint(mobile) {
+			display: block;
+		}
+		.item {
+			display: flex;
+			flex-direction: column;
+			position: relative;
+			box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);
+			background-size: cover;
+			background-position: 50% 50%;
+			background-repeat: no-repeat;
+			color: #fff;
+			.info-box{
+				width: 100%;
+				height: 100%;
+				cursor: pointer;
+				background: rgba(0, 0, 0, 0.15);
+				transition: transform .9s;
+				padding-left: 20px;
+				p{
+					position: absolute;
+					bottom: 0;
+					font-family: 'Gotham-book';
+					font-size: 16px;
+					margin: 0px 0px 20px 0px;
+					@include breakpoint(md_pc){
+						margin-bottom: 15px;
+					}
+					@include breakpoint (mobile) {
+						font-size: 12px;
+						bottom: 15px;
+						margin-bottom: 0px;
+					}
+				}
+				h2{
+					position: absolute;
+					bottom: 40px;
+					text-transform: uppercase;
+					margin: 0px 0px 0px 0px;
+					font-family: 'Gotham-book';
+					font-size: 33px;
+					@include breakpoint(md_pc){
+						font-size: 28px;
+						margin-bottom: 10px;
+					}
+					@include breakpoint(mobile) {
+						font-size: 25px;
+						bottom: 50px;
+						margin-bottom: 0px;
+					}
+				}
+				&:hover {
+					background: transparent;
+				}
+			}
+		}
+		.body-type1 {
+			width: 49%;
+			margin-right: 10px;
+			@include breakpoint(mobile) {
+				width: 100%;
+				margin: 0;
+			}
+			.mobile-item {
+				height: 290px;
+				margin-bottom: 20px;
+				&:last-child {
+					margin-bottom: 0;
+					@include breakpoint(mobile) {
+						margin-bottom: 20px;
+					}
+				}
+			}
+		}
+		.body-type2 {
+			width: 49%;
+			margin-left: 10px;
+			@include breakpoint(mobile) {
+				width: 100%;
+				margin: 0;
+
+			}
+			.mobile-item {
+				height: 600px;
+				@include breakpoint(mobile) {
+					height: 290px;
+				}
+			}			
+		}
+		.body-type3 {
+			width: 49%;
+			margin-left: 10px;
+			@include breakpoint(mobile) {
+				width: 100%;
+				margin: 0;
+			}
+			.mobile-item {
+				height: 290px;
+				margin-bottom: 20px;
+				&:last-child {
+					margin-bottom: 0;
+					@include breakpoint(mobile) {
+						margin-bottom: 20px;
+					}
+				}
+			}
+		}
+		.body-type4 {
+			width: 49%;
+			margin-right: 10px;
+			@include breakpoint(mobile) {
+				width: 100%;
+				margin: 0;
+			}
+			.mobile-item {
+				height: 600px;
+				@include breakpoint(mobile) {
+					height: 290px;
+					margin-bottom: 20px;
+				}
+			}			
+		}
+	}
 }
 
 #searchResults{
@@ -169,7 +268,7 @@
             .money-box{
                 display: block;
                 float: left;
-                margin-right: 20px;            
+                margin-right: 20px;
                 .btn-group{
                     color: #8e8e8e;
                     border-radius: 0px;
@@ -219,11 +318,14 @@
                     li{
                         @include title(#8e8e8e, 12);
                         display: block;
-                        width: 25%;
+                        width: 30%;
                         float: left;
                         @include breakpoint(mobile){
                             width: 100%;
                         }
+						span {
+							color: #000;
+						}
                     }
                 }
                 .box-left{
@@ -280,19 +382,16 @@
 		height: auto;
 	}
 	.slider-box {
-		.minus-margin {
-			margin: 0px 0px 0px -15px;
-		}
 		.arrow.arrow-prev {
-			left: 0px;			
+			left: 0px;
 		}
 		.arrow.arrow-next {
-			right: 56px;			
+			right: 56px;
 		}
 	}
 	.info-box {
-		margin-top: 15px;	
-		margin-left: -35px;
+		margin-top: 15px;
+		text-align: left;
 		label {
 			color: #8e8e8e;
 			display: inline-block;
@@ -310,7 +409,7 @@
 			margin-top: 0px;
 		}
 		.price-box {
-		    margin-top: 30px;			
+		    margin-top: 30px;
 			h5 {
 				font-family: 'Gotham';
 				font-weight: normal;
@@ -330,7 +429,7 @@
 	.detail_info {
 		font-size: 15px;
 		padding-left: 20px;
-		padding-right: 20px;		
+		padding-right: 20px;
 		display: table;
 		width: 100%;
 		margin-top: 30px;
@@ -374,25 +473,17 @@
 		.request_title {
 			margin-bottom: 20px;
 		}
-		.request_body {		
-			display: inline-block;
-			select {			
-				height: 45px;
-			}
-			.firstname {			
-				height: 45px;
-			}
-			.company {				
-				height: 45px;
-			}
-			.email {				
-				height: 45px;
-			}		
+		.request_body {
+			display: inline-block;			
 			.request {
 				float: right;
 				height: 45px;
 				width: 100%;
 				margin-top: 10px;
+			}
+			.confirm_box {
+				text-align: right;
+				float: right;
 			}
 			p {
 				padding-top: 10px;
@@ -400,13 +491,13 @@
 				color: #5f6062;
 			}
 			.form-group {
-				margin-bottom: 20px;			
-				&.success:after, &.error:after {	
-					right: 17px;		
-					top: 39px;
+				margin-bottom: 20px;
+				&.success:after, &.error:after {
+					top: 75px;
 				}
 				.form-control {
 					line-height: 35px;
+					height: auto;
 				}
 				#phone {
 					height: 45px;

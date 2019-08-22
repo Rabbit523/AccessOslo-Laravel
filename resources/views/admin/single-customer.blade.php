@@ -104,7 +104,7 @@
                                 </div>
                             </div>
                         </div>
-
+                        @if ($count != 0)
                         <div class="row">
                             <div class="col-xs-12 col-sm-12">
                                 <div class="module">
@@ -113,82 +113,21 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-xs-12 col-sm-custom">
+                                            @foreach($passengers as $passenger)
                                             <div class="content type-default">
-                                                <p>Title <br>
-                                                First name <br>
-                                                Last name <br>
-                                                Passport number <br>
-                                                Passport issue date <br>
-                                                Passport expiry date <br>
-                                                Date of birth <br>
-                                                Nationality</p>
+                                                <p>{{$passenger->gender}}<br>
+                                                {{$passenger->first_name}} <br>
+                                                {{$passenger->last_name}} <br>
+                                                {{$passenger->birth}} <br>                                                
+                                                {{$passenger->nationality}}</p>
                                             </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-custom">
-                                            <div class="content type-default">
-                                                <p>Title <br>
-                                                First name <br>
-                                                Last name <br>
-                                                Passport number <br>
-                                                Passport issue date <br>
-                                                Passport expiry date <br>
-                                                Date of birth <br>
-                                                Nationality</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-custom">
-                                            <div class="content type-default">
-                                                <p>Title <br>
-                                                First name <br>
-                                                Last name <br>
-                                                Passport number <br>
-                                                Passport issue date <br>
-                                                Passport expiry date <br>
-                                                Date of birth <br>
-                                                Nationality</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-custom">
-                                            <div class="content type-default">
-                                                <p>Title <br>
-                                                First name <br>
-                                                Last name <br>
-                                                Passport number <br>
-                                                Passport issue date <br>
-                                                Passport expiry date <br>
-                                                Date of birth <br>
-                                                Nationality</p>
-                                            </div>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-custom">
-                                            <div class="content type-default">
-                                                <p>Title <br>
-                                                First name <br>
-                                                Last name <br>
-                                                Passport number <br>
-                                                Passport issue date <br>
-                                                Passport expiry date <br>
-                                                Date of birth <br>
-                                                Nationality</p>
-                                            </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div class="row">
-                            <div class="col-xs-12 col-sm-12">
-                                <div class="module">
-                                    <div class="title">
-                                        <h6>PASSENGER INFORMATION</h6>
-                                    </div>
-                                    <div class="content type-default">
-                                        <p>No passengers added yet</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div><!-- content-box -->

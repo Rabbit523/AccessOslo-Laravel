@@ -24,7 +24,7 @@ class BookingLimousine extends Model
      * @var array
      */
 
-    protected $fillable = ['contact_person', 'phone', 'email', 'company', 'date', 'type_car', 'type_flight', 'from_address', 'to_address','comments', 'status', 'zone', 'total_cost'];
+    protected $fillable = ['contact_person', 'phone', 'email', 'company', 'date', 'type_car', 'luggage', 'travelers', 'type_flight', 'from_address', 'to_address','comments', 'status', 'total_cost', 'payment_id', 'return_from_address', 'return_to_address', 'return_date', 'return_time', 'is_added'];
 
     /**
      * The attributes that should be hidden for arrays.

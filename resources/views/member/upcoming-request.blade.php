@@ -1,8 +1,7 @@
 @extends('layouts.member_public') 
 @section('title', $data->meta_title) 
 @section('content')
-<div class="wrapper-general">
-  @if($counts != 0)
+<div class="wrapper-general">    
   <section class="introduction">
       <div class="container wrapper-content">
           <div class="col-xs-12">              
@@ -13,60 +12,57 @@
           </div>
       </div>
   </section>
-  @elseif($counts == 0)
-  <section class="introduction_no">
-    <div class="container wrapper-content">
-        <div class="col-xs-12">              
-            <div class="title">
-            <h1>upcoming requests</h1>
-            <p>You currently have no upcoming requests</p>
-            <p>Make a new request today.</p>
-            <a class="btn btn-yellow new_request">New Request</a>
-            </div>              
-        </div>
-    </div>
-  </section>
-  @endif
-  
   <section class="content-box">
       <div class="container">
           <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-10 col-md-offset-1">
                   <div class="top-box row">
                       <div class="col-xs-12 col-sm-3 result-box">
-                          {{$counts}} Results Found
+                          @if($counts > 1)
+                          <label>{{$counts}} Results Found</label>
+                          <button class="btn filter-btn"><span class="filter-btn-title">Filter</span><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="sliders-v" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-sliders-v fa-w-14 fa-lg"><path fill="currentColor" d="M160 168v-48c0-13.3-10.7-24-24-24H96V8c0-4.4-3.6-8-8-8H72c-4.4 0-8 3.6-8 8v88H24c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h40v312c0 4.4 3.6 8 8 8h16c4.4 0 8-3.6 8-8V192h40c13.3 0 24-10.7 24-24zm-32-8H32v-32h96v32zm152 160h-40V8c0-4.4-3.6-8-8-8h-16c-4.4 0-8 3.6-8 8v312h-40c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h40v88c0 4.4 3.6 8 8 8h16c4.4 0 8-3.6 8-8v-88h40c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm-8 64h-96v-32h96v32zm152-224h-40V8c0-4.4-3.6-8-8-8h-16c-4.4 0-8 3.6-8 8v152h-40c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h40v248c0 4.4 3.6 8 8 8h16c4.4 0 8-3.6 8-8V256h40c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm-8 64h-96v-32h96v32z" class=""></path></svg></button>
+                          @else
+                          <label>{{$counts}} Result Found</label>
+                          <button class="btn filter-btn"><span class="filter-btn-title">Filter</span><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="sliders-v" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-sliders-v fa-w-14 fa-lg"><path fill="currentColor" d="M160 168v-48c0-13.3-10.7-24-24-24H96V8c0-4.4-3.6-8-8-8H72c-4.4 0-8 3.6-8 8v88H24c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h40v312c0 4.4 3.6 8 8 8h16c4.4 0 8-3.6 8-8V192h40c13.3 0 24-10.7 24-24zm-32-8H32v-32h96v32zm152 160h-40V8c0-4.4-3.6-8-8-8h-16c-4.4 0-8 3.6-8 8v312h-40c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h40v88c0 4.4 3.6 8 8 8h16c4.4 0 8-3.6 8-8v-88h40c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm-8 64h-96v-32h96v32zm152-224h-40V8c0-4.4-3.6-8-8-8h-16c-4.4 0-8 3.6-8 8v152h-40c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24h40v248c0 4.4 3.6 8 8 8h16c4.4 0 8-3.6 8-8V256h40c13.3 0 24-10.7 24-24v-48c0-13.3-10.7-24-24-24zm-8 64h-96v-32h96v32z" class=""></path></svg></button>
+                          @endif
                       </div>
                       <div class="col-xs-12 col-sm-9">
                           <div class="options-box">
+                              <!-- select booking request type -->
                               <div class="status">
                                   <div class="form-group">
+                                      <label>Type of Request</label>
                                       <select name="charters" id="charters" class="form-control">
-                                          <option disabled selected value>Select Charters</option>
-                                          <option value="executive">Executive Aircraft Charter</option>
-                                          <option value="group">Group Aircraft Charters</option>
-                                          <option value="helicopter">Helicopter Aircraft Charters</option>
-                                          <option value="emptyleg">Empty Leg Aircraft Charters</option>
-                                          <option value="limousine">Limousine Transport</option>
-                                          <option value="handling">Handling Request</option>
-                                          <option value="meet">Meet & Greet</option>
+                                          <option disabled selected value>--- Select ---</option>
+                                          <option @if($types == "charters") {{ 'selected' }} @endif value="charters">Show all requests</option>
+                                          <option @if($types == "executive") {{ 'selected' }} @endif value="executive">Executive Charter</option>
+                                          <option @if($types == "emptyleg") {{ 'selected' }} @endif value="emptyleg">Empty Leg Flights</option>
+                                          <option @if($types == "limousine") {{ 'selected' }} @endif value="limousine">Airport Limo</option>                                          
+                                          <option @if($types == "meet") {{ 'selected' }} @endif value="meet">Meet & Greet</option>
                                       </select>
                                   </div>
                               </div>
+                              <!-- select estimation  -->
                               <div class="status">
                                   <div class="form-group">
-                                      <select name="estimations" id="estimations" class="form-control">
-                                          <option disabled selected value>Estimations</option>
-                                          <option value="awaiting">Awaiting Estimation</option>
-                                          <option value="sent">Sent Estimation</option>
-                                          <option value="paid">Paid Estimation</option>
-                                      </select>
+                                        <label>Status</label>
+                                        <select name="estimations" id="estimations" class="form-control">
+                                            <option disabled selected value>--- Select ---</option>
+                                            <option @if($status == "all-status") {{ 'selected' }} @endif value="all-status">Upcoming Requests</option>
+                                            <option @if($status == "awaiting") {{ 'selected' }} @endif value="awaiting">Awaiting Estimation</option>
+                                            <option @if($status == "sent") {{ 'selected' }} @endif value="sent">Estimation Received</option>
+                                            <option @if($status == "paid") {{ 'selected' }} @endif value="paid">Request History</option>
+                                        </select>
                                   </div>
                               </div>
+                              <!-- change the currency  -->
                               <div class="money-box">
-                                    <div class="form-group">                                       
+                                    <div class="form-group">
+                                        <label>currency</label>
                                         <input type="text" name="currency" id="currency" class="form-control" style="width: 100px; height: 36px;" readonly> 
                                     </div>
                               </div>
+                              <!-- display mode - there are horizontal mode and vertical mode -->
                               <div class="display-box">
                                   <div class="item item1">
                                       <img src="/assets/img/login-portal/display-1.png" class="img-responsive" id="display1" alt="">
@@ -78,254 +74,438 @@
                           </div>
                       </div>
                   </div>
-                  @if($counts != 0)
+                  @if($counts == 0)                    
+                  <div class="row">                    
+                        <div class="col-xs-12 col-sm-12 alert-box">
+                            <h3 class="no_results_alert"></h3>
+                        </div>                        
+                  </div>
+                  <!-- check if there is any bookings of current user -->
+                  @elseif($counts != 0)
                   <div class="list-items">
-                    <div class="charters">                     
-                      @foreach($charters as $charter)
-                      @if($display_mode == "mode1")
-                      <div class="row">
-                          <div class="col-xs-12">
-                              <div class="item">
-                                  <div class="col-xs-12 col-sm-4 slider-box">
-                                      <a href="javascript:void(0)" class="arrow arrow-prev">
-                                          <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                      </a>
-                                      <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                                      <a href="javascript:void(0)" class="arrow arrow-next">
-                                          <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                      </a>
-                                  </div>
-                                  <div class="col-xs-12 col-sm-8 info-box">
-                                      @if($charter->booking_type == "executive")
-                                      <h3>Executive Aircraft Charter</h3>
-                                      @endif
-                                      @if($charter->booking_type == "group")
-                                      <h3>Group Aircraft Charter</h3>
-                                      @endif
-                                      @if($charter->booking_type == "helicopter")
-                                      <h3>Helicopter Aircraft Charter</h3>
-                                      @endif
-                                      <h4>{{$charter->departure}}
-                                          <span>to</span> {{$charter->destination}}</h4>
-                                      <ul class="list">
-                                          <li>{{$charter->date}}</li>                                          
-                                          <li>{{$charter->partner_name}}</li>
-                                          <li>{{$charter->aircraft}}</li>
-                                      </ul>
-                                      <div class="clearfix"></div>
-                                      <div class="box-left">
-                                          @if($charter->status == "awaiting")
-                                          <h5>Awaiting Estimation</h5>                                        
-                                          @elseif($charter->status == "sent" || $charter->status == "paid")
-                                          <h5 class="cost" data-val="{{$charter->total_cost}}">€{{$charter->total_cost}}</h5>
-                                          @endif
-                                          <p>Booking NO: {{$charter->id}}</p>
-                                      </div>
-                                      <div class="box-right">
-                                          @if($charter->status == "awaiting")
-                                          <a class="btn btn-purple view_details" data-source="{{$charter}}" data-type="{{$charter->booking_type}}" >View details</a>
-                                          <a class="btn btn-red cancel_request" data-source="{{$charter}}" data-type="{{$charter->booking_type}}" >Cancel Request</a>
-                                          @elseif($charter->status == "sent")
-                                          <a class="btn btn-green confirm_pay" data-source="{{$charter}}" data-type="{{$charter->booking_type}}">Confirm & Pay</a>
-                                          @elseif($charter->status == "paid")
-                                          <a class="btn btn-purple booking_receipt" data-source="{{$charter}}" data-type="{{$charter->booking_type}}">Booking Receipt</a>
-                                          <a class="btn btn-yellow write_review" data-source="{{$charter}}" data-type="{{$charter->booking_type}}">Write Review</a>
-                                          @endif
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div> 
-                      @elseif($display_mode == "mode2")                      
-                        <div class="col-view">
-                            <div class="image-box">
-                                <a href="javascript:void(0)" class="arrow arrow-prev">
-                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                </a>
-                                <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                                <a href="javascript:void(0)" class="arrow arrow-next">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                            <div class="detail-box">
-                                @if($charter->booking_type == "executive")
-                                <h3>Executive Aircraft Charter</h3>
+                    <!-- show executive, helicopter, group, cargo charter request lists -->
+                    <div class="charters">
+                        @foreach($charters as $key=>$value)
+                            @if($value->status == 'paid')
+                                <?php $img_arr = [];?>
+                                @foreach($images as $image)
+                                    @foreach($aircrafts as $sel)
+                                        @if($value->aircraft == $sel->type && $image->parent_id == $sel->id)
+                                        <?php array_push($img_arr, $image->url);?>
+                                        @endif
+                                    @endforeach
+                                @endforeach
+                                <?php $c_arr = count($img_arr);?>
+                                @if($display_mode == "mode1")
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="item">
+                                                <div class="col-xs-12 col-sm-4 slider-box">                                      
+                                                    <div class="slide" id="slide000{{$key}}">
+                                                        <ul>
+                                                            @if($c_arr != 0)
+                                                            @foreach($img_arr as $image)
+                                                            <li data-bg="{{$image}}" style="width: 314px; height: 205px;"></li>
+                                                            @endforeach
+                                                            @else
+                                                            <li data-bg="/assets/img/default-img.jpg" style="width: 314px; height: 205px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></li>
+                                                            @endif
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-8 info-box">
+                                                    <div class="info-title">
+                                                        <h3>Executive Aircraft Charter</h3>
+                                                    </div>                                      
+                                                    <div class="departure-locations">
+                                                        <div class="desktop">
+                                                            <h4>{{$value->departure}}
+                                                                <span>to</span> {{$value->destination}}
+                                                            </h4>
+                                                        </div>
+                                                        <div class="mobile">
+                                                            <hr>
+                                                            <h4>{{$value->departure}}</h4>
+                                                            <div class="link">to</div> 
+                                                            <h4>{{$value->destination}}</h4>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                    <ul class="list">
+                                                        <li><span>Departure Date: </span>{{$value->date}}</li>
+                                                        <li><span>Local time of departure: </span>{{$value->time}}</li>
+                                                        <li><span>Travelers: </span>{{$value->travellers}}</li>
+                                                    </ul>
+                                                    <div class="clearfix"></div>
+                                                    <div class="box-left">
+                                                        <h5 class="cost" data-val="{{$value->total_cost}}">€{{$value->total_cost}}</h5>
+                                                        <p>VAT exculded. Booking NO: {{$value->id}}</p>
+                                                    </div>
+                                                    <div class="box-right">
+                                                        <a class="btn btn-yellow booking_receipt" data-source="{{$value}}" data-type="{{$value->booking_type}}">Receipt</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @elseif($display_mode == "mode2")
+                                    <div class="col-view">
+                                        <div class="image-box">
+                                            <div class="slide" id="slide001{{$key}}">
+                                                <ul>
+                                                    @if($c_arr != 0)
+                                                    @foreach($img_arr as $image)
+                                                    <li data-bg="{{$image}}" style="width: 301px; height: 206px;"></li>
+                                                    @endforeach
+                                                    @else
+                                                    <li data-bg="/assets/img/default-img.jpg" style="width: 301px; height: 206px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="detail-box">
+                                            <h3>Executive Aircraft Charter</h3>
+                                            <h4>{{$value->departure}} <span>to</span> </h4>                                    
+                                            <h4>{{$value->destination}}</h4>                                
+                                            <div class="list">                                
+                                                <div><span>Departure Date: </span>{{$value->date}}</div>
+                                                <div><span>Local time of departure: </span>{{$value->time}}</div>
+                                                <div><span>Travelers: </span>{{$value->travellers}}</div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="box-status">
+                                                <h5 class="cost" data-val="{{$value->total_cost}}">€{{$value->total_cost}}</h5>
+                                                <p>VAT excluded. Booking NO: {{$value->id}}</p>
+                                            </div>
+                                            <div class="box-button">
+                                                <div class="pay_form"><a class="btn btn-yellow booking_receipt" data-source="{{$value}}" data-type="{{$value->booking_type}}">Receipt</a></div>
+                                            </div>
+                                        </div>                            
+                                    </div>
                                 @endif
-                                @if($charter->booking_type == "group")
-                                <h3>Group Aircraft Charter</h3>
-                                @endif
-                                @if($charter->booking_type == "helicopter")
-                                <h3>Helicopter Aircraft Charter</h3>
-                                @endif
-                                <h4>{{$charter->departure}} <span>to</span> </h4>                                    
-                                <h4>{{$charter->destination}}</h4>
-                                <div class="list">
-                                    <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-calendar" aria-hidden="true"></i></span><span>{{$charter->date}}</span></div>                                          
-                                    <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-plane" aria-hidden="true"></i></span><span>{{$charter->aircraft}}<span></div>
-                                    <div><span style="padding-right:10px;color:#c29834;"><img src="/assets/img/login-portal/jet-group.png" style="width:35px;"></img></span><span>{{$charter->partner_name}}</span></div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="box-status">
-                                    @if($charter->status == "awaiting")
-                                    <h5>Awaiting Estimation</h5>                                        
-                                    @elseif($charter->status == "sent" || $charter->status == "paid")
-                                    <h5 class="cost" data-val="{{$charter->total_cost}}">€{{$charter->total_cost}}</h5>
+                            @elseif($value->status == 'sent')
+                                <?php $executive_sent_imgs=array(); $selected_estimation = array();?>
+                                @foreach ($estimations as $estimate)
+                                    @if($estimate->charter_id == $value->id && $estimate->status == "sent")
+                                        <?php array_push($selected_estimation, $estimate); ?>
+                                        @foreach($aircrafts as $sel)
+                                            @foreach($images as $image)
+                                                @if($estimate->aircraft == $sel->type && $image->parent_id == $sel->id)
+                                                    <?php 
+                                                        if(!array_key_exists($estimate->aircraft, $executive_sent_imgs) ){
+                                                            $executive_sent_imgs[$estimate->aircraft] = [];
+                                                        }
+                                                        array_push($executive_sent_imgs[$estimate->aircraft], $image->url);
+                                                    ?>
+                                                @endif
+                                            @endforeach
+                                        @endforeach
                                     @endif
-                                    <p>Booking NO: {{$charter->id}}</p>
-                                </div>                               
-                            </div>
-                             <div class="box-button">
-                                @if($charter->status == "awaiting")
-                                <a class="btn btn-purple view_details" data-source="{{$charter}}" data-type="{{$charter->booking_type}}" >View details</a>
-                                <a class="btn btn-red cancel_request" data-source="{{$charter}}" data-type="{{$charter->booking_type}}" >Cancel Request</a>
-                                @elseif($charter->status == "sent")
-                                <a class="btn btn-green confirm_pay" data-source="{{$charter}}" data-type="{{$charter->booking_type}}" style="margin-top:55px;">Confirm & Pay</a>
-                                @elseif($charter->status == "paid")
-                                <a class="btn btn-purple booking_receipt" data-source="{{$charter}}" data-type="{{$charter->booking_type}}">Booking Receipt</a>
-                                <a class="btn btn-yellow write_review" data-source="{{$charter}}" data-type="{{$charter->booking_type}}">Write Review</a>
+                                @endforeach
+                                <?php $selected_estimation = json_encode($selected_estimation);?>
+                                @if($display_mode == "mode1")
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="item">
+                                                <div class="col-xs-12 col-sm-4 slider-box">                                      
+                                                    <div data-bg="/assets/img/default-img.jpg" style="width: 314px; height: 205px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-8 info-box">
+                                                    <div class="info-title">
+                                                        <h3>Executive Aircraft Charter</h3>                                                    
+                                                        <a class="cancel_request" data-source="{{$value}}" data-type="{{$value->booking_type}}" ><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="trash-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-trash-alt fa-w-14 fa-lg"><path fill="currentColor" d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z" class=""></path></svg></a>
+                                                    </div>
+                                                    <div class="departure-locations">
+                                                        <div class="desktop">
+                                                            <h4>{{$value->departure}}
+                                                                <span>to</span> {{$value->destination}}
+                                                            </h4>
+                                                        </div>
+                                                        <div class="mobile">
+                                                            <hr>
+                                                            <h4>{{$value->departure}}</h4>
+                                                            <div class="link">to</div> 
+                                                            <h4>{{$value->destination}}</h4>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                    <ul class="list">
+                                                        <li><span>Departure Date: </span>{{$value->date}}</li>
+                                                        <li><span>Local time of departure: </span>{{$value->time}}</li>
+                                                        <li><span>Travelers: </span>{{$value->travellers}}</li>
+                                                    </ul>
+                                                    <div class="clearfix"></div>
+                                                    <div class="box-left">
+                                                        <h5 data-val="{{$value->total_estimations}}">Recevied Estimations: {{$value->total_estimations}}</h5>
+                                                        <p>Booking NO: {{$value->id}}</p>
+                                                    </div>
+                                                    <div class="box-right">
+                                                        <a class="btn btn-yellow view_estimations" data-toggle="collapse" data-target="#info-estimation{{$value->id}}" data-type="{{$value->booking_type}}" data-estimations="{{$selected_estimation}}">View Estimations<svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="caret-up" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" class="svg-inline--fa fa-caret-up fa-w-10 fa-lg"><path fill="currentColor" d="M288.662 352H31.338c-17.818 0-26.741-21.543-14.142-34.142l128.662-128.662c7.81-7.81 20.474-7.81 28.284 0l128.662 128.662c12.6 12.599 3.676 34.142-14.142 34.142z" class=""></path></svg></a>
+                                                    </div>
+                                                    <div class="mobile-flight-detail">
+                                                        <div class="container toggle" data-toggle="collapse" data-target=".panel{{$value->id}}"><span>View Details</span><span class="caret" data-toggle="collapse" data-target=".panel{{$value->id}}"><i class="fa fa-caret-up"></i></span></div>
+                                                        <div class="collapse in panel{{$value->id}}" id="panel">
+                                                        <div><span class="panel-title">Departure Date: </span><span class="panel-data">{{$value->date}}</span></div>
+                                                        <div><span class="panel-title">Local time of departure: </span><span class="panel-data">{{$value->time}}</span></div>
+                                                        <div><span class="panel-title">Travelers: </span><span class="panel-data">{{$value->travellers}}</span></div>
+                                                        <button class="cancel_request" data-source="{{$value}}" data-type="{{$value->booking_type}}" >CANCEL</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="collapse" id="info-estimation{{$value->id}}">
+                                        @foreach ($estimations as $estimate)
+                                        @if($estimate->charter_id == $value->id && $estimate->status == "sent")
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="item">
+                                                    <div class="col-xs-12 col-sm-4 slider-box">
+                                                        <div class="slide" id="estimate_slide{{$value->id}}{{$estimate->id}}">
+                                                            <ul>
+                                                                @foreach($executive_sent_imgs[$estimate->aircraft] as $image)
+                                                                <li data-bg="{{$image}}" style="width: 314px; height: 205px;"></li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-12 col-sm-8 info-box">
+                                                        <div class="info-title">
+                                                            <h3>{{$estimate->partner_name}}</h3>
+                                                        </div>
+                                                        <div class="departure-locations">
+                                                            <div class="desktop">
+                                                                <h4>{{$value->departure}}
+                                                                    <span>to</span> {{$value->destination}}
+                                                                </h4>
+                                                            </div>
+                                                            <div class="mobile">
+                                                                <hr>
+                                                                <h4>{{$value->departure}}</h4>
+                                                                <div class="link">to</div> 
+                                                                <h4>{{$value->destination}}</h4>
+                                                                <hr>
+                                                            </div>
+                                                        </div>
+                                                        <ul class="list">
+                                                            <li><span>Aircraft Type: </span>{{$estimate->aircraft}}</li>
+                                                            <li><span>Max Capacity: </span>{{$estimate->capacity}}</li>
+                                                        </ul>
+                                                        <div class="clearfix"></div>
+                                                        <div class="box-left">
+                                                            <h5 class="cost" data-val="{{$estimate->total_cost}}">€{{$estimate->total_cost}}</h5>
+                                                            <p>VAT excluded.</p>
+                                                        </div>
+                                                        <div class="box-right">
+                                                            <a class="btn btn-yellow charter_data" data-estimate="{{$estimate}}" data-source="{{$value}}">Review & Book</a>
+                                                            <accessoslo-member-modal></accessoslo-member-modal>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @endif
+                                        @endforeach
+                                    </div>
+                                @elseif($display_mode == "mode2")
+                                    <div class="col-view">
+                                        <div class="image-box">
+                                            <div class="slide" id="slide001{{$key}}">
+                                                <ul>
+                                                    @if($c_arr != 0)
+                                                    @foreach($img_arr as $image)
+                                                    <li data-bg="{{$image}}" style="width: 301px; height: 206px;"></li>
+                                                    @endforeach
+                                                    @else
+                                                    <li data-bg="/assets/img/default-img.jpg" style="width: 301px; height: 206px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></li>
+                                                    @endif
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="detail-box">
+                                            <h3>Executive Aircraft Charter</h3>
+                                            <h4>{{$value->departure}} <span>to</span> </h4>                                    
+                                            <h4>{{$value->destination}}</h4>                                
+                                            <div class="list">                                
+                                                <div><span>Departure Date: </span>{{$value->date}}</div>
+                                                <div><span>Local time of departure: </span>{{$value->time}}</div>
+                                                <div><span>Travelers: </span>{{$value->travellers}}</div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="box-status">
+                                                <h5 class="cost" data-val="{{$value->total_cost}}">€{{$value->total_cost}}.</h5>
+                                                <p>VAT excluded. Booking NO: {{$value->id}}</p>
+                                            </div>
+                                            <div class="box-button">
+                                                <div class="pay_group">
+                                                    <div class="pay_form">
+                                                        <a class="btn btn-red cancel_request" data-source="{{$value}}" data-type="{{$value->booking_type}}" >Cancel</a>
+                                                    </div>
+                                                    <div class="pay_form">
+                                                        <form method="POST" action="/services/paypal">
+                                                            {{ csrf_field() }}
+                                                            @if($value->booking_type == "executive")
+                                                            <input value="Executive Charter" type="hidden" name="item">
+                                                            @endif
+                                                            @if($value->booking_type == "group")
+                                                            <input value="Group Charter" type="hidden" name="item">
+                                                            @endif
+                                                            @if($value->booking_type == "helicopter")
+                                                            <input value="Helicopter Charter" type="hidden" name="item">
+                                                            @endif
+                                                            <input value="{{$value->id}}" type="hidden" name="item_number">
+                                                            <input value="{{$value->total_cost}}" type="hidden" name="amount">
+                                                            <input value="{{$value->booking_type}}" type="hidden" name="type">
+                                                            <button type="submit" class="btn btn-green confirm_pay">Confirm & Pay</button>
+                                                        </form>
+                                                    </div>                                        
+                                                </div>
+                                            </div>
+                                        </div>                            
+                                    </div>
                                 @endif
-                            </div>
-                        </div>                         
-                      @endif
-                      @endforeach     
-                      {{$charters->links()}}
-                    </div>
-                    <div class="handlings">                     
-                      @foreach($handlings as $handling)
-                      @if($display_mode == "mode1")
-                      <div class="row">
-                          <div class="col-xs-12">
-                              <div class="item">
-                                  <div class="col-xs-12 col-sm-4 slider-box">
-                                      <a href="javascript:void(0)" class="arrow arrow-prev">
-                                          <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                      </a>
-                                      <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                                      <a href="javascript:void(0)" class="arrow arrow-next">
-                                          <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                      </a>
-                                  </div>
-                                  <div class="col-xs-12 col-sm-8 info-box">                                     
-                                      <h3>Handling Request</h3>                                
-                                      <h4>{{$handling->airport}}</h4>
-                                      <ul class="list">
-                                          <li>25th April 2018</li>
-                                          <li>10:45 P.M.</li>
-                                          <li>{{$handling->partner_name}}</li>
-                                          <li>{{$handling->aircraft}}</li>
-                                      </ul>
-                                      <div class="clearfix"></div>
-                                      <div class="box-left">
-                                          @if($handling->status == "awaiting")
-                                          <h5>Awaiting Estimation</h5>                                        
-                                          @elseif($handling->status == "sent" || $handling->status == "paid")
-                                          <h5 class="cost" data-val="{{$handling->total_cost}}">€{{$handling->total_cost}}</h5>
-                                          @endif
-                                          <p>Booking NO: {{$handling->id}}</p>
-                                      </div>
-                                      <div class="box-right">
-                                          @if($handling->status == "awaiting")
-                                          <a class="btn btn-purple handling_view" data-source="{{$handling}}" data-type="handling">View details</a>
-                                          <a class="btn btn-red cancel_request" data-source="{{$handling}}" data-type="handling">Cancel Request</a>
-                                          @elseif($handling->status == "sent")
-                                          <a class="btn btn-green confirm_pay" data-source="{{$handling}}" data-type="handling">Confirm & Pay</a>
-                                          @elseif($handling->status == "paid")
-                                          <a class="btn btn-purple handling_view" data-source="{{$handling}}" data-type="handling">Booking Receipt</a>
-                                          <a class="btn btn-yellow write_review" data-source="{{$handling}}" data-type="handling">Write Review</a>
-                                          @endif
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>   
-                      @elseif($display_mode == "mode2")
-                      <div class="col-view">
-                          <div class="image-box">
-                            <a href="javascript:void(0)" class="arrow arrow-prev">
-                                <i class="fa fa-angle-left" aria-hidden="true"></i>
-                            </a>
-                            <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                            <a href="javascript:void(0)" class="arrow arrow-next">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </a>
-                          </div>
-                          <div class="detail-box">
-                            <h3>Handling Request</h3>                                
-                            <h4>{{$handling->airport}}</h4>
-                            <div class="list">
-                                <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-calendar" aria-hidden="true"></i></span><span>25th April 2018</span></div>                                          
-                                <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-plane" aria-hidden="true"></i></span><span>{{$handling->aircraft}}<span></div>
-                                <div><span style="padding-right:10px;color:#c29834;"><img src="/assets/img/login-portal/jet-group.png" style="width:35px;"></img></span><span>{{$handling->partner_name}}</span></div>
-                            </div>                         
-                            <div class="clearfix"></div>
-                            <div class="box-status">
-                                @if($handling->status == "awaiting")
-                                <h5>Awaiting Estimation</h5>                                        
-                                @elseif($handling->status == "sent" || $handling->status == "paid")
-                                <h5 class="cost" data-val="{{$handling->total_cost}}">€{{$handling->total_cost}}</h5>
+                            @elseif($value->status == 'awaiting')
+                                @if($display_mode == "mode1")
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <div class="item">
+                                                <div class="col-xs-12 col-sm-4 slider-box">                                      
+                                                    <div data-bg="/assets/img/default-img.jpg" style="width: 314px; height: 205px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></div>
+                                                </div>
+                                                <div class="col-xs-12 col-sm-8 info-box">
+                                                    <div class="info-title">
+                                                        <h3>Executive Aircraft Charter</h3>
+                                                        <a class="cancel_request" data-source="{{$value}}" data-type="{{$value->booking_type}}" ><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="trash-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-trash-alt fa-w-14 fa-lg"><path fill="currentColor" d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z" class=""></path></svg></a>
+                                                    </div>                                      
+                                                    <div class="departure-locations">
+                                                        <div class="desktop">
+                                                            <h4>{{$value->departure}}
+                                                                <span>to</span> {{$value->destination}}
+                                                            </h4>
+                                                        </div>
+                                                        <div class="mobile">
+                                                            <hr>
+                                                            <h4>{{$value->departure}}</h4>
+                                                            <div class="link">to</div> 
+                                                            <h4>{{$value->destination}}</h4>
+                                                            <hr>
+                                                        </div>
+                                                    </div>
+                                                    <ul class="list">
+                                                        <li><span>Departure Date: </span>{{$value->date}}</li>
+                                                        <li><span>Local time of departure: </span>{{$value->time}}</li>
+                                                        <li><span>Travelers: </span>{{$value->travellers}}</li>
+                                                    </ul>
+                                                    <div class="clearfix"></div>
+                                                    <div class="box-left">
+                                                        <h5>Awaiting Estimation</h5>
+                                                        <p>Booking NO: {{$value->id}}</p>
+                                                    </div>
+                                                    <div class="box-right">
+                                                        <a class="btn btn-yellow view_details" data-source="{{$value}}" data-type="{{$value->booking_type}}" >View details</a>
+                                                    </div>
+                                                    <div class="mobile-flight-detail">
+                                                        <div class="container toggle" data-toggle="collapse" data-target=".panel{{$value->id}}"><span>View Details</span><span class="caret" data-toggle="collapse" data-target=".panel{{$value->id}}"><i class="fa fa-caret-up"></i></span></div>
+                                                        <div class="collapse in panel{{$value->id}}" id="panel">
+                                                        <div><span class="panel-title">Departure Date: </span><span class="panel-data">{{$value->date}}</span></div>
+                                                        <div><span class="panel-title">Local time of departure: </span><span class="panel-data">{{$value->time}}</span></div>
+                                                        <div><span class="panel-title">Travelers: </span><span class="panel-data">{{$value->travellers}}</span></div>
+                                                        <button class="cancel_request" data-source="{{$value}}" data-type="{{$value->booking_type}}" >CANCEL</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @elseif($display_mode == "mode2")
+                                    <div class="col-view">
+                                        <div class="image-box">
+                                            <div data-bg="/assets/img/default-img.jpg" style="width: 301px; height: 206px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></div>
+                                        </div>
+                                        <div class="detail-box">
+                                            <h3>Executive Aircraft Charter</h3>
+                                            <h4>{{$value->departure}} <span>to</span> </h4>                                    
+                                            <h4>{{$value->destination}}</h4>                                
+                                            <div class="list">                                
+                                                <div><span>Departure Date: </span>{{$value->date}}</div>
+                                                <div><span>Local time of departure: </span>{{$value->time}}</div>
+                                                <div><span>Travelers: </span>{{$value->travellers}}</div>
+                                            </div>
+                                            <div class="clearfix"></div>
+                                            <div class="box-status">
+                                                <h5>Awaiting Estimation</h5>
+                                                <p>Booking NO: {{$value->id}}</p>
+                                            </div>
+                                            <div class="box-button">
+                                                <div class="pay_form"><a class="btn btn-red cancel_request" data-source="{{$value}}" data-type="{{$value->booking_type}}" >Cancel</a></div>
+                                                <div class="pay_form"><a class="btn btn-yellow view_details" data-source="{{$value}}" data-type="{{$value->booking_type}}" >View details</a></div>
+                                            </div>
+                                        </div>                            
+                                    </div>
                                 @endif
-                                <p>Booking NO: {{$handling->id}}</p>
-                            </div>                            
-                          </div>
-                          <div class="box-button">
-                            @if($handling->status == "awaiting")
-                            <a class="btn btn-purple handling_view" data-source="{{$handling}}" data-type="handling">View details</a>
-                            <a class="btn btn-red cancel_request" data-source="{{$handling}}" data-type="handling">Cancel Request</a>
-                            @elseif($handling->status == "sent")
-                            <a class="btn btn-green confirm_pay" data-source="{{$handling}}" data-type="handling">Confirm & Pay</a>
-                            @elseif($handling->status == "paid")
-                            <a class="btn btn-purple handling_view" data-source="{{$handling}}" data-type="handling">Booking Receipt</a>
-                            <a class="btn btn-yellow write_review" data-source="{{$handling}}" data-type="handling">Write Review</a>
                             @endif
-                          </div>
-                      </div>
-                      @endif               
-                      @endforeach  
-                      {{$handlings->links()}}  
+                        @endforeach
+                        {{$charters->links()}}
                     </div>
+                    <!-- show limousine transport requests -->
                     <div class="limousines">
-                      @foreach($limousines as $limousine)
+                      <?php $img_arr = [];?>
+                      @foreach($limousines as $key=>$limousine)
+                      @foreach($images as $image)
+                      @if($image->parent_id == $limousine->aircraft)
+                      <?php array_push($img_arr, $image->url);?>
+                      @endif
+                      @endforeach                      
+                      <?php $c_arr = count($img_arr);?>
                       @if($display_mode == "mode1")
                       <div class="row limousines">
                           <div class="col-xs-12">
                               <div class="item">
                                   <div class="col-xs-12 col-sm-4 slider-box">
-                                      <a href="javascript:void(0)" class="arrow arrow-prev">
-                                          <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                      </a>
-                                      <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                                      <a href="javascript:void(0)" class="arrow arrow-next">
-                                          <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                      </a>
+                                    <div class="slide" id="slide010{{$key}}">
+                                        <ul>
+                                            @if($c_arr != 0)
+                                            @foreach($img_arr as $image)
+                                            <li data-bg="{{$image}}" style="width: 314px; height: 205px;"></li>
+                                            @endforeach
+                                            @else
+                                            <li data-bg="/assets/img/default-img.jpg" style="width: 314px; height: 205px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></li>
+                                            @endif
+                                        </ul>
+                                    </div>
                                   </div>
-                                  <div class="col-xs-12 col-sm-8 info-box">                                     
-                                      <h3>Limousine Transport</h3>                                
-                                      <h4>{{$limousine->from_address}} to {{$limousine->to_address}}</h4>
+                                  <div class="col-xs-12 col-sm-8 info-box">
+                                      <div class="info-title">
+                                        <h3>Limousine Transport</h3>
+                                      </div>
+                                      <div class="departure-locations">
+                                        <div class="desktop">
+                                            <h4>{{$limousine->from_address}}
+                                                <span>to</span> {{$limousine->to_address}}
+                                            </h4>
+                                        </div>
+                                        <div class="mobile">
+                                            <hr>
+                                            <h4>{{$limousine->from_address}}</h4>
+                                            <div class="link">to</div> 
+                                            <h4>{{$limousine->to_address}}</h4>
+                                            <hr>
+                                        </div>
+                                      </div>
                                       <ul class="list">
-                                          <li>{{$limousine->date}}</li>
-                                          <li>10:45 P.M.</li>
-                                          <li>{{$limousine->partner_name}}</li>
-                                          <li>{{$limousine->aircraft}}</li>
+                                          <li><span>Date: </span>{{$limousine->date}}</li>
+                                          <li><span>Travelers: </span>{{$limousine->travelers}}</li>
+                                          <li><span>Luggage: </span>{{$limousine->luggage}}</li>
+                                          <li><span>Car Type: </span>{{$limousine->type_car}}</li>
                                       </ul>
                                       <div class="clearfix"></div>
                                       <div class="box-left">
-                                          @if($limousine->status == "awaiting")
-                                          <h5>Awaiting Estimation</h5>                                        
-                                          @elseif($limousine->status == "sent" || $limousine->status == "paid")
                                           <h5 class="cost" data-val="{{$limousine->total_cost}}">€{{$limousine->total_cost}}</h5>
-                                          @endif
-                                          <p>Booking NO: {{$limousine->id}}</p>
+                                          <p>VAT excluded. Booking NO: {{$limousine->id}}</p>
                                       </div>
                                       <div class="box-right">
-                                          @if($limousine->status == "awaiting")
-                                          <a class="btn btn-purple limousine_view" data-source="{{$limousine}}" data-type="limousine">View details</a>
-                                          <a class="btn btn-red cancel_request" data-source="{{$limousine}}" data-type="limousine">Cancel Request</a>
-                                          @elseif($limousine->status == "sent")
-                                          <a class="btn btn-green confirm_pay" data-source="{{$limousine}}" data-type="limousine">Confirm & Pay</a>
-                                          @elseif($limousine->status == "paid")
-                                          <a class="btn btn-purple limousine_view" data-source="{{$limousine}}" data-type="limousine">Booking Receipt</a>
-                                          <a class="btn btn-yellow write_review" data-source="{{$limousine}}" data-type="limousine">Write Review</a>
-                                          @endif
+                                          <a class="btn btn-yellow limousine_view" data-source="{{$limousine}}" data-type="limousine">Receipt</a>
                                       </div>
                                   </div>
                               </div>
@@ -334,90 +514,97 @@
                       @elseif($display_mode == "mode2")
                       <div class="col-view">
                           <div class="image-box">
-                                <a href="javascript:void(0)" class="arrow arrow-prev">
-                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                </a>
-                                <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                                <a href="javascript:void(0)" class="arrow arrow-next">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </a>
+                            <div class="slide" id="slide011{{$key}}">
+                                <ul>
+                                    @if($c_arr != 0)
+                                    @foreach($img_arr as $image)
+                                    <li data-bg="{{$image}}" style="width: 301px; height: 206px;"></li>
+                                    @endforeach
+                                    @else
+                                    <li data-bg="/assets/img/default-img.jpg" style="width: 301px; height: 206px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></li>
+                                    @endif
+                                </ul>
+                            </div>
                           </div>
                           <div class="detail-box">
                             <h3>Limousine Transport</h3>                                
                             <h4>{{$limousine->from_address}} to {{$limousine->to_address}}</h4>
                             <div class="list">
-                                <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-calendar" aria-hidden="true"></i></span><span>{{$limousine->date}}</span></div>                                          
-                                <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-plane" aria-hidden="true"></i></span><span>{{$limousine->aircraft}}<span></div>
-                                <div><span style="padding-right:10px;color:#c29834;"><img src="/assets/img/login-portal/jet-group.png" style="width:35px;"></img></span><span>{{$limousine->partner_name}}</span></div>
+                                <div><span>Date: </span>{{$limousine->date}}</div>                                          
+                                <div><span>Travelers: </span>{{$limousine->travelers}}</div>
+                                <div><span>Luggage: </span>{{$limousine->luggage}}</div>
+                                <div><span>Car Type: </span>{{$limousine->type_car}}</div>
                             </div>                                 
                             <div class="clearfix"></div>
                             <div class="box-status">
-                                @if($limousine->status == "awaiting")
-                                <h5>Awaiting Estimation</h5>                                        
-                                @elseif($limousine->status == "sent" || $limousine->status == "paid")
                                 <h5 class="cost" data-val="{{$limousine->total_cost}}">€{{$limousine->total_cost}}</h5>
-                                @endif
-                                <p>Booking NO: {{$limousine->id}}</p>
+                                <p>VAT excluded. Booking NO: {{$limousine->id}}</p>
                             </div>
-                          </div>
-                          <div class="box-button">
-                            @if($limousine->status == "awaiting")
-                            <a class="btn btn-purple limousine_view" data-source="{{$limousine}}" data-type="limousine">View details</a>
-                            <a class="btn btn-red cancel_request" data-source="{{$limousine}}" data-type="limousine">Cancel Request</a>
-                            @elseif($limousine->status == "sent")
-                            <a class="btn btn-green confirm_pay" data-source="{{$limousine}}" data-type="limousine">Confirm & Pay</a>
-                            @elseif($limousine->status == "paid")
-                            <a class="btn btn-purple limousine_view" data-source="{{$limousine}}" data-type="limousine">Booking Receipt</a>
-                            <a class="btn btn-yellow write_review" data-source="{{$limousine}}" data-type="limousine">Write Review</a>
-                            @endif
-                          </div>
+                            <div class="box-button" style="display:flex;">
+                                <div class="pay_form"><a class="btn btn-yellow limousine_view" data-source="{{$limousine}}" data-type="limousine">Receipt</a></div>
+                            </div>
+                          </div>                          
                       </div>
                       @endif                       
                       @endforeach       
                       {{$limousines->links()}}     
                     </div>
+                    <!-- show meet booking requests -->
                     <div class="meets">
-                      @foreach($meets as $meet)
+                      <?php $img_arr = [];?>
+                      @foreach($meets as $key=>$meet)
+                      @foreach($images as $image)
+                      @if($image->parent_id == $meet->aircraft)
+                      <?php array_push($img_arr, $image->url);?>
+                      @endif
+                      @endforeach                      
+                      <?php $c_arr = count($img_arr);?>
                       @if($display_mode == "mode1")
                       <div class="row meets">
                           <div class="col-xs-12">
                               <div class="item">
                                   <div class="col-xs-12 col-sm-4 slider-box">
-                                      <a href="javascript:void(0)" class="arrow arrow-prev">
-                                          <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                      </a>
-                                      <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                                      <a href="javascript:void(0)" class="arrow arrow-next">
-                                          <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                      </a>
+                                    <div class="slide" id="slide100{{$key}}">
+                                        <ul>
+                                            @if($c_arr != 0)
+                                            @foreach($img_arr as $image)
+                                            <li data-bg="{{$image}}" style="width: 314px; height: 154px;"></li>
+                                            @endforeach
+                                            @else
+                                            <li data-bg="/assets/img/default-img.jpg" style="width: 314px; height: 154px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></li>
+                                            @endif
+                                        </ul>
+                                    </div>
                                   </div>
-                                  <div class="col-xs-12 col-sm-8 info-box">                                     
-                                      <h3>Meet & Greet - Option Product</h3>                                
-                                      <h4>{{$meet->meet_service}}</h4>
+                                  <div class="col-xs-12 col-sm-8 info-box">
+                                      <div class="info-title">
+                                        <h3>Meet & Greet 
+                                            @if ($meet->is_departure == "true" && $meet->is_arrival == "true")
+                                            - Arrival & Departure
+                                            @elseif ($meet->is_arrival == "true")
+                                            - Arrival
+                                            @elseif ($meet->is_departure == "true")
+                                            - Departure
+                                            @endif
+                                        </h3>
+                                        @if($meet->status != "paid")
+                                        <a class="cancel_request" data-source="{{$meet}}" data-type="meet"><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="trash-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-trash-alt fa-w-14 fa-lg"><path fill="currentColor" d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z" class=""></path></svg></a>
+                                        @endif
+                                      </div>
                                       <ul class="list">
-                                          <li>{{$meet->date}}</li>
-                                          <li>{{$meet->time}}</li>
-                                          <li>{{$meet->airline}}</li>
-                                          <li>{{$meet->aircraft}}</li>
+                                          <li><span>Date: </span>{{$meet->in_date}}</li>
+                                          <li><span>Local time of departure: </span>{{$meet->in_time}}</li>
+                                          <li><span>Airline: </span>{{$meet->in_airline}}</li>
                                       </ul>
                                       <div class="clearfix"></div>
                                       <div class="box-left">
-                                          @if($meet->status == "awaiting")
-                                          <h5>Awaiting Estimation</h5>                                        
-                                          @elseif($meet->status == "sent" || $meet->status == "paid")
                                           <h5 class="cost" data-val="{{$meet->total_cost}}">€{{$meet->total_cost}}</h5>
-                                          @endif
-                                          <p>Booking NO: {{$meet->id}}</p>
+                                          <p>VAT excluded. Booking NO: {{$meet->id}}</p>
                                       </div>
                                       <div class="box-right">
-                                          @if($meet->status == "awaiting")
-                                          <a class="btn btn-purple meet_view" data-source="{{$meet}}" data-type="meet">View details</a>
-                                          <a class="btn btn-red cancel_request" data-source="{{$meet}}" data-type="meet">Cancel Request</a>
-                                          @elseif($meet->status == "sent")
-                                          <a class="btn btn-green confirm_pay" data-source="{{$meet}}" data-type="meet">Confirm & Pay</a>
-                                          @elseif($meet->status == "paid")
-                                          <a class="btn btn-purple meet_view" data-source="{{$meet}}" data-type="meet">Booking Receipt</a>
-                                          <a class="btn btn-yellow write_review" data-source="{{$meet}}" data-type="meet">Write Review</a>
+                                          <a class="btn btn-yellow meet_view" data-source="{{$meet}}" data-type="meet">Receipt</a>
+                                          @if ($meet->is_review == "true")
+                                          <a class="btn btn-yellow-light write_review" data-source="{{$meet}}" data-type="meet">Write Review</a>
                                           @endif
                                       </div>
                                   </div>
@@ -427,105 +614,150 @@
                       @elseif($display_mode == "mode2")
                       <div class="col-view">
                         <div class="image-box">
-                            <a href="javascript:void(0)" class="arrow arrow-prev">
-                                <i class="fa fa-angle-left" aria-hidden="true"></i>
-                            </a>
-                            <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                            <a href="javascript:void(0)" class="arrow arrow-next">
-                                <i class="fa fa-angle-right" aria-hidden="true"></i>
-                            </a>
-                        </div>
-                        <div class="detail-box">
-                            <h3>Meet & Greet - Option Product</h3>                                
-                            <h4>{{$meet->meet_service}}</h4>
-                            <div class="list">
-                                <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-calendar" aria-hidden="true"></i></span><span>{{$meet->date}}</span></div>                                          
-                                <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-clock-o" aria-hidden="true"></i></span><span>{{$meet->time}}<span></div>
-                                <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-plane" aria-hidden="true"></i></span><span>{{$meet->aircraft}}<span></div>
-                                <div><span style="padding-right:10px;color:#c29834;"><img src="/assets/img/login-portal/jet-group.png" style="width:35px;"></img></span><span>{{$meet->airline}}</span></div>
-                            </div>    
-                            <div class="clearfix"></div>
-                            <div class="box-status">
-                                @if($meet->status == "awaiting")
-                                <h5>Awaiting Estimation</h5>                                        
-                                @elseif($meet->status == "sent" || $meet->status == "paid")
-                                <h5 class="cost" data-val="{{$meet->total_cost}}">€{{$meet->total_cost}}</h5>
-                                @endif
-                                <p>Booking NO: {{$meet->id}}</p>
+                            <div class="slide" id="slide101{{$key}}">
+                                <ul>
+                                    @if($c_arr != 0)
+                                    @foreach($img_arr as $image)
+                                    <li data-bg="{{$image}}" style="width: 301px; height: 206px;"></li>
+                                    @endforeach
+                                    @else
+                                    <li data-bg="/assets/img/default-img.jpg" style="width: 301px; height: 206px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></li>
+                                    @endif
+                                </ul>
                             </div>
                         </div>
-                        <div class="box-button">
-                            @if($meet->status == "awaiting")
-                            <a class="btn btn-purple meet_view" data-source="{{$meet}}" data-type="meet">View details</a>
-                            <a class="btn btn-red cancel_request" data-source="{{$meet}}" data-type="meet">Cancel Request</a>
-                            @elseif($meet->status == "sent")
-                            <a class="btn btn-green confirm_pay" data-source="{{$meet}}" data-type="meet">Confirm & Pay</a>
-                            @elseif($meet->status == "paid")
-                            <a class="btn btn-purple meet_view" data-source="{{$meet}}" data-type="meet">Booking Receipt</a>
-                            <a class="btn btn-yellow write_review" data-source="{{$meet}}" data-type="meet">Write Review</a>
-                            @endif
-                        </div>
+                        <div class="detail-box">
+                            <h3>Meet & Greet 
+                                @if ($meet->is_departure == "true" && $meet->is_arrival == "true")
+                                - Arrival & Departure
+                                @elseif ($meet->is_arrival == "true")
+                                - Arrival
+                                @elseif ($meet->is_departure == "true")
+                                - Departure
+                                @endif
+                            </h3>
+                            <h4>{{$meet->meet_service}}</h4>
+                            <div class="list">
+                                <div><span >Date: </span>{{$meet->in_date}}</div>
+                                <div><span >Local time of departure: </span>{{$meet->in_time}}</div>
+                                <div><span>Airline: </span>{{$meet->in_airline}}</div>
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="box-status">
+                                <h5 class="cost" data-val="{{$meet->total_cost}}">€{{$meet->total_cost}}</h5>
+                                <p>VAT excluded. Booking NO: {{$meet->id}}</p>
+                            </div>
+                            <div class="box-button" style="display: flex;">
+                                <div class="pay_form"><a class="btn btn-yellow meet_view" data-source="{{$meet}}" data-type="meet">Receipt</a></div>
+                                @if ($meet->is_review == "true")
+                                <div class="pay_form"><a class="btn btn-yellow-light write_review" data-source="{{$meet}}" data-type="meet">Write Review</a></div>
+                                @endif
+                            </div>
+                        </div>                        
                       </div>                  
                       @endif   
                       @endforeach       
                       {{$meets->links()}} 
-                    </div>  
+                    </div>
+                    <!-- show emptyleg charter requests -->
                     <div class="emptylegs">
-                        @foreach($emptylegs as $emptyleg)
+                        <?php $img_arr = [];?>
+                        @foreach($emptylegs as $key=>$emptyleg)                        
+                        @foreach($images as $image)
+                        @foreach($aircrafts as $sel)
+                        @if($emptyleg->aircraft == $sel->type && $image->parent_id == $sel->id)
+                        <?php array_push($img_arr, $image->url);?>
+                        @endif
+                        @endforeach
+                        @endforeach
+                        <?php $c_arr = count($img_arr);?>
                         @if($display_mode == "mode1")
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="item">
                                     <div class="col-xs-12 col-sm-4 slider-box">
-                                        <a href="javascript:void(0)" class="arrow arrow-prev">
-                                            <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                        </a>
-                                        <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                                        <a href="javascript:void(0)" class="arrow arrow-next">
-                                            <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                        </a>
+                                        <div class="slide" id="slide110{{$key}}">
+                                            <ul>
+                                                @if($c_arr != 0)
+                                                @foreach($img_arr as $image)
+                                                <li data-bg="{{$image}}" style="width: 314px; height: 205px;"></li>
+                                                @endforeach
+                                                @else
+                                                <li data-bg="/assets/img/default-img.jpg" style="width: 314px; height: 205px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></li>
+                                                @endif
+                                            </ul>
+                                        </div>
                                     </div>
-                                    <div class="col-xs-12 col-sm-8 info-box">                                   
-                                        <h3>Emptyleg Aircraft Charter</h3>                                   
-                                        <h4>{{$emptyleg->departure}}
-                                            <span>to</span> {{$emptyleg->destination}}</h4>
+                                    <div class="col-xs-12 col-sm-8 info-box">
+                                        <div class="info-title">
+                                            <h3>Empty Leg Aircraft Charter</h3>
+                                            @if($emptyleg->status != "paid")
+                                            <a class="cancel_request" data-source="{{$emptyleg}}" data-type="empty"><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="trash-alt" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-trash-alt fa-w-14 fa-lg"><path fill="currentColor" d="M296 432h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zm-160 0h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8zM440 64H336l-33.6-44.8A48 48 0 0 0 264 0h-80a48 48 0 0 0-38.4 19.2L112 64H8a8 8 0 0 0-8 8v16a8 8 0 0 0 8 8h24v368a48 48 0 0 0 48 48h288a48 48 0 0 0 48-48V96h24a8 8 0 0 0 8-8V72a8 8 0 0 0-8-8zM171.2 38.4A16.1 16.1 0 0 1 184 32h80a16.1 16.1 0 0 1 12.8 6.4L296 64H152zM384 464a16 16 0 0 1-16 16H80a16 16 0 0 1-16-16V96h320zm-168-32h16a8 8 0 0 0 8-8V152a8 8 0 0 0-8-8h-16a8 8 0 0 0-8 8v272a8 8 0 0 0 8 8z" class=""></path></svg></a>
+                                            @endif
+                                        </div>
+                                        <div class="departure-locations">
+                                            <div class="desktop">
+                                                <h4>{{$emptyleg->departure}}
+                                                    <span>to</span> {{$emptyleg->destination}}
+                                                </h4>
+                                            </div>
+                                            <div class="mobile">
+                                                <hr>
+                                                <h4>{{$emptyleg->departure}}</h4>
+                                                <div class="link">to</div> 
+                                                <h4>{{$emptyleg->destination}}</h4>
+                                                <hr>
+                                            </div>
+                                        </div>
                                         <ul class="list">
-                                            <li>{{$emptyleg->end_date}}</li>                                          
-                                            <li>{{$emptyleg->end_time}}</li>                                          
-                                            <li>{{$emptyleg->partner_name}}</li>
-                                            <li>{{$emptyleg->aircraft}}</li>
+                                            <li><span>Aircraft Type: </span>{{$emptyleg->aircraft}}</li>
+                                            <li><span>Partner: </span>{{$emptyleg->partner_name}}</li>
+                                            <li><span>Date: </span>{{$emptyleg->end_date}}</li>
                                         </ul>
                                         <div class="clearfix"></div>
-                                        <div class="box-left">                         
+                                        <div class="box-left">
                                             @if($emptyleg->currency == "EUR")                                                 
-                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="0">€{{$emptyleg->price}}</h5>                                       
+                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="0">€{{$emptyleg->price}}</h5>
                                             @elseif($emptyleg->currency == "USD")
-                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="1">${{$emptyleg->price}}</h5> 
+                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="1">${{$emptyleg->price}}</h5>
                                             @elseif($emptyleg->currency == "CAD")
-                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="2">${{$emptyleg->price}}</h5> 
+                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="2">${{$emptyleg->price}}</h5>
                                             @elseif($emptyleg->currency == "AUD") 
-                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="3">${{$emptyleg->price}}</h5> 
+                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="3">${{$emptyleg->price}}</h5>
                                             @elseif($emptyleg->currency == "CNY")
-                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="4">¥{{$emptyleg->price}}</h5> 
+                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="4">¥{{$emptyleg->price}}</h5>
                                             @elseif($emptyleg->currency == "JPY") 
                                             <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="5">¥{{$emptyleg->price}}</h5> 
                                             @elseif($emptyleg->currency == "DKK")
-                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="6">kr{{$emptyleg->price}}</h5>
+                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="6">kr {{$emptyleg->price}}</h5>
                                             @elseif($emptyleg->currency == "NOK") 
-                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="7">kr{{$emptyleg->price}}</h5>
+                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="7">kr {{$emptyleg->price}}</h5>
                                             @elseif($emptyleg->currency == "GBP") 
-                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="8">£{{$emptyleg->price}}</h5>  
+                                            <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="8">£{{$emptyleg->price}}</h5>
                                             @endif
-                                            <p>Booking NO: {{$emptyleg->id}}</p>
+                                            <p>VAT excluded. Booking NO: {{$emptyleg->id}}</p>
                                         </div>
                                         <div class="box-right">
                                             @if($emptyleg->status == "awaiting")
-                                            <a class="btn btn-green confirm_pay" data-source="{{$emptyleg}}" data-type="empty">Confirm & Pay</a>                                                                                
-                                            @elseif($emptyleg->status == "sent")
-                                            <a class="btn btn-purple empty_view" data-source="{{$emptyleg}}" data-type="empty">View details</a>
+                                            <div class="pay_group">                                                
+                                                <div class="pay_form">
+                                                    <form method="POST" action="/services/paypal">
+                                                        {{ csrf_field() }}
+                                                        <input value="Emptyleg Charter" type="hidden" name="item">
+                                                        <input value="{{$emptyleg->id}}" type="hidden" name="item_number">
+                                                        <input value="{{$emptyleg->price}}" type="hidden" name="amount">
+                                                        <input value="empty" type="hidden" name="type">
+                                                        <button type="submit" class="btn btn-green confirm_pay">Confirm & Pay</button>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                            @elseif($emptyleg->status == "sent")                                            
+                                            <a class="btn btn-yellow empty_view" data-source="{{$emptyleg}}" data-type="empty">View details</a>                                            
                                             @elseif($emptyleg->status == "paid")
-                                            <a class="btn btn-purple empty_view" data-source="{{$emptyleg}}" data-type="empty">Booking Receipt</a>
-                                            <a class="btn btn-yellow write_review" data-source="{{$emptyleg}}" data-type="empty">Write Review</a>
+                                            <a class="btn btn-yellow empty_view" data-source="{{$emptyleg}}" data-type="empty">Receipt</a>
+                                            @if ($emptyleg->is_review == "true")
+                                            <a class="btn btn-yellow-light write_review" data-source="{{$emptyleg}}" data-type="empty">Write Review</a>
+                                            @endif
                                             @endif
                                         </div>
                                     </div>
@@ -535,72 +767,92 @@
                         @elseif($display_mode == "mode2")                      
                         <div class="col-view">
                             <div class="image-box">
-                                <a href="javascript:void(0)" class="arrow arrow-prev">
-                                    <i class="fa fa-angle-left" aria-hidden="true"></i>
-                                </a>
-                                <img src="/assets/img/login-portal/airplane.jpg" alt="" class="img-responsive center-block">
-                                <a href="javascript:void(0)" class="arrow arrow-next">
-                                    <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </a>
+                                <div class="slide" id="slide111{{$key}}">
+                                    <ul>
+                                        @if($c_arr != 0)
+                                        @foreach($img_arr as $image)
+                                        <li data-bg="{{$image}}" style="width: 301px; height: 206px;"></li>
+                                        @endforeach
+                                        @else
+                                        <li data-bg="/assets/img/default-img.jpg" style="width: 301px; height: 206px; background: url('/assets/img/default-img.jpg') 50% 50% / cover;"></li>
+                                        @endif
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="detail-box">                            
-                                <h3>Emptyleg Aircraft Charter</h3>                        
-                                <h4>{{$emptyleg->departure}} <span>to</span> </h4>                                    
+                            <div class="detail-box">
+                                <h3>Empty Leg Aircraft Charter</h3>                        
+                                <h4>{{$emptyleg->departure}} <span>to</span> </h4>
                                 <h4>{{$emptyleg->destination}}</h4>
                                 <div class="list">
-                                    <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-calendar" aria-hidden="true"></i></span><span>{{$emptyleg->end_date}}</span></div> 
-                                    <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-clock-o" aria-hidden="true"></i></span><span>{{$emptyleg->end_time}}</span></div>                                          
-                                    <div><span style="padding-right:10px;color: #c29834;"><i class="fa fa-plane" aria-hidden="true"></i></span><span>{{$emptyleg->aircraft}}<span></div>
-                                    <div><span style="padding-right:10px;color:#c29834;"><img src="/assets/img/login-portal/jet-group.png" style="width:35px;"></img></span><span>{{$emptyleg->partner_name}}</span></div>
+                                    <div><span>Aircraft Type: </span>{{$emptyleg->aircraft}}</div>                                  
+                                    <div><span>Partner: </span>{{$emptyleg->partner_name}}</div>
+                                    <div><span>Date: </span>{{$emptyleg->end_date}}</div>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="box-status">
                                     @if($emptyleg->currency == "EUR")                                                 
-                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="0">€{{$emptyleg->price}}</h5>                                       
+                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="0">€{{$emptyleg->price}}</h5>
                                     @elseif($emptyleg->currency == "USD")
-                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="1">${{$emptyleg->price}}</h5> 
+                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="1">${{$emptyleg->price}}</h5>
                                     @elseif($emptyleg->currency == "CAD")
-                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="2">${{$emptyleg->price}}</h5> 
+                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="2">${{$emptyleg->price}}</h5>
                                     @elseif($emptyleg->currency == "AUD") 
-                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="3">${{$emptyleg->price}}</h5> 
+                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="3">${{$emptyleg->price}}</h5>
                                     @elseif($emptyleg->currency == "CNY")
-                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="4">¥{{$emptyleg->price}}</h5> 
+                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="4">¥{{$emptyleg->price}}</h5>
                                     @elseif($emptyleg->currency == "JPY") 
-                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="5">¥{{$emptyleg->price}}</h5> 
+                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="5">¥{{$emptyleg->price}}</h5>
                                     @elseif($emptyleg->currency == "DKK")
-                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="6">kr{{$emptyleg->price}}</h5>
+                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="6">kr {{$emptyleg->price}}</h5>
                                     @elseif($emptyleg->currency == "NOK") 
-                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="7">kr{{$emptyleg->price}}</h5>
+                                    <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="7">kr {{$emptyleg->price}}</h5>
                                     @elseif($emptyleg->currency == "GBP") 
                                     <h5 class="cost" data-val="{{$emptyleg->price}}" data-symbol="8">£{{$emptyleg->price}}</h5>  
                                     @endif
-                                    <p>Booking NO: {{$emptyleg->id}}</p>
+                                    <p>VAT excluded. Booking NO: {{$emptyleg->id}}</p>
                                 </div>                                                 
-                                <div class="box-button">
-                                @if($emptyleg->status == "awaiting")
-                                <a class="btn btn-green confirm_pay" data-source="{{$emptyleg}}" data-type="empty">Confirm & Pay</a>                                                                                
-                                @elseif($emptyleg->status == "sent")
-                                <a class="btn btn-purple empty_view" data-source="{{$emptyleg}}" data-type="empty">View details</a>
-                                @elseif($emptyleg->status == "paid")
-                                <a class="btn btn-purple empty_view" data-source="{{$emptyleg}}" data-type="empty">Booking Receipt</a>
-                                <a class="btn btn-yellow write_review" data-source="{{$emptyleg}}" data-type="empty">Write Review</a>
-                                @endif                          
+                                <div class="box-button" style="display: flex;">
+                                    @if($emptyleg->status == "awaiting")                                    
+                                    <div class="pay_group">
+                                        <div class="pay_form">
+                                            <a class="btn btn-red cancel_request" data-source="{{$emptyleg}}" data-type="empty">Cancel</a>
+                                        </div>
+                                        <div class="pay_form">
+                                            <form method="POST" action="/services/paypal">
+                                                {{ csrf_field() }}
+                                                <input value="Emptyleg Charter" type="hidden" name="item">
+                                                <input value="{{$emptyleg->id}}" type="hidden" name="item_number">
+                                                <input value="{{$emptyleg->price}}" type="hidden" name="amount">
+                                                <input value="empty" type="hidden" name="type">
+                                                <a type="submit" class="btn btn-green confirm_pay">Confirm & Pay</a>
+                                            </form>
+                                        </div>                                        
+                                    </div>
+                                    @elseif($emptyleg->status == "sent")                                    
+                                    <div class="pay_form"><a class="btn btn-red cancel_request" data-source="{{$emptyleg}}" data-type="empty">Cancel</a></div>
+                                    <div class="pay_form"><a class="btn btn-yellow empty_view" data-source="{{$emptyleg}}" data-type="empty">View details</a></div>                                    
+                                    @elseif($emptyleg->status == "paid")
+                                    <div class="pay_form"><a class="btn btn-yellow empty_view" data-source="{{$emptyleg}}" data-type="empty">Receipt</a></div>
+                                    @if ($emptyleg->is_review == "true")
+                                    <div class="pay_form"><a class="btn btn-yellow-light write_review" data-source="{{$emptyleg}}" data-type="empty">Write Review</a></div>
+                                    @endif
+                                    @endif
                                 </div>
                             </div>
-                        </div>                         
+                        </div>
                         @endif
-                        @endforeach       
+                        @endforeach
                         {{$emptylegs->links()}}     
-                    </div>          
-                  </div>  
-                  @endif              
+                    </div>
+                  </div>
+                  @endif
               </div>
           </div>
       </div>
-  </section>
+  </section>  
 </div>
 
-<!-- Cancel request -->
+<!-- Cancel -->
 <div class="modal fade" id="cancelRequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -608,14 +860,13 @@
               <span aria-hidden="true">
                   <img src="/assets/img/close-black.png" alt="">
               </span>
-          </button>
-          <img src="/assets/img/bg/modal/cancel-request.png" class="img-responsive center-block main-img" alt="">
+          </button>          
           <div class="box">
-              <h4>ARE YOU SURE YOU WANT TO CANCEL?</h4>
-
+              <h4>Cancel your Request</h4>
+              <p> Are you sure you want to cancel your upcoming request?
               <div class="wrapper-btns text-center">
-                  <a class="btn btn-red cancel" data-toggle="modal">Cancel Request</a>
-                  <a class="btn btn-purple back" data-dismiss="modal">No, go back</a>
+                  <a class="btn btn-red cancel" data-toggle="modal">Cancel</a>
+                  <a class="btn btn-yellow back" data-dismiss="modal">No, go back</a>
               </div>
           </div>
       </div>
@@ -783,224 +1034,20 @@
                         <span id="contact_person"></span>
                         If you have any questions regarding your booking, feel free to call us
                         <a href="">H24 +47 92 222 999</a> or send us en email at
-                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>
-                    <img src="/assets/img/icon-hands.png" class="img-responsive center-block" alt="">
+                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>                    
                 </div>
                 <div class="total-box">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
                             <p>
                                 <b>Total amount</b>
-                                #002043NO</p>
+                                <p id="invoice_no"></p></p>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
                             <span id="price"></span>
                         </div>
                     </div>
-                </div>
-              <img src="/assets/img/logo.jpg" class="img-responsive center-block" alt="" class="logo-modal">                        
-          </div>
-      </div>
-  </div>
-</div>
-<!-- Confirm & Pay -->
-<div class="modal fade" id="confirmRequest" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="box">
-            <form id="flight_form" method="POST" action="{{ URL::to('services/paypal') }}">                        
-              {{ csrf_field() }}
-              <div class="header">
-                  <div class="row">
-                      <div class="col-xs-12 col-sm-6 text-left">
-                          <h4>CONFIRM<br>
-                          CONFIRMATION</h4>                          
-                      </div>
-                      <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="confirm_created_date"></p>
-                            <span id="confirm_created_time"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="info-box">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Service</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="confirm_charter_type"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Booking No</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="confirm_booking_no"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Travel Date</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="confirm_travel_date"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b id="confirm_from">From Airport</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="confirm_departure"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b id="confirm_to">To Airport</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="confirm_destination"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b id="last_tag">Passengers</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="confirm_travelers"></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="user-info">
-                    <p>
-                        <span id="confirm_contact_person"></span>
-                        If you have any questions regarding your booking, feel free to call us
-                        <a href="">H24 +47 92 222 999</a> or send us en email at
-                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>
-                    <img src="/assets/img/icon-hands.png" class="img-responsive center-block" alt="">
-                </div>
-                <div class="total-box">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <p>
-                                <b>Total amount</b>
-                                #002043NO</p>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <span id="confirm_price"></span>
-                        </div>
-                        <input id="item" type="hidden" name="item">
-                        <input id="item_number" type="hidden" name="item_number">
-                        <input id="amount" type="hidden" name="amount">                        
-                        <input id="type" type="hidden" name="type">
-                    </div>
-                </div>
-              <img src="/assets/img/logo.jpg" class="img-responsive center-block" alt="" class="logo-modal">
-              <div class="paypal_div">
-                <button class="btn btn-green paypal">Confirm & Pay</a>
-              </div>
-            </form>
-          </div>
-      </div>
-  </div>
-</div>
-<!--Handling View Details -->
-<div class="modal fade" id="HandlingViewDetails" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
-      <div class="modal-content">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="box">
-              <div class="header">
-                  <div class="row">
-                      <div class="col-xs-12 col-sm-6 text-left">
-                          <h4><span id="handling_title1"></span><br></h4>
-                          <h4 id="handling_title2"></h4>
-                      </div>
-                      <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="handling_created_date"></p>
-                            <span id="handling_created_time"></span>
-                        </div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="info-box">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Service</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p>Handling Request</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Travel Date</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="handling_travel_date"></p>
-                        </div>
-                    </div>      
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Booking No</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="handling_booking_no"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Airport</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="handling_airport"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Partner Name</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="handling_parnter_name"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Aircraft</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="handling_aircraft"></p>
-                        </div>
-                    </div>                                  
-                </div>
-                <div class="user-info">
-                    <p>
-                        <span id="handling_contact_person"></span>
-                        If you have any questions regarding your booking, feel free to call us
-                        <a href="">H24 +47 92 222 999</a> or send us en email at
-                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>
-                    <img src="/assets/img/icon-hands.png" class="img-responsive center-block" alt="">
-                </div>
-                <div class="total-box"  >
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <p>
-                                <b>Total amount</b>
-                                #002043NO</p>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <span id="handling_price"></span>
-                        </div>
-                    </div>
-                </div>
-              <img src="/assets/img/logo.jpg" class="img-responsive center-block" alt="" class="logo-modal">
+                </div>              
           </div>
       </div>
   </div>
@@ -1035,21 +1082,21 @@
                         <div class="col-xs-12 col-sm-6 text-right">
                             <p>Limousine Transport</p>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Booking No</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="limousine_booking_no"></p>
-                        </div>
-                    </div>
+                    </div>                   
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
                             <b>Travel Date</b>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
                             <p id="limousine_travel_date"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Type of Travel</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="limousine_type_travel"></p>
                         </div>
                     </div>
                     <div class="row">
@@ -1068,12 +1115,68 @@
                             <p id="limousine_to_address"></p>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row is_return">
                         <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Type of Car</b>
+                            <b>Return From Address</b>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="limousine_type_car"></p>
+                            <p id="limousine_return_from_address"></p>
+                        </div>
+                    </div>
+                    <div class="row is_return">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Return To Address</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="limousine_return_to_address"></p>
+                        </div>
+                    </div>
+                    <div class="row is_return">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Return Date</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="limousine_return_date"></p>
+                        </div>
+                    </div>
+                    <div class="row is_return">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Return Time</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="limousine_return_time"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Contact Person</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="limousine_contact_person"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Phone</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="limousine_phone"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Email</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="limousine_email"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Company</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="limousine_company"></p>
                         </div>
                     </div>
                 </div>
@@ -1082,22 +1185,19 @@
                         <span id="limousine_contact_person"></span>
                         If you have any questions regarding your booking, feel free to call us
                         <a href="">H24 +47 92 222 999</a> or send us en email at
-                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>
-                    <img src="/assets/img/icon-hands.png" class="img-responsive center-block" alt="">
+                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>                    
                 </div>
                 <div class="total-box">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
-                            <p>
-                                <b>Total amount</b>
-                                #002043NO</p>
+                            <p><b>Total amount</b></p>
+                            <p id="limousine_payment_id"></p>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
                             <span id="limousine_price"></span>
                         </div>
                     </div>
-                </div>
-              <img src="/assets/img/logo.jpg" class="img-responsive center-block" alt="" class="logo-modal">
+                </div>              
           </div>
       </div>
   </div>
@@ -1127,58 +1227,160 @@
                 <div class="info-box">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Service</b>
+                            <b>Service:</b>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
-                            <p>Meet & Greet</p>
+                            <p id="meet_service"></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Booking No</b>
+                            <b>Contact Person:</b>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="meet_booking_no"></p>
+                            <p id="meet_person"></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Travel Date</b>
+                            <b>Phone:</b>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="meet_travel_date"></p>
+                            <p id="meet_phone"></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Travel Time</b>
+                            <b>Email:</b>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="meet_travel_time"></p>
+                            <p id="meet_email"></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Flight number</b>
+                            <b>Company:</b>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="meet_flight_no"></p>
+                            <p id="meet_company"></p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Luggage</b>
-                        </div>
-                        <div class="col-xs-12 col-sm-6 text-right">
-                            <p id="meet_luggage"></p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-6 text-left">
-                            <b>Travelers</b>
+                            <b>Travelers:</b>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
                             <p id="meet_travelers"></p>
+                        </div>
+                    </div>
+                    <div class="inbound-box">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <p class="text_flight_type"><b>Inbound:</b></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Airline:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_in_airline"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Date of Arrival:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_in_date"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Time of Arrival:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_in_time"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Luggage:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_in_luggage"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Booking Reference:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_in_booking_reference"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Connection Flight:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_in_connect_flight_number"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="outbound-box">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <p class="text_flight_type"><b>Outbound:</b></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Airline:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_out_airline"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Date of Arrival:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_out_date"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Time of Arrival:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_out_time"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Luggage:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_out_luggage"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Booking Reference:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_out_booking_reference"></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6 text-left">
+                                <b>Connection Flight:</b>
+                            </div>
+                            <div class="col-xs-12 col-sm-6 text-right">
+                                <p id="meet_out_connect_flight_number"></p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1187,22 +1389,21 @@
                         <span id="meet_contact_person"></span>
                         If you have any questions regarding your booking, feel free to call us
                         <a href="">H24 +47 92 222 999</a> or send us en email at
-                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>
-                    <img src="/assets/img/icon-hands.png" class="img-responsive center-block" alt="">
+                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>                    
                 </div>
                 <div class="total-box">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
                             <p>
                                 <b>Total amount</b>
-                                #002043NO</p>
+                            </p>
+                            <p id="meet_booking_no"></p>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
                             <span id="meet_price"></span>
                         </div>
                     </div>
-                </div>
-              <img src="/assets/img/logo.jpg" class="img-responsive center-block" alt="" class="logo-modal">
+                </div>              
           </div>
       </div>
   </div>
@@ -1292,38 +1493,169 @@
                         <span id="empty_contact_person"></span>
                         If you have any questions regarding your booking, feel free to call us
                         <a href="">H24 +47 92 222 999</a> or send us en email at
-                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>
-                    <img src="/assets/img/icon-hands.png" class="img-responsive center-block" alt="">
+                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>                    
                 </div>
                 <div class="total-box">
                     <div class="row">
                         <div class="col-xs-12 col-sm-6 text-left">
                             <p>
                                 <b>Total amount</b>
-                                #002043NO</p>
+                            </p>
+                            <p id="empty_booking_no_footer"></p>
                         </div>
                         <div class="col-xs-12 col-sm-6 text-right">
                             <span id="empty_price"></span>
                         </div>
                     </div>
-                </div>
-              <img src="/assets/img/logo.jpg" class="img-responsive center-block" alt="" class="logo-modal">
+                </div>              
           </div>
       </div>
   </div>
 </div>
+<!-- Booking Receipt-->
+<div class="modal fade" id="bookingReceipt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            <div class="box">
+                <div class="header">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <h4>
+                                <span>Booking</span>
+                                <br> Receipt</h4>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="created_date"></p>
+                            <span id="created_time"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="info-box">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Service</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="charter_type"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Booking No</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="booking_no"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Travel Date</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="travel_date"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>From Airport</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="departure"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>To Airport</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="destination"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <b>Passengers</b>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <p id="travelers"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="user-info">
+                    <p>
+                        <span id="contact_person"></span>
+                        If you have any questions regarding your booking, feel free to call us
+                        <a href="">H24 +47 92 222 999</a> or send us en email at
+                        <a href="">contact@accessoslo.no</a> with the booking number above.</p>                    
+                </div>
+                <div class="total-box">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 text-left">
+                            <p>
+                                <b>Total amount</b>
+                            </p>
+                            <p id="invoice_no"></p>
+                        </div>
+                        <div class="col-xs-12 col-sm-6 text-right">
+                            <span id="price"></span>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+    </div>
+</div>
 @endsection
 
 @section('scripts')
+<script src="/js/main.js"></script>
+<script src="/js/vendor/jquery.star-rating-svg.js"></script>
+<script src="/js/vendor/jquery.slide.js"></script>
+<script src="/js/vendor/currencySelect.js"></script>
+<script src="/js/accessoslo.js"></script>
+<script src="https://rawgit.com/myforce/angularjs-dropdown-multiselect/master/src/angularjs-dropdown-multiselect.js"></script>
 <script>
+    // get current booking type, number of requests and current display mode    
+    var status = "{{$status}}";
     var type = "{{$types}}";
     var count = "{{$counts}}";
     var display_mode = "{{$display_mode}}";
+    // get each type of requests count
+    var charter_count = "{{$charters_counts}}";
+    var meet_count = "{{$meets_counts}}";
+    var limousine_count = "{{$limousines_counts}}";
+    var emptyleg_count = "{{$emptylegs_counts}}";
+    
+    // slideshow for the right charters
+    for (i = 0; i < limousine_count; i ++) {
+        if ($("#slide010"+i+">ul>li").length == 1) {
+            $('#slide010'+i).slide({isShowDots: false, isShowArrow: false});
+        } else {$('#slide010'+i).slide({isShowDots: false});}
+        if ($("#slide011"+i+">ul>li").length == 1) {
+            $('#slide011'+i).slide({isShowDots: false, isShowArrow: false});
+        } else {$('#slide011'+i).slide({isShowDots: false});}        
+    }
+    for (i = 0; i < meet_count; i ++) {
+        if ($("#slide100"+i+">ul>li").length == 1) {
+            $('#slide100'+i).slide({isShowDots: false, isShowArrow: false});
+        } else {$('#slide100'+i).slide({isShowDots: false});}
+        if ($("#slide101"+i+">ul>li").length == 1) {
+            $('#slide101'+i).slide({isShowDots: false, isShowArrow: false});
+        } else {$('#slide101'+i).slide({isShowDots: false});}
+    }
+    for (i = 0; i < emptyleg_count; i ++) {
+        if ($("#slide110"+i+">ul>li").length == 1) {
+            $('#slide110'+i).slide({isShowDots: false, isShowArrow: false});
+        } else {$('#slide110'+i).slide({isShowDots: false});}
+        if ($("#slide111"+i+">ul>li").length == 1) {
+            $('#slide111'+i).slide({isShowDots: false, isShowArrow: false});
+        } else {$('#slide111'+i).slide({isShowDots: false});}
+    }
 </script>
-<script src="/js/main.js"></script>
-<script src="/js/vendor/currencySelect.js"></script>
-<script src="/js/vendor/jquery.star-rating-svg.js"></script>
-<script src="/js/accessoslo.js"></script>
+@include('sweet::alert')
 <script>jQuery(function(){new Accessoslo.Controllers.MemberUpcomingRequest();});</script>
 @endsection
 

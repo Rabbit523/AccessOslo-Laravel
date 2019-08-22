@@ -1,11 +1,11 @@
-@extends('layouts.private') @section('title', 'Hjem') @section('content')
+@extends('layouts.private') @section('title', 'Admin Portal') @section('content')
 <div class="page-container">
     <header>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <div class="title-box">
-                        <h1>{{$title}}</h1>                       
+                        <h1 style="font-size: 2em;">{{$title}}</h1>                       
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
@@ -28,17 +28,9 @@
                     <div class="content-box">
                         <div class="form-box">
                             <div class="row">
-                                <div class="col-xs-12 col-sm-3 col-md-3">
+                                <div class="col-xs-12 col-sm-3 col-md-4">
                                     <input type="text" name="datepicker" id="datepicker" class="form-control date-input" placeholder="05/02/18  -  05/03/18">
-                                </div>
-                                <div class="col-xs-12 col-sm-3 col-md-3">
-                                    <select name="status" id="status">
-                                        <option disabled selected value>Estimations</option>
-                                        <option value="awaiting">Awaiting Estimation</option>
-                                        <option value="sent">Sent Estimation</option>
-                                        <option value="paid">Paid Estimation</option>
-                                    </select>
-                                </div>
+                                </div>                               
                                 <div class="col-xs-12 col-sm-6 col-md-6">
                                     <form >
                                         <input type="text" name="search" id="search" class="form-control search-form" placeholder="Search by Booking Number, Contact Person, Company">
@@ -51,12 +43,10 @@
                                 <div class="label-table booking-id">Booking No.</div>
                                 <div class="label-table departure">Departure</div>
                                 <div class="label-table destination">Destination</div>
-                                <div class="label-table date">Date</div>
-                                <div class="label-table cargo-type">CARGO TYPE</div>
+                                <div class="label-table date">Date</div>                                
                                 <div class="label-table dimensions">DIMENSIONS</div>
                                 <div class="label-table weight">WEIGHT</div>
                                 <div class="label-table dangerous">DANGEROUS</div>
-                                <div class="label-table status">Status</div>
                                 <div class="label-table toggle">TOGGLE</div>
                             </div>
                         </div>
@@ -65,159 +55,102 @@
                             <h4>There is nothing!</h4>
                             @endif  
                             @foreach($datas as $data)
-                            <div class="item">                                
+                            <div class="item">
                                 <div class="item-toggle collapsed" data-toggle="collapse" data-target="#item{{$data->id}}" aria-expanded="false">
                                     <div class="row">
-                                        <div class="label-table booking-id">#00{{$data->id}}</div>
+                                        <div class="label-table booking-id">#{{$data->id}}</div>
                                         <div class="label-table departure">{{$data->departure}}</div>
                                         <div class="label-table destination">{{$data->destination}}</div>
-                                        <div class="label-table date">{{$data->date}}</div>
-                                        <div class="label-table cargo-type">{{$data->cargo_type}}</div>
+                                        <div class="label-table date">{{$data->date}}</div>                                        
                                         <div class="label-table dimensions">{{$data->width}}x{{$data->height}}x{{$data->depth}}</div>
                                         <div class="label-table weight">{{$data->weight}}</div>
                                         <div class="label-table dangerous">{{$data->is_danger}}</div>
-                                        <div class="label-table status {{$data->status}}"><span>{{$data->status}}</span></div>
-                                        <div class="label-table toggle" data-info="{{$data}}"><span><i class="fa fa-caret-up"></i></span></div>
+                                        <div class="label-table toggle"><a class="btn btn-gray details" data-source="{{$data}}">View Details</a></div>
                                     </div>
                                 </div>
-                                <div id="item{{$data->id}}" class="collapse info-item">
-                                    <div class="header-sub-item">
-                                        <div class="row">
-                                            <div class="label-sub-item contact-information">Contact Information</div>                                   
-                                            <div class="label-sub-item actions">action</div>
-                                        </div>
-                                    </div>
-                                    <div class="list-sub-item">
-                                        <div class="row">
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <label for="">FULL NAME</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" value="{{$data->contact_person}}" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <label for="">PHONE</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" value="{{$data->phone}}" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <label for="">EMAIL</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" value="{{$data->email}}" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <label for="">COMPANY</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" value="{{$data->company}}" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <a class="btn btn-gray comments">View Comments</a>
-                                                    </div>
-                                                </div>                                                
-                                            </div>                                                                          
-                                        </div>
-                                    </div>
-                                    <div class="header-sub-item">
-                                        <div class="row">
-                                            <div class="label-sub-item contact-information">Flight Information</div>                                   
-                                            <div class="label-sub-item actions">action</div>
-                                        </div>
-                                    </div>
-                                    <div class="list-sub-item">
-                                        <div class="row">  
-                                            <div class="label-sub-item cost">                                               
-                                                <div class="form-group">                                                                                                
-                                                    <label for="">AIRCRAFT TYPE</label>
-                                                    <select name="aircraft" id="aircraft{{$data->id}}" class="select">
-                                                        <option disabled selected value>Aircraft/Car</option>
-                                                        @foreach($aircrafts as $aircraft)                                                       
-                                                        <option value="{{$aircraft->type}}">{{$aircraft->type}}</option>
-                                                        @endforeach
-                                                    </select>                                                                                               
-                                                </div>                                                         
-                                            </div>                              
-                                            <div class="label-sub-item cost">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <label for="">ESTIMATE FLIGHT COST</label>                                                 
-                                                        <input type="text" class="form-control estimate_cost" name="estimate_cost" id="estimate_cost{{$data->id}}">                                                        
-                                                        <span class="input-group-addon"><i class="fa fa-eur" aria-hidden="true"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item cost">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        @if(auth()->user()->role_id == 0)
-                                                        <label for="">ADDITIONAL FEE</label>                                                        
-                                                        <input type="text" class="form-control additional_fee" name="additional_fee" id="additional_fee{{$data->id}}">                                                                                                               
-                                                        <span class="input-group-addon"><i class="fa fa-eur" aria-hidden="true"></i></span>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item cost">
-                                                <div class="form-group">
-                                                    <div class="input-group">                                                        
-                                                        <label for="">TOTAL COST</label>                                                       
-                                                        <input type="text" class="form-control total_cost" name="total_cost" id="total_cost{{$data->id}}" readonly>                                                       
-                                                        <span class="input-group-addon"><i class="fa fa-eur" aria-hidden="true"></i></span>                                                                                                            
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item cost">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-6">
-                                                        <a class="btn btn-block btn-gray save" data-save="{{$data}}">Save</a>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-6">          
-                                                        <a class="btn btn-block btn-green send" data-send="{{$data}}">Send</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @if($data->status == "paid")
-                                    <div class="header-sub-item">
-                                        <div class="row">
-                                            <div class="label-sub-item contact-information">BONUS POINTS GIVEN FOR THIS SERVICE</div>                                                                               
-                                        </div>
-                                    </div>
-                                    <div class="list-sub-item">
-                                        <div class="row">                                                                
-                                            <div class="label-sub-item bonus_input">
-                                                <div class="form-group">
-                                                    <div class="input-group" style="width: 111%;">
-                                                        <label for="">TOTAL BONUS PONTS</label>                                                 
-                                                        <input type="text" class="form-control total_bonus" name="total_bonus" id="total_bonus{{$data->id}}">                                                        
-                                                    </div>
-                                                </div>
-                                            </div>                                           
-                                            <div class="label-sub-item bonus_button">                                                         
-                                                <a class="btn btn-block btn-green send_bonus" data-send="{{$data}}">Send</a>                                                  
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                </div>                               
                             </div>
                             @endforeach
                             {{$datas->links()}}
                         </div><!-- items-list -->
                     </div><!-- content-box -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-handling-request" id="modal-details" tabindex="-1" role="dialog" aria-labelledby="modal-handling-requestLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>Cargo Request</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">CONTACT PERSON:</label>
+                                    <input type="text" name="person" id="person" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">COMPANY</label>
+                                    <input type="text" name="company" id="company" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Phone</label>
+                                    <input type="tel" name="phone" id="phone" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Departure</label>
+                                    <input type="text" name="departure" id="departure" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Destination</label>
+                                    <input type="text" name="destination" id="destination" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Date</label>
+                                    <input type="text" name="date" id="date" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Status</label>
+                                    <input type="text" name="status" id="status" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

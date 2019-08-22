@@ -20,9 +20,10 @@
             border-radius: 0px;
             border: none;
             margin: 0px;
-            border-left: solid 3px #f8f6f0;
-            border-right: solid 3px #f8f6f0;
+            border-left: solid 5px #f8f6f0;
+            border-right: solid 5px #f8f6f0;
             position: relative;
+            background: #fff;
             a{
                 color: #b7b3aa;
                 border: none;
@@ -63,6 +64,7 @@
                 a{
                     color: #656668;
                     border: none;
+                    background: #fff;
                     figure{
                         svg{
                             fill: #7abf32;
@@ -81,7 +83,7 @@
         margin: 6px 0px 150px;
         padding-top: 220px;
         .tab-pane{
-            padding: 45px;
+            padding: 80px 7px;
             background: #FFF;
             border-left: solid 3px #f8f6f0;
             border-right: solid 3px #f8f6f0;
@@ -157,7 +159,7 @@
                         }
                         .form-control{
                             @include placeholderColor(#b0b0b0);
-                            background-color: #f5f5f5;
+                            background-color: #fff;
                             color: #b0b0b0;
                             height: auto;
                             &:focus{
@@ -211,10 +213,10 @@
         }
         .navigation{
             a.arrow-nav{
-                background: transparent;
+                background: #fff;
                 border: solid 1px #ccc6b2;
                 position: absolute;
-                top: 80px;
+                top: 130px;
                 width: 50px;
                 height: 50px;
                 line-height: 50px;
@@ -223,10 +225,12 @@
                 color: #000;
                 font-size: 20px;
                 &.prev{
-                    left: -80px;
+                    left: 0px;
+                    z-index: 999;
                 }
                 &.next{
-                    right: -80px;
+                    right: 0px;
+                    z-index: 999;
                 }
                 &:hover{
                     background: #FFF;

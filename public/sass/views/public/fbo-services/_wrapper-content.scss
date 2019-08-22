@@ -6,7 +6,6 @@
             @include title($yellow, 28);
             display: block;
             margin: 0px;
-            text-transform: uppercase;
         }
         .grid {
             .item {
@@ -17,19 +16,18 @@
                 .box-top {
                     display: block;
                     border-bottom: solid 1px #dfdfdf;
-                    padding: 30px 20px 30px; 
+                    padding: 30px 20px 30px;
                     @include breakpoint(tablet){
                         padding: 30px 10px 20px;
                     }
                     p {
                         font-family: 'Gotham-book';
-                        font-size: 12px;
+                        font-size: 16px;
                         color: #5f6062;
                         margin: 0px 0px 30px 0px;
                     }
                     h3 {
-                        @include title($purple, 20);
-                        text-transform: uppercase;
+                        @include title($purple, 26);
                         display: block;
                         margin: 0px 0px 30px 0px;
                         position: relative;
@@ -51,10 +49,20 @@
                         }
                     }
                     .btn{
-                        padding: 6px 25px;
+                        padding: 10px 25px;
                     }
                 }
             }
         }
     }
+	#map {
+		width: 100%;
+		height: 535px;
+		background-color: grey;
+		box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);
+		@include breakpoint(mobile) {
+			height: 255px !important;
+			margin-bottom: 30px;
+		}
+	}
 }

@@ -1,5 +1,12 @@
 .tabs-wrapper{
 	background: #f8f6f0;
+	padding-top: 80px;
+	padding-bottom: 80px;
+	@include breakpoint (mobile) {
+		padding-top: 10px;
+		padding-bottom: 40px;
+		background: #e3e3e3;		
+	}
     .nav-tabs{
         border: none;
         width: 1000%;
@@ -16,20 +23,14 @@
             text-transform: uppercase;
             width: 187.5px;
             text-align: center;
-            line-height: 1;
-            background: #f8f6f0;
+            line-height: 1;            
             border-radius: 0px;
             border: none;
-            margin: 0px;
-            border-left: solid 3px #f8f6f0;
-            border-right: solid 3px #f8f6f0;
+            margin: 0px;            
             position: relative;
             a{
                 color: #b7b3aa;
-                border: none;
-                &:hover{
-                    background: #f8f6f0;
-                }
+                border: none;                
                 figure{
                     display: block;
                     width: 135px;
@@ -61,8 +62,7 @@
                     left: 0px;
                     z-index: 2;
                 }
-                a{
-					background: #f8f6f0;
+                a{					
                     color: #656668;
                     border: none;
                     figure{
@@ -72,8 +72,7 @@
                     }
                 }
             }
-            &:hover{
-                background: #f8f6f0;
+            &:hover{                
 				border: 1px solid #fff;
             }
         }
@@ -81,13 +80,10 @@
     .tab-content{
         display: block;
         clear: both;
-        margin: 6px 0px 150px;
+        margin: 6px 0px 0px;
         padding-top: 220px;
         .tab-pane{
-            padding: 45px;
-            background: #f8f6f0;
-            border-left: solid 3px #f8f6f0;
-            border-right: solid 3px #f8f6f0;
+            padding: 45px;                       
             .steps-wrapper{
                 display: block;
                 position: relative;
@@ -106,6 +102,11 @@
                         -o-transition: all 0.3s ease-out;
                         -webkit-transition: all 0.3s ease-out;
                     }
+					.check-group {
+						list-style-type: none;
+						padding-left: 0px;
+						display: flex;
+					}
                     &.next{
                         opacity: 0;
                         visibility: hidden;
@@ -187,10 +188,15 @@
                             background-image: url('../assets/img/arrow-select-gray.jpg');
                             background-repeat: no-repeat;
                             background-position: right center;
-                            background-size: auto 100%;
-                        }	
+                            background-size: auto 100%;							
+                        }
+						.meet_flight_no {
+							&.success:after, &.error:after {
+								top: 87px;
+							}
+						}
 						&.success:after, &.error:after {				
-							top: 39px!important;						
+							top: 75px;						
 						}						
                     }
 					#price {
@@ -214,17 +220,79 @@
 						margin-top: 20px;
                     }
                 }
+				form {
+					.text-left {
+						#price {
+							color: #c29834;
+							font-size: 26px;
+						}
+					}
+					.form-group {
+						label{
+                            font-size: 0.875em;
+							text-transform: uppercase;
+							color: #656668;
+							font-weight: normal;
+                        }
+                        .form-control{
+                            @include placeholderColor(#b0b0b0);
+                            background-color: #f5f5f5;
+                            color: #b0b0b0;
+                            height: auto;
+                            &:focus{
+                                background-color: #FFF;
+                                border-color: $yellow;
+                            }
+                            &.date{
+                                background-image: url('../assets/img/input-date-gray.jpg');
+                                background-repeat: no-repeat;
+                                background-position: right center;
+                                background-size: auto 100%;
+                                padding-right: 50px;
+                            }
+                            &.time{
+                                background-image: url('../assets/img/input-time.jpg');
+                                background-repeat: no-repeat;
+                                background-position: right center;
+                                background-size: auto 100%;
+                                padding-right: 50px;
+                            }
+                        }
+					}
+					.meet-check-group {
+						list-style-type: none;
+						padding-left: 0px;
+						display: flex;
+						li {
+							padding-right: 20px;
+							font-family: Gotham;
+							color: rgb(194, 152, 52);
+							font-size: 20px;
+							font-weight: bold;
+						}
+						input {
+							cursor: pointer;
+							width: 21px;
+							height: 21px;
+							vertical-align: top;
+						}
+					}
+				}
             }
         }
     }
     .carousel-wrapper{
         display: block;
         position: relative;
+		@include breakpoint (mobile) {
+			display: none;
+		}
         .carousel-tabs{
             width: 100%;
             overflow: hidden;
             display: block;
             position: relative;
+			background: #fff;
         }
         .navigation{
             a.arrow-nav{
@@ -252,4 +320,119 @@
             }
         }
     }
+	.mobile-wrapper {
+		display: none;
+		@include breakpoint (mobile) {
+			display: block;
+			.container {
+				background: #fff;
+				padding: 10px;
+				margin-top: 3px;
+				span {
+					color: #48539b;
+					font-size: 14px;
+					text-transform: uppercase;
+					margin-left: 10px;
+					&.caret {
+						float: right;
+						border-radius: 50%;
+						background: #c29834;
+						color: #c29834;
+						width: 23px;
+						height: 23px;
+						margin-right: 10px;
+						transform: rotate(0deg);
+						transition: all 0.3s ease-Out;
+						-moz-transition: all 0.3s ease-Out;
+						-o-transition: all 0.3s ease-Out;
+						-webkit-transition: all 0.3s ease-Out;
+						i {
+							font-size: 19px;
+							position: relative;
+							left: 2px;
+							top: -3px;
+							color: #fff;
+						}
+						&.collapsed {
+							transform: rotate(180deg);
+						}
+					}
+				}
+			}
+			.tab {
+				padding: 20px;
+			    #mobile_price {
+					color: #c29834;
+					font-size: 30px;
+					padding-top: 25px;
+					padding-left: 20px;
+				}
+				.meet_price {
+					color: #c29834;
+					font-size: 20px;
+					padding-top: 13px;
+					padding-left: 20px;
+				}
+				form {
+					.text-left {
+						#price {
+							color: #c29834;
+							font-size: 17px;
+							margin-top: 13px;
+						}
+					}
+					.form-group {
+						label{
+                            font-size: 12px;
+							text-transform: uppercase;
+							color: #656668;
+							font-weight: normal;
+                        }
+                        .form-control{
+                            @include placeholderColor(#b0b0b0);
+                            background-color: #f5f5f5;
+                            color: #b0b0b0;
+                            height: auto;
+                            &:focus{
+                                background-color: #FFF;
+                                border-color: $yellow;
+                            }
+                            &.date{
+                                background-image: url('../assets/img/input-date-gray.jpg');
+                                background-repeat: no-repeat;
+                                background-position: right center;
+                                background-size: auto 100%;
+                                padding-right: 50px;
+                            }
+                            &.time{
+                                background-image: url('../assets/img/input-time.jpg');
+                                background-repeat: no-repeat;
+                                background-position: right center;
+                                background-size: auto 100%;
+                                padding-right: 50px;
+                            }
+                        }
+					}
+					.meet-check-group {
+						list-style-type: none;
+						padding-left: 0px;
+						display: flex;
+						li {
+							padding-right: 15px;
+							font-family: Gotham;
+							color: rgb(194, 152, 52);
+							font-size: 15px;
+							font-weight: bold;
+						}
+						input {
+							cursor: pointer;
+							width: 18px;
+							height: 18px;
+							vertical-align: sub;
+						}
+					}
+				}
+			}
+		}
+	}
 }

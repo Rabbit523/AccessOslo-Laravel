@@ -125,9 +125,8 @@
 		}
 
 		// 遮罩层样式
-		this.$modalMask.css({
-			backgroundColor: 	this.set.maskBgColor,
-			zIndex: 			this.set.zIndex,
+		this.$modalMask.css({			
+			zIndex: 			this.set.zIndex,			
 		});
 
 		// 添加额外的class
@@ -144,8 +143,7 @@
 		this.$modalLoading.css({
 			width: 				this.set.loadingWidth,
 			height: 			this.set.loadingHeight,
-			padding: 			this.set.loadingPadding,
-			backgroundColor: 	this.set.loadingBgColor,
+			padding: 			this.set.loadingPadding,			
 			borderRadius: 		this.set.loadingBorderRadius,
 		});
 
@@ -170,8 +168,7 @@
 		}
 
 
-		this.$loadingTitle.css({
-			color: 		this.set.titleColor,
+		this.$loadingTitle.css({			
 			fontSize: 	this.set.titleFontSize,
 		});
 
@@ -200,7 +197,7 @@
 			this.$animationOrigin.children().css({
 				width: this.set.animationOriginWidth,
 				height: this.set.animationOriginHeight,
-				backgroundColor: this.set.animationOriginColor,
+				backgroundColor: "#03A9F4",
 			});
 			for(var i = 0; i < 5; i++) {
 				this.$loadingAnimation.append(this.$animationOrigin.clone());
@@ -230,7 +227,7 @@
 		}
 
 		this.$loadingDiscription.css({
-			color: 		this.set.discriptionColor,
+			color: 		"#03A9F4",
 			fontSize: 	this.set.discriptionFontSize,
 		});
 

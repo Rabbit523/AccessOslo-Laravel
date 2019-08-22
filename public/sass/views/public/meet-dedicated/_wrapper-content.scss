@@ -1,4 +1,4 @@
-.wrapper-content {  
+.wrapper-content {
     padding-bottom: 60px;
     .box {
         &.box-left {
@@ -6,10 +6,9 @@
             padding: 30px;
             background: #FFF;
             h2{
-                @include title($yellow, 24);
+                @include title($yellow, 26);
                 margin-top: 0px;
                 margin-bottom: 20px;
-                text-transform: uppercase;
             }
             h3{
                 @include title(#5f6062, 20);
@@ -26,7 +25,7 @@
                 color: #5f6062;
                 font-family: 'Gotham-book';
                 font-weight: normal;
-                font-size: 12px;
+                font-size: 16px;
                 line-height: 24px;
                 margin-bottom: 10px;
                 a{

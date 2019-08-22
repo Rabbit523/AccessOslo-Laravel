@@ -5,16 +5,20 @@
         display: block;
         float: left;
         &.booking-id{
-            width: 11%;
+            width: 7%;
+			text-align: left;
         }
         &.departure{
-            width: 16%;
+            width: 20%;
+			text-align: center;
         }
         &.destination{
-            width: 16%;
+            width: 20%;
+			text-align: center;
         }
         &.date{
             width: 6%;
+			text-align: center;
         }
         &.travelers{
             width: 13%;
@@ -22,16 +26,15 @@
         }
         &.flight{
             width: 10%;
+			text-align: center;
         }
         &.contact{
             width: 14%;
-        }
-        &.status{
-            width: 8%;
-        }
+			text-align: center;
+        }        
         &.toggle{
-            text-align: center;
-            width: 6%;
+            text-align: right;
+            width: 10%;
         }
     }
 }

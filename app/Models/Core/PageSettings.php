@@ -24,7 +24,7 @@ class PageSettings extends Model
      * @var array
      */
 
-    protected $fillable = ['page_title', 'page_title_plain', 'page_content', 'extra_content', 'author', 'published_date', 'status', 'meta_title', 'meta_description', 'banner_img'];
+    protected $fillable = ['en_page_title', 'page_title_plain', 'en_page_content', 'author', 'published_date', 'status', 'en_meta_title', 'en_meta_description', 'banner_img', 'nb_page_title', 'nb_page_content', 'nb_meta_title', 'nb_meta_description'];
 
     /**
      * The attributes that should be hidden for arrays.

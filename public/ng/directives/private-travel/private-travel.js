@@ -70,7 +70,6 @@ accessosloPrivatetravel.directive('accessosloPrivatetravel', ["accessosloAPI", f
             $scope.visible_step2 = true;
             $scope.quoteDetails.travel_type = "private";
             $scope.quoteDetails.phone = $("#mobile-number").intlTelInput("getNumber");
-            var loading = new Loading({ title: 'Please check your email.', discription: 'Loading...' });
             accessosloAPI.services.booking($scope.quoteDetails, function (response) {   
               window.location = "/travel/private-travel";                                     
             });         

@@ -1,11 +1,15 @@
 .introduction{
     display: block;
     width: 100%;
-    padding: 0px;
-    margin: 30px 0px 30px;
+    padding: 100px 0px 0px;
+    margin: 0px 0px 30px;
     @include breakpoint(sm_pc){
         margin-top: 0px;
     }
+	@include breakpoint (mobile) {
+		margin: 0px;
+		background: #FFF;
+	}
     .wrapper-content {
         margin: auto;
         left: 0px;
@@ -17,6 +21,7 @@
         }
         @include breakpoint(mobile){
             top: 0%;
+			padding: 10px 0px 10px 0px;
         }
         h1 {
             font-family: 'Gotham-Book';
@@ -42,6 +47,12 @@
         }
 		.margin_title {
 			margin-left: 80px;
+			@include breakpoint(mobile){
+                margin-left: 0;
+				p {
+					display: none;
+				}
+            }
 		}
     }
 }

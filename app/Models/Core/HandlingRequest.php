@@ -24,7 +24,7 @@ class HandlingRequest extends Model
      * @var array
      */
 
-    protected $fillable = ['airport', 'company', 'aircraft', 'crew_config1', 'crew_config2', 'flight_type', 'hotac', 'catering', 'person','phone','fax', 'email', 'inbound_flight', 'inbound_date', 'inbound_orig', 'inbound_captain', 'inbound_utc', 'inbound_pax', 'outbound_flight','outbound_date','outbound_orig','outbound_captain','outbound_utc','outbound_pax','comments'];
+    protected $fillable = ['airport', 'company', 'aircraft_type', 'aircraft_reg', 'crew_config1', 'crew_config2', 'flight_type', 'hotac', 'catering', 'person','phone', 'email', 'inbound_flight', 'inbound_date', 'inbound_orig', 'inbound_utc', 'outbound_flight','outbound_date','outbound_orig','outbound_utc', 'comments', 'payment_id', 'attach_doc'];
 
     /**
      * The attributes that should be hidden for arrays.

@@ -3,10 +3,16 @@
     position: relative;
     width: 100%;
     padding: 0px;
-    margin: -140px 0px 0px;
+    margin: 0;
     @include breakpoint(sm_pc){
         margin-top: 0px;
     }
+	@include breakpoint (mobile) {
+		padding-top: 50px !important;
+		.container {
+			top: 24% !important;
+		}
+	}
     .wrapper-content {
         position: absolute;
         z-index: 5;
@@ -25,11 +31,14 @@
             font-family: 'Gotham-Book';
             font-size: 45px;
             font-weight: normal;
-            text-transform: uppercase;
             color: #fff;
             @include breakpoint(sm_pc){
                 font-size: 30px;
             }
+			@include breakpoint (mobile) {
+				font-size: 25px !important;
+				margin-top: 50px;
+			}
         }
         h2 {
             font-family: 'Gotham-Book';

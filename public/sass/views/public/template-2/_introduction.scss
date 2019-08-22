@@ -3,10 +3,16 @@
     position: relative;
     width: 100%;
     padding: 0px;
-    margin: -140px 0px 0px;
+    margin: 0px 0px 0px;
     @include breakpoint(sm_pc){
         margin-top: 0px;
     }
+	@include breakpoint (mobile) {
+		padding-top: 50px !important;
+		.container {
+			top: 24% !important;
+		}
+	}
     .wrapper-content {
         position: absolute;
         z-index: 5;
@@ -22,14 +28,22 @@
             top: 0%;
         }
         h1 {
-            font-family: 'Gotham-Book';
-            font-size: 45px;
-            font-weight: normal;
-            text-transform: uppercase;
-            color: #fff;
+			font-size: 74px !important;
+			font-family: Gotham-Book !important;
+			color: rgb(255, 255, 255) !important;
+			text-transform: uppercase !important;
+			text-align: center !important;
+			text-shadow: 0px 0px 20px rgba(0,0,0,0.2) !important;
+			margin-top: -10px !important;
+			margin-left: -20px !important;
             @include breakpoint(sm_pc){
                 font-size: 30px;
             }
+			@include breakpoint (mobile) {
+				font-size: 25px !important;
+				margin: 0 !important;
+				padding-top: 45px;
+			}
         }
         h2 {
             font-family: 'Gotham-Book';

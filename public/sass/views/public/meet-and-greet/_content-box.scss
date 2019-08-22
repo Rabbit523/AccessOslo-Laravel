@@ -15,18 +15,17 @@
         font-weight: normal;
         font-size: 16px;
         line-height: 24px;
-        margin-bottom: 30px;
+		margin-bottom: 0px;        
     }
     .box{
-        background: #fff;
-        box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);
-        padding: 30px 20px;
+        background: #fff !important;
+        box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15) !important;
+        padding: 30px 20px !important;
         &.box-left {
             height: 100%;
             h3{
                 color: $yellow;
-                text-transform: uppercase;
-                font-size: 28px;
+                font-size: 26px;
                 margin-bottom: 30px;
                 margin-top: 0px;
             }
@@ -40,7 +39,7 @@
                     color: #5f6062;
                     font-family: 'Gotham-book';
                     font-weight: normal;
-                    font-size: 14px;
+                    font-size: 16px;
                     line-height: 20px;
                     position: relative;
                     padding-left: 15px;
@@ -64,15 +63,32 @@
             }
         }
         &.box-right{
-            height: 100%;
+            height: 100%;			
+			.check-group {
+				list-style-type: none;
+				padding-left: 0px;
+				display: flex;
+				li {
+					padding-right: 20px;
+					font-family: Gotham;
+					color: rgb(194, 152, 52);
+					font-size: 20px;
+					font-weight: bold;
+				}
+				input {
+					cursor: pointer;
+					width: 21px;
+					height: 21px;
+					vertical-align: top;
+				}
+			}
             @include breakpoint(tablet){
                 height: auto;
             }
 			#price {
 				color: #c29834;
-				font-size: 30px;
+				font-size: 26px;
 				padding-top: 25px;
-				padding-left: 20px;				
 			}
             .form-group{
                 margin-bottom: 30px;
@@ -122,10 +138,15 @@
                     background-position: right center;
                     background-size: auto 100%;
                 }
-				&.success:after, &.error:after {				
-					top: 39px!important;						
-				}
+				&.success:after, &.error:after {
+					top: 75px;
+				}			
             }
+			.form-group.flight_no {
+				&.success:after, &.error:after {
+					top: 90px;
+				}
+			}
             .btn-border-gold {
                 padding: 15px 20px;
                 margin-top: 20px;
@@ -135,7 +156,7 @@
                 margin-top: 20px;
                 img {
                     width: 18px;
-                    margin-left: 10px;                
+                    margin-left: 10px;
                 }
             }
         }

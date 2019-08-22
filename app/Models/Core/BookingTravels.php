@@ -24,7 +24,7 @@ class BookingTravels extends Model
      * @var array
      */
 
-    protected $fillable = ['gender', 'first_name', 'last_name', 'phone', 'email', 'comments', 'travel_type', 'status', 'total_cost', 'partner_name', 'aircraft'];
+    protected $fillable = ['gender', 'first_name', 'last_name', 'phone', 'email', 'comments', 'travel_type', 'status', 'total_cost', 'partner_name', 'aircraft', 'payment_id'];
 
     /**
      * The attributes that should be hidden for arrays.

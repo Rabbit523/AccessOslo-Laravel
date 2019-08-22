@@ -1,4 +1,4 @@
-.wrapper-content {  
+.wrapper-content {
     padding-bottom: 60px;
     .box-left {
         .box{
@@ -7,8 +7,7 @@
             padding: 20px;
             margin-bottom: 20px;
             h2{
-                @include title($yellow, 30);
-                text-transform: uppercase;
+                @include title($yellow, 26);
                 margin-top: 0px;
             }
             h3{
@@ -16,7 +15,7 @@
             }
             p{
                 font-family: 'Gotham-book';
-                font-size: 12px;
+                font-size: 16px;
                 color: #5f6062;
                 line-height: 24px;
             }
@@ -32,5 +31,10 @@
         @include shadowBox;
         background: #FFF;
         padding: 0px;
+		#map {
+			width: 100%;
+			height: 345px;
+			background-color: grey;
+		}
     }
 }

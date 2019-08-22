@@ -1,9 +1,13 @@
 footer {
     display: block;
-    padding: 30px 0px 20px;
+    padding: 100px;
     margin: 0px;
     width: 100%;
     background: #ffffff;
+	@include breakpoint(mobile) {
+		padding: 10px;
+		padding-top: 50px;
+	}
     .box-top{
         display: block;
         width: 100%;
@@ -53,16 +57,18 @@ footer {
             color: #5f6062;
         }
         a {
-            color: $purple;
+            color: #5f6062;
         }
         .box-left {
-            color: #adadad;
+            color: #5f6062;
             @include breakpoint(tablet){
                 text-align: center;
                 margin-bottom: 20px;
             }
             p {
                 margin: 0px;
+                font-size: 14px;
+                font-family: "Gotham-Book";
             }
         }
         .box-right {
@@ -93,7 +99,9 @@ footer {
                         }
                     }
                     a{
-                        color: #8c8c8c;
+                        color: #5f6062;
+                        font-size: 14px;
+                        font-family: "Gotham-Book";
                     }
                 }
             }
@@ -131,6 +139,23 @@ footer {
                 }
             }
         }
+		#lang-form {
+			.country-select {
+				ul {
+					height: 78px;
+					display: flex;
+					flex-direction: column;
+					width: 165px;
+					overflow: hidden;
+					li {
+						margin-right: 0;
+					}
+				}
+			}
+			#selected_lang {
+				display: none;
+			}
+		}
         .logo {
             padding-top: 15px;
         }
@@ -152,12 +177,16 @@ footer {
             .email {
                 padding-right: 0px;
                 @include breakpoint(md_pc){
-                    padding-right: 15px;                    
+                    padding-right: 15px;
+                }
+                input {
+                  height: 45px;
                 }
             }
             input[type="submit"]{
                 @extend .submit-yellow;
                 border-radius: 0px;
+                height: 45px;
                 outline: none;
             }
         }
@@ -166,7 +195,8 @@ footer {
                 list-style: none;
                 padding: 0px;
                 margin: 0px;
-                font-size: 12px;
+                font-size: 14px;
+                font-family: "Gotham-Book";
                 li {
                     margin-bottom: 8px;
                     &:before {
@@ -218,7 +248,7 @@ footer {
                 }
                 p{
                     font-family: 'Gotham-Book';
-                    font-size: 12px;
+                    font-size: 14px;
                     line-height: 20px;
                 }
                 .logo-footer{

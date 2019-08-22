@@ -24,7 +24,7 @@ class Charters extends Model
      * @var array
      */
 
-    protected $fillable = ['author', 'contact_person', 'email', 'aircraft', 'estimate_cost', 'additional_fee', 'total_cost', 'charter_type', 'charter_id'];
+    protected $fillable = ['partner_name', 'aircraft', 'estimate_cost', 'additional_fee', 'total_cost', 'charter_type', 'charter_id', 'status', 'capacity', 'additional_reply'];
 
     /**
      * The attributes that should be hidden for arrays.

@@ -1,5 +1,8 @@
 &.accessoslo-home{
     background: #f8f6f0;
+	.wickedpicker {
+		z-index: 5;
+	}
     @import "introduction";
     @import "content-box";
 }

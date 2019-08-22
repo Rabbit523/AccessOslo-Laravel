@@ -4,7 +4,7 @@
         background: white;
         color: #333333;
         padding: 20px 30px;
-        margin-bottom: 20px;
+        margin-bottom: 3px;
         .title{
             a{
                 display: inline;
@@ -14,13 +14,7 @@
                 transition: all 0.3s ease-out;
                 -moz-transition: all 0.3s ease-out;
                 -webkit-transition: all 0.3s ease-out;
-                -o-transition: all 0.3s ease-out;
-                &:after{
-                    content: "\2022";
-                    color: #c6c6c6;
-                    display: inline;
-                    margin: 0px 5px;
-                }
+                -o-transition: all 0.3s ease-out;                
                 &:last-child{
                     &:after{
                         display: none;
@@ -33,10 +27,13 @@
                     text-decoration: none;
                 }
                 &.edit{
-                    color: $purple
+                    color: $purple;
+					cursor: pointer;
+					padding-right: 10px;
                 }
                 &.delete{
                     color: $red;
+					cursor: pointer;
                 }
             }
         }

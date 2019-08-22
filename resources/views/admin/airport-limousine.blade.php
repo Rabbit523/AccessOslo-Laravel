@@ -1,11 +1,11 @@
-@extends('layouts.private') @section('title', 'Hjem') @section('content')
+@extends('layouts.private') @section('title', 'Admin Portal') @section('content')
 <div class="page-container">
     <header>
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-sm-6">
                     <div class="title-box">
-                        <h1>{{$title}}</h1>                    
+                        <h1 style="font-size: 2em;">{{$title}}</h1>                    
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">
@@ -73,142 +73,9 @@
                                         <div class="label-table to-address">{{$data->to_address}}</div>
                                         <div class="label-table type-car">{{$data->type_car}}</div>
                                         <div class="label-table status {{$data->status}}"><span>{{$data->status}}</span></div>
-                                        <div class="label-table toggle" data-info="{{$data}}"><span><i class="fa fa-caret-up"></i></span></div>
+                                        <div class="label-table toggle"><a class="btn btn-gray comments" data-source="{{$data}}">View Details</a></div>
                                     </div>
-                                </div>
-                                <div id="item{{$data->id}}" class="collapse info-item">
-                                    <div class="header-sub-item">
-                                        <div class="row">
-                                            <div class="label-sub-item contact-information">Contact Information</div>                                   
-                                            <div class="label-sub-item actions">action</div>
-                                        </div>
-                                    </div>
-                                    <div class="list-sub-item">
-                                        <div class="row">
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <label for="">FULL NAME</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" value="{{$data->contact_person}}" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <label for="">PHONE</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" value="{{$data->phone}}" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <label for="">EMAIL</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" value="{{$data->email}}" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <label for="">COMPANY</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" value="{{$data->company}}" readonly>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item full-name">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <a class="btn btn-gray comments" data-source="{{$data}}">View Details</a>
-                                                    </div>
-                                                </div>                                                
-                                            </div>                                                                          
-                                        </div>
-                                    </div>
-                                    <div class="header-sub-item">
-                                        <div class="row">
-                                            <div class="label-sub-item contact-information">Flight Information</div>                                   
-                                            <div class="label-sub-item actions">action</div>
-                                        </div>
-                                    </div>
-                                    <div class="list-sub-item">
-                                        <div class="row">  
-                                            <div class="label-sub-item cost">                                               
-                                                <div class="form-group">                                                                                                
-                                                    <label for="">AIRCRAFT TYPE</label>
-                                                    <select name="aircraft" id="aircraft{{$data->id}}" class="select">
-                                                        <option disabled selected value>Aircraft/Car</option>
-                                                        @foreach($aircrafts as $aircraft)                                                       
-                                                        <option value="{{$aircraft->type}}">{{$aircraft->type}}</option>
-                                                        @endforeach
-                                                    </select>                                                                                               
-                                                </div>                                                         
-                                            </div>                              
-                                            <div class="label-sub-item cost">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        <label for="">ESTIMATE FLIGHT COST</label>                                                 
-                                                        <input type="text" class="form-control estimate_cost" name="estimate_cost" id="estimate_cost{{$data->id}}">                                                        
-                                                        <span class="input-group-addon"><i class="fa fa-eur" aria-hidden="true"></i></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item cost">
-                                                <div class="form-group">
-                                                    <div class="input-group">
-                                                        @if(auth()->user()->role_id == 0)
-                                                        <label for="">ADDITIONAL FEE</label>                                                        
-                                                        <input type="text" class="form-control additional_fee" name="additional_fee" id="additional_fee{{$data->id}}">                                                                                                              
-                                                        <span class="input-group-addon"><i class="fa fa-eur" aria-hidden="true"></i></span>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item cost">
-                                                <div class="form-group">
-                                                    <div class="input-group">                                                       
-                                                        <label for="">TOTAL COST</label>                                                        
-                                                        <input type="text" class="form-control total_cost" name="total_cost" id="total_cost{{$data->id}}" readonly>                                                                                                             
-                                                        <span class="input-group-addon"><i class="fa fa-eur" aria-hidden="true"></i></span>                                                        
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="label-sub-item cost">
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-sm-6">
-                                                        <a class="btn btn-block btn-gray save" data-save="{{$data}}">Save</a>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-6">          
-                                                        <a class="btn btn-block btn-green send" data-send="{{$data}}">Send</a>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @if($data->status == "paid")
-                                    <div class="header-sub-item">
-                                        <div class="row">
-                                            <div class="label-sub-item contact-information">BONUS POINTS GIVEN FOR THIS SERVICE</div>                                                                               
-                                        </div>
-                                    </div>
-                                    <div class="list-sub-item">
-                                        <div class="row">                                                                
-                                            <div class="label-sub-item bonus_input">
-                                                <div class="form-group">
-                                                    <div class="input-group" style="width: 111%;">
-                                                        <label for="">TOTAL BONUS PONTS</label>                                                 
-                                                        <input type="text" class="form-control total_bonus" name="total_bonus" id="total_bonus{{$data->id}}">                                                        
-                                                    </div>
-                                                </div>
-                                            </div>                                           
-                                            <div class="label-sub-item bonus_button">                                                         
-                                                <a class="btn btn-block btn-green send_bonus" data-send="{{$data}}">Send</a>                                                  
-                                            </div>
-                                        </div>
-                                    </div>
-                                    @endif
-                                </div>  
+                                </div>                               
                             </div>
                             @endforeach
                             {{$datas->links()}}

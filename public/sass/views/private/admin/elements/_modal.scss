@@ -172,6 +172,9 @@
 
 /* ADMIN: Partners */
 .modal-partners{
+	.modal-backdrop {
+		height: 1505px !important;
+	}
     .modal-dialog{
         .modal-content{
             border-radius: 5px;
@@ -240,6 +243,9 @@
 						border: 1px solid #66afe9;
 					}
                 }
+				#file_upload {
+					font-size: 15px !important;
+				}
             }
             .modal-footer{
                 border: none;
@@ -408,10 +414,28 @@
                         height: auto;             
                     }
                 }
-				.upload-image {
-					display: block;
-					margin-bottom: 20px;
-					border:1px solid #aca6a6;
+				.upload-btn-wrapper {
+                  position: relative;
+                  overflow: hidden;
+                  display: inline-block;
+                }
+
+                .upload-btn-wrapper .btn {
+                    color: gray;
+                    background-color: white;
+                    padding: 50px 160px 50px 180px;
+                    border: 1px solid;
+                    width: 100%;
+                    font-size: 20px;
+                    font-weight: bold;
+                }
+
+                .upload-btn-wrapper input[type=file] {
+                  font-size: 100px;
+                  position: absolute;
+                  left: 0;
+                  top: 0;
+                  opacity: 0;
 				}
 				#preview {
 					display: inline-block;
@@ -546,6 +570,71 @@
                             padding-right: 60px;
                         }
                     }					
+                }
+            }
+            .modal-footer{
+                border: none;
+                padding: 0px 0px 20px 0px;
+                .btn{
+                    padding: 15px;
+                    &.btn-green{
+                        background: #6db408;
+                    }
+                }
+            }
+        }
+    }
+}
+/* ADMIN View additional service Modal */
+.modal-additional-service{
+    .modal-dialog{
+        .modal-content{
+            border-radius: 5px;
+            padding: 0px 40px;
+            background: #f5f5f5;
+            .modal-header{
+                border-color: #cccccc;
+                position: relative;
+                padding: 45px 0px 15px;
+                display: inline-block;
+                width: 100%;
+                .close{
+                    position: absolute;
+                    opacity: 1;
+                    text-shadow: none;
+                    right: -25px;
+                    top: 5px;
+                    color: #c9c9c9;
+                    font-size: 30px;
+                    margin: 0px;
+                }               
+                p{
+                    color: $yellow;
+                    text-transform: uppercase;
+                    font-family: 'Gotham-Book';
+                    font-size: em(20);
+                    display: inline-block;
+                    margin-right: 15px;
+					font-weight: bold;
+                }
+            }
+            .modal-body{
+                padding: 20px 0px 15px;
+                .row-modal{
+                    display: block;
+                    padding: 0px;
+                }
+                .form-group{
+                    > label{
+                        text-transform: uppercase;
+						font-weight: bold;
+						color: #575757;
+						font-family: 'Gotham';
+						font-size: 0.875em;
+                    }
+					textarea {
+						height: 150px;
+					}
                 }
             }
             .modal-footer{

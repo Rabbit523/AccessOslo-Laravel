@@ -5,35 +5,36 @@
         display: block;
         float: left;
         &.booking-id{
-            width: 9%;
+            width: 8%;
+			text-align: left;
         }
         &.departure{
-            width: 15%;
+            width: 20%;
+			text-align: center;
         }
         &.destination{
-            width: 15%;
+            width: 20%;
+			text-align: center;
         }
         &.date{
             width: 9%;
-        }
-        &.cargo-type{
-            width: 9%;
-        }
+			text-align:center;
+        }      
         &.dimensions{
             width: 13%;
+			text-align:center;
         }
         &.weight{
             width: 8%;
+			text-align:center;
         }
         &.dangerous{
             width: 9%;
-        }
-        &.status{
-            width: 7%;
-        }
+			text-align:center;
+        }       
         &.toggle{
-            text-align: center;
-            width: 5%;
+            text-align: right;
+            width: 12%;
         }
     }
 }

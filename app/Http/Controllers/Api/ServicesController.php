@@ -172,6 +172,12 @@ class ServicesController extends ApiController {
     );
   }
 
+  public function deleteAircraft (Request $request) {
+    return $this->json(
+      AirportServices::deleteAircraft($request)
+    );
+  }
+
   public function AircraftImageUpload (Request $request) {
     return $this->json(
       AirportServices::AircraftImageUpload($request)
@@ -193,6 +199,78 @@ class ServicesController extends ApiController {
   public function saveExtraBonus(Request $request) {
     return $this->json(
       AirportServices::saveExtraBonus($request)
+    );
+  }
+
+  public function SlideImageUpload(Request $request) {
+    return $this->json(
+      AirportServices::SlideImageUpload($request)
+    );
+  }
+
+  public function getPageSlideImages(Request $request) {
+    return $this->json(
+      AirportServices::getPageSlideImages($request)
+    );
+  }
+
+  public function PageSlideImageDelete(Request $request) {
+    return $this->json(
+      AirportServices::PageSlideImageDelete($request)
+    );
+  }
+
+  public function subImagePage(Request $request) {
+    return $this->json(
+      AirportServices::subImagePage($request)
+    );
+  }
+
+  public function handlingDocument(Request $request) {
+    return $this->json(
+      AirportServices::handlingDocument($request)
+    );
+  }
+
+  public function invoiceRequest(Request $request) {
+    return $this->json(
+      AirportServices::invoiceRequest($request)
+    );
+  }
+
+  public function MemberAvatar(Request $request) {
+    return $this->json(
+      AirportServices::MemberAvatar($request)
+    );
+  }
+
+  public function AddNewMember(Request $request) {
+    return $this->json(
+      AirportServices::AddNewMember($request)
+    );
+  }
+
+  public function GetMembers(Request $request) {
+    return $this->json(
+      AirportServices::GetMembers($request)
+    );
+  }
+
+  public function UpdateMember(Request $request) {
+    return $this->json(
+      AirportServices::UpdateMember($request)
+    );
+  }
+
+  public function DeleteMember(Request $request) {
+    return $this->json(
+      AirportServices::DeleteMember($request)
+    );
+  }
+
+  public function DeleteAvatar(Request $request) {
+    return $this->json(
+      AirportServices::DeleteAvatar($request)
     );
   }
 }

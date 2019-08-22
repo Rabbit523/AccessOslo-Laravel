@@ -1,14 +1,31 @@
 .items-list{
-    display: block;
-    .item{
-        background: white;
-        color: #333333;
-        padding: 20px 30px;
-        margin-bottom: 20px;
-        .action{
-            a{
-                color: $purple;
-            }
+   display: block;
+   .item{
+       background: white;
+       color: #333333;
+       padding: 20px 30px;
+       margin-bottom: 3px;                   
+        .delete {
+            cursor: pointer;
+            display: none;
+            text-decoration: none !important;
         }
-    }
+        .action{
+			&:focus {
+                .delete {
+                    display: inline-block;
+                }
+            }
+            &:hover {
+                .delete {
+                    display: inline-block;
+                }
+            }
+		   a{
+			   color: $purple;
+				cursor: pointer;
+				text-decoration: none !important;
+		   }
+       }
+   }
 }

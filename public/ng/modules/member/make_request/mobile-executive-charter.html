@@ -1,0 +1,152 @@
+<div class="step step-1" ng-show="step1">
+  <form id="mobile_executive1_form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="airport dropdown form-group">
+                <label>DEPARTURE AIRPORT</label>
+                <input class="form-control" name="executive_departure" id="mobile_executive_departure" ng-model="executiveflight.departure" type="text" data-provide="typeahead" placeholder="Departure Airport" required>
+            </div>            
+        </div>
+        <div class="col-xs-12 col-sm-6">            
+            <div class="airport dropdown form-group">
+                <label>DESTINATION AIRPORT</label>
+                <input class="form-control" name="executive_destination" id="mobile_executive_destination" ng-model="executiveflight.destination" type="text" data-provide="typeahead" placeholder="Destination Airport" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>DATE</label>
+                <input type="text" name="executive_datepicker" id="mobile_executive_datepicker" class="form-control date" placeholder="Date of Departure" ng-model="executiveflight.date" required>               
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label for="">TIME</label>
+                <input type="text" id="mobile_executive_timepicker" name="executive_timepicker" class="form-control time" placeholder="Local time of departure"
+                    ng-model="executiveflight.time" required>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label for="">FLIGHT SERVICE</label>
+                <select name="flight_type" class="form-control" ng-model="executiveflight.flight_type" ng-change="onFlightTypeChange()" required>
+                    <option disabled selected value>Flight Service</option>
+                    <option value="One Way">OneWay</option>
+                    <option value="Round Way">RoundWay</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6 text-right">
+            <button type="submit" class="btn btn-yellow" ng-click="OnContinue()">Continue <img src="/assets/img/arrow-right.png" alt=""></button>            
+        </div>
+    </div>
+  </form>
+</div>
+<div class="step step-2" ng-show="step2">
+  <form id="mobile_executive2_form">
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>Contact Person</label>
+                <input type="text" name="executive_contact_person" id="mobile_executive_contact_person" class="form-control" placeholder="Nohman Janjua" ng-model="executiveflight.contact_person" required>               
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" name="executive_phone" id="mobile_executive_phone" class="form-control" required>                
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" name="executive_email" id="mobile_executive_email" class="form-control" placeholder="nohman@janjua.net" ng-model="executiveflight.email" required>             
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>COMPANY NAME</label>
+                <input type="text" name="executive_company" id="mobile_executive_company" class="form-control" placeholder="FantasyLab"  ng-model="executiveflight.company">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label>NO. OF Travelers</label>
+                <!-- <select name="executive_travellers" id="executive_travellers" class="form-control" ng-model="executiveflight.travellers" required ng-repeat="passenger in passengers"> -->
+                <select name="executive_travellers" id="mobile_executive_travellers" class="form-control" ng-model="executiveflight.travellers" required>
+                    <option disabled selected value>Passengers</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <!-- <option value="{{passenger.first_name}} {{passenger.last_name}}">{{passenger.first_name}} {{passenger.last_name}}</option>                    -->
+                </select>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label for="">FLIGHT BONUS</label>
+                <input type="text" name="flight_bonous" class="form-control" placeholder="Number of bonus points"
+                    ng-model="executiveflight.bonus">
+            </div>
+        </div>
+    </div>
+    <div class="row return-datetime">
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label for="">DATE OF RETURN</label>
+                <input type="text" id="mobile_return_exec_datepicker" name="return_date" class="form-control date" placeholder="Date of Return"
+                    ng-model="executiveflight.return_depature_date">
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+            <div class="form-group">
+                <label for="">TIME OF RETURN</label>
+                <input type="text" id="mobile_return_exec_timepicker" name="return_time" class="form-control time" placeholder="Time of Return"
+                    ng-model="executiveflight.return_depature_time">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="form-group">
+                <label>COMMENTS</label>
+                <textarea name="executive_comments" id="mobile_executive_comments" class="form-control" placeholder="Write your comments"  ng-model="executiveflight.comments" ></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 text-right">
+            <button type="submit" class="btn btn-yellow confirm" ng-click="OnBook()">GET FREE QUOTE</button>
+        </div>
+    </div>
+  </form>    
+</div>
+<div class="modal fade CustomBookSuccessMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="step thanks text-center">
+                <h2 style="color: #c29834; font-size: 26px;">Thank you <br> for your request.</h2>
+                <p><b>Status: <span style="color: red;">Pending</span></b></p><br>
+                <p>Our partner operators is giving you the best price available and you will receive a quote shortly.</p><br>
+                <p>Our crew will get in touch with you in a short time.</p><br>
+                <p>To see more details about your request, please<br><a class="redirect_upcoming" href="/member/upcoming-request">Go to Upcoming Request</a><br></p>
+                <a ng-click="closeSuccess()" class="btn btn-border-gold">Close</a>
+            </div>
+        </div>
+    </div>
+</div>

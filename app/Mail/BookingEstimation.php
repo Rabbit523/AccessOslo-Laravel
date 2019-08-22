@@ -30,7 +30,7 @@ class BookingEstimation extends Mailable
     public function build()
     {
         return $this->view('email.booking-estimation', compact('booking_charter'))
-        ->from("contact@accessoslo.no", "AccessOslo")
-        ->subject('Aircraft Chaters- Booking Estimation');
+        ->from("contact@accessoslo.no", "Access Oslo")
+        ->subject('Aircraft Charter - Booking Estimation');
     }
 }

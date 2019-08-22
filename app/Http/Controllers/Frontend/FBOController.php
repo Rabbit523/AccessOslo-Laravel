@@ -13,7 +13,7 @@ class FBOController extends Controller
         $page = PageSettings::where('id', '9')->first();
         return view('pages.fbo.oslo-fbo', [
             "title" => "Home",
-            "page" => "accessoslo-fbo-services",
+            "page" => "accessoslo-fbo-services accessoslo-template-2",
             "data" => $page
         ]);
     }
@@ -22,26 +22,17 @@ class FBOController extends Controller
         $page = PageSettings::where('id', '10')->first();
         return view('pages.fbo.sandejord-fbo', [
             "title" => "Home",
-            "page" => "accessoslo-sandefjord-fbo",
-            "data" => $page            
+            "page" => "accessoslo-sandefjord-fbo accessoslo-template-2",
+            "data" => $page
         ]);
     }
     
-    public function servicesFbo() {
-        $page = PageSettings::where('id', '11')->first();
-        return view('pages.fbo.fbo-services', [
-            "title" => "Home",
-            "page" => "accessoslo-fbo-services",
-            "data" => $page            
-        ]);
-    }
-
     public function supervision() {
         $page = PageSettings::where('id', '12')->first();
         return view('pages.fbo.supervision', [
             "title" => "Home",
             "page" => "accessoslo-partners accessoslo-template-2",
-            "data" => $page            
+            "data" => $page
         ]);
     }
 
@@ -50,7 +41,7 @@ class FBOController extends Controller
         return view('pages.fbo.vip-catering', [
             "title" => "Home",
             "page" => "accessoslo-single-partner accessoslo-template-2",
-            "data" => $page            
+            "data" => $page
         ]);
     }
 
@@ -58,9 +49,9 @@ class FBOController extends Controller
         $page = PageSettings::where('id', '14')->first();
         return view('pages.fbo.air-passenger-tax', [
             "title" => "Home",
-            "page" => "accessoslo-air-passenger-tax",
+            "page" => "accessoslo-air-passenger-tax accessoslo-template-2",
             "ngApp" => "accessosloApp",
-            "data" => $page            
+            "data" => $page
         ]);
     }
 }

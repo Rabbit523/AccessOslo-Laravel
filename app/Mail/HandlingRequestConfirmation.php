@@ -29,7 +29,7 @@ class HandlingRequestConfirmation extends Mailable
     public function build()
     {
         return $this->view('email.handling-confirmation', compact('handling'))
-        ->from("contact@accessoslo.no", "AccessOslo")
-        ->subject('Handling Request - Arrival - Booking Confirmation');
+        ->from("contact@accessoslo.no", "Access Oslo")
+        ->subject('Handling Request - Booking Confirmation');
     }
 }

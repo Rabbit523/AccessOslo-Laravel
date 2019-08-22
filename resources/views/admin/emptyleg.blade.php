@@ -1,4 +1,4 @@
-@extends('layouts.private') @section('title', 'Hjem') @section('content')
+@extends('layouts.private') @section('title', 'Admin Portal') @section('content')
 <div class="page-container">
     <header>
         <div class="container-fluid">
@@ -47,13 +47,15 @@
                             </div>
                         </div>                        
                         <div class="header-list"> 
-                            <div class="row">                             
-                              <div class="label-table gender">Gender</div>  
-                              <div class="label-table contact">Contact person</div>                                
-                              <div class="label-table company">Company</div>
-                              <div class="label-table phone">Phone</div>    
-                              <div class="label-table email">email</div>                              
-                              <div class="label-table status">status</div>                                                                                                                  
+                            <div class="row">
+                              <div class="label-table contact">Contact Person</div>
+                              <div class="label-table email">email</div>
+                              <div class="label-table phone">phone</div>
+                              <div class="label-table departure">departure</div>
+                              <div class="label-table destination">destination</div>
+                              <div class="label-table end_date">requested</div>
+                              <div class="label-table status">status</div>
+                              <div class="label-table action">action</div>
                             </div>
                         </div>
                         <div class="items-list">
@@ -64,12 +66,14 @@
                             <div class="item">
                                 <div class="item-toggle collapsed" data-toggle="collapse" data-target="#item{{$data->id}}" aria-expanded="false">
                                     <div class="row">
-                                      <div class="label-table gender">{{$data->gender}}</div>
                                       <div class="label-table contact">{{$data->contact_person}}</div>
-                                      <div class="label-table company">{{$data->company}}</div>
-                                      <div class="label-table phone">{{$data->phone}}</div>
                                       <div class="label-table email">{{$data->email}}</div>
-                                      <div class="label-table status {{$data->status}}"><span>{{$data->status}}<span></div>                                                                                                             
+                                      <div class="label-table phone">{{$data->phone}}</div>
+                                      <div class="label-table departure">{{$data->departure}}</div>
+                                      <div class="label-table destination">{{$data->destination}}</div>
+                                      <div class="label-table end_date">{{$data->updated_at}}</div>
+                                      <div class="label-table status {{$data->status}}"><span>{{$data->status}}</span></div>
+                                      <div class="label-table action"><a class="btn btn-gray details" data-source="{{$data}}">View Details</a></div>
                                     </div>
                                 </div>                               
                             </div>
@@ -77,6 +81,116 @@
                             {{$datas->links()}}     
                         </div>
                     </div><!-- content-box -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade modal-handling-request" id="modal-details" tabindex="-1" role="dialog" aria-labelledby="modal-handling-requestLabel" aria-hidden="true">
+        <div class="modal-dialog modal-md" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <p>Emptyleg Request</p>
+                </div>
+                <div class="modal-body">
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">CONTACT PERSON:</label>
+                                    <input type="text" name="person" id="person" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">COMPANY</label>
+                                    <input type="text" name="company" id="company" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Phone</label>
+                                    <input type="tel" name="phone" id="phone" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Email</label>
+                                    <input type="email" name="email" id="email" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Departure</label>
+                                    <input type="text" name="departure" id="departure" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Destination</label>
+                                    <input type="text" name="destination" id="destination" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">End Date</label>
+                                    <input type="text" name="date" id="end_date" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">End Time</label>
+                                    <input type="text" name="time" id="end_time" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Partner Name</label>
+                                    <input type="text" name="partner_name" id="partner_name" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Aircraft Type</label>
+                                    <input type="text" name="aircraft" id="aircraft" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-modal">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Price</label>
+                                    <input type="text" name="price" id="price" class="form-control" disabled>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
+                                    <label for="">Payment ID</label>
+                                    <input type="text" name="payment_id" id="payment_id" class="form-control" disabled>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

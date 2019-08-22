@@ -85,6 +85,18 @@ class ChartersController extends ApiController {
     );
   }
 
+  public function getEmptyNotice(Request $request) {
+    return $this->json(
+      AirCharters::getEmptyNotice($request)
+    );
+  }
+  
+  public function setEmptyNotice(Request $request) {
+    return $this->json(
+      AirCharters::setEmptyNotice($request)
+    );
+  }
+
   public function badgeSet(Request $request) {
     return $this->json(
       AirCharters::badgeSet($request)
@@ -137,6 +149,28 @@ class ChartersController extends ApiController {
   public function getPartnerReview(Request $request) {
     return $this->json(
       AirCharters::getPartnerReview($request)
+    );
+  }
+
+  public function deleteEstimation(Request $request) {
+    return $this->json(
+      AirCharters::deleteEstimation($request)
+    );
+  }
+
+  public function SendAdditionFeedback(Request $request) {
+    return $this->json(
+      AirCharters::SendAdditionFeedback($request)
+    );
+  }
+  public function GetAdditionFeedback(Request $request) {
+    return $this->json(
+      AirCharters::GetAdditionFeedback($request)
+    );
+  }
+  public function SendAdditionFeedbackToCustomer(Request $request) {
+    return $this->json(
+      AirCharters::SendAdditionFeedbackToCustomer($request)
     );
   }
 }

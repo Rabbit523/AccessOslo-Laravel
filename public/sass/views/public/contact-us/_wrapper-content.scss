@@ -1,19 +1,18 @@
-.wrapper-content {  
+.wrapper-content {
     padding-bottom: 60px;
     .box-left {
         .box{
             @include shadowBox;
             background: #fff;
-            padding: 20px;
+            padding: 30px;
             margin-bottom: 20px;
             h2{
-                @include title($purple, 30);
-                text-transform: uppercase;
+                @include title($yellow, 26);
                 margin-top: 0px;
             }
             p{
                 font-family: 'Gotham-book';
-                font-size: 12px;
+                font-size: 16px;
                 color: #5f6062;
             }
             a{
@@ -24,24 +23,23 @@
     .box-right{
         @include shadowBox;
         background: #FFF;
-        padding: 20px;
+        padding: 30px 30px 110px 30px;
         h2{
-            @include title($purple, 26);
-            text-transform: uppercase;
+            @include title($yellow, 26);
             margin-top: 0px;
             margin-bottom: 30px;
-        }		
+        }
 		.form-group {
 			position: relative;
-			&.success:after, &.error:after {				
-				top: 39px!important;						
+			&.success:after, &.error:after {
+				top: 75px;
 			}
 			label {
-				font-size: 0.875em;
+				font-size: 12px;
 				text-transform: uppercase;
 				color: #656668;
 				font-weight: normal;
-			}	
+			}
 			.form-control {
 				@include placeholderColor(#5f6062);
 				background-color: #f5f5f5;
@@ -49,9 +47,14 @@
 				color: #5f6062;
 				padding: 7px 10px;
 				height: auto;
-				border-radius: 0px;			
+				border-radius: 0px;
 			}
-		}       
+		}
+		.message-box.form-group {
+			&.success:after, &.error:after {
+				top: 185px;
+			}
+		}
         .wrapper-btns {
             margin-top: 20px;
             margin-bottom: 15px;

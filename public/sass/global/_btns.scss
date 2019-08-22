@@ -1,8 +1,8 @@
 .btn{
-    transition: all 0.3s linear;
-    -moz-transition: all 0.3s linear;
-    -o-transition: all 0.3s linear;
-    -webkit-transition: all 0.3s linear;
+    transition: all 0.1s linear;
+    -webkit-transition: all 0.1s linear;
+    -moz-transition: all 0.1s linear;
+    -o-transition: all 0.1s linear;
 }
 .btn-purple {
     background: $purple;
@@ -69,7 +69,7 @@
     color: #fff;
     font-family: 'Gotham';
     font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 0px;
     text-transform: uppercase;
     border: none;
@@ -83,14 +83,15 @@
     background: $yellow;
     color: #fff;
     font-family: 'Gotham';
-    font-weight: bold;    
+    font-weight: bold;
     font-size: 14px;
+    padding: 15px 25px;
     border-radius: 0px;
     text-transform: uppercase;
     border: none;
     &:hover, &:focus {
         color: #fff !important;
-        background: $yellow !important;
+        background: #ae872b !important;
     }
 }
 
@@ -98,7 +99,7 @@
     background: #fbcf1e;
     color: #fff;
     font-family: 'Gotham';
-    font-weight: bold;    
+    font-weight: bold;
     font-size: 14px;
     border-radius: 0px;
     text-transform: uppercase;
@@ -113,7 +114,7 @@
     background: #FFF;
     color: $yellow;
     font-family: 'Gotham';
-    font-weight: bold;    
+    font-weight: bold;
     font-size: 14px;
     border-radius: 0px;
     text-transform: uppercase;
@@ -128,7 +129,7 @@
     background: #fbcf1d;
     color: #725e0d;
     font-family: 'Gotham';
-    font-weight: bold;    
+    font-weight: bold;
     font-size: 14px;
     border-radius: 0px;
     border: none;
@@ -144,11 +145,9 @@
     color: $yellow;
     text-transform: uppercase;
     font-family: 'Gotham';
-    font-weight: bold;
-    font-size: 14px;
+    font-size: 16px;
     border-radius: 0px;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding: 10px 25px;
     &:hover {
         background: $yellow;
         color: #FFF;
@@ -160,7 +159,6 @@
     color: $purple;
     text-transform: uppercase;
     font-family: 'Gotham';
-    font-weight: bold;
     font-size: 14px;
     border-radius: 0px;
     padding-left: 30px;

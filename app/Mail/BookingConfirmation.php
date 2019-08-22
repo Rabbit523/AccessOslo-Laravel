@@ -11,7 +11,7 @@ class BookingConfirmation extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $charter;
+    public $charter;    
     /**
      * Create a new message instance.
      *
@@ -30,7 +30,7 @@ class BookingConfirmation extends Mailable
     public function build()
     {
         return $this->view('email.booking-confirmation', compact('charter'))
-        ->from("contact@accessoslo.no", "AccessOslo")
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('Aircraft Charter - Booking Confirmation');
     }
 }

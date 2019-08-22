@@ -30,7 +30,7 @@ class BookingCargoConfirmation extends Mailable
     public function build()
     {
         return $this->view('email.booking-cargo-confirmation', compact('cargo'))
-        ->from("contact@accessoslo.no", "AccessOslo")
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('Cargo Charger - Booking Confirmation');
     }
 }

@@ -1,0 +1,543 @@
+<div class="steps-wrapper">
+    <div class="step step-1">
+        <form id="mobile_meet1_form" ng-show="main_step1">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label>CONTACT PERSON</label>
+                        <input type="text" id="mobile_meet_contact_person" ng-model="requestData.contact_person"
+                            name="mobile_meet_contact_person" class="form-control" placeholder="Nohman Janjua" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label>PHONE</label>
+                        <input type="tel" id="mobile_meet_phone" name="meet_phone" class="form-control" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label>EMAIL</label>
+                        <input type="email" ng-model="requestData.email" name="mobile_meet_email" class="form-control"
+                            placeholder="nohman@janjua.net" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 col-sm-6">
+                    <div class="form-group">
+                        <label>Company name</label>
+                        <input type="text" ng-model="requestData.company" name="mobile_meet_company"
+                            class="form-control" placeholder="FantasyLab">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="form-group">
+                        <label for="">Travelers</label>
+                        <input type="text" placeholder="Travelers" ng-model="requestData.travelers"
+                            ng-change="getTravelers()" class="form-control" name="travelers" required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 text-right">
+                    <button id="mobile_meet_continue" class="btn btn-yellow" ng-click="Continue()">Continue<img
+                            src="/assets/img/arrow-right.png" alt=""></button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="step step-2" ng-show="main_step2">
+        <form id="mobile_meet2_form">
+            <div class="row">
+                <ul class="meet-check-group">
+                    <div class="col-xs-6 col-sm-12">
+                        <li><input id="mobile_meet_is_arrival" type="checkbox" value="arrival" />INBOUND:</li>
+                    </div>
+                    <div class="col-xs-6 col-sm-12">
+                        <li><input id="mobile_meet_is_departure" type="checkbox" value="departure" />OUTBOUND:</li>
+                    </div>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 col-sm-6 inbound-box">
+                    <div class="form-group">
+                        <label for="">FLIGHT NUMBER</label>
+                        <input type="text" placeholder="Flight number" name="in_flight_number"
+                            ng-model="requestData.in_flight_number" class="form-control" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">AIRLINE NAME</label>
+                        <input type="text" placeholder="Airline Name" name="in_airline"
+                            ng-model="requestData.in_airline" class="form-control" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">DATE OF ARRIVAL</label>
+                        <input type="text" placeholder="(dd/mm/yyyy)" name="in_mobile_meet_datepicker"
+                            ng-model="requestData.in_date" id="in_mobile_meet_datepicker" class="form-control date"
+                            disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">TIME OF ARRIVAL</label>
+                        <input type="text" placeholder="(hh:mm)" id="in_meet_mobile_timepicker"
+                            ng-model="requestData.in_time" class="form-control time" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">LUGGAGE</label>
+                        <input type="text" placeholder="e.g. 5" name="in_luggage" ng-model="requestData.in_luggage"
+                            class="form-control" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">BOOKING REFERENCE</label>
+                        <input type="text" placeholder="Booking reference" name="in_booking_reference"
+                            ng-model="requestData.in_booking_reference" class="form-control" disabled required>
+                    </div>
+                    <div class="form-group flight_no">
+                        <label>CONNECTION FLIGHT: <br>
+                            DEPARTURE TIME FROM (OSL)</label>
+                        <input type="text" id="in_meet_mobile_departure_timepicker"
+                            name="in_mobile_departure_timepicker" ng-model="requestData.in_departure_time"
+                            class="form-control time" placeholder="(hh:mm)" disabled required>
+                    </div>
+                    <div class="form-group flight_no">
+                        <label>CONNECTION FLIGHT: <br>FLIGHT NUMBER</label>
+                        <input type="text" name="in_flight_no" ng-model="requestData.in_connect_flight_number"
+                            class="form-control" placeholder="Flight number" disabled required>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 outbound-box">
+                    <div class="form-group">
+                        <label for="">FLIGHT NUMBER</label>
+                        <input type="text" placeholder="Flight number" name="out_flight_number"
+                            ng-model="requestData.out_flight_number" class="form-control" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">AIRLINE NAME</label>
+                        <input type="text" placeholder="Airline Name" name="out_airline"
+                            ng-model="requestData.out_airline" class="form-control" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">DATE OF ARRIVAL</label>
+                        <input type="text" placeholder="(dd/mm/yyyy)" name="date_travel" id="out_mobile_meet_datepicker"
+                            ng-model="requestData.out_date" class="form-control date" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">TIME OF ARRIVAL</label>
+                        <input type="text" placeholder="(hh:mm)" id="out_mobile_meet_timepicker"
+                            ng-model="requestData.out_time" class="form-control time" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">LUGGAGE</label>
+                        <input type="text" placeholder="e.g. 5" name="out_luggage" ng-model="requestData.out_luggage"
+                            class="form-control" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label for="">BOOKING REFERENCE</label>
+                        <input type="text" placeholder="Booking reference" name="out_booking_reference"
+                            ng-model="requestData.out_booking_reference" class="form-control" disabled required>
+                    </div>
+                    <div class="form-group">
+                        <label>CONNECTION FLIGHT: <br>
+                            DEPARTURE TIME FROM (OSL)</label>
+                        <input type="text" id="out_mobile_meet_departure_timepicker"
+                            name="out_mobile_meet_departure_timepicker" ng-model="requestData.out_departure_time"
+                            class="form-control time" placeholder="(hh:mm)" disabled required>
+                    </div>
+                    <div class="form-group flight_no">
+                        <label>CONNECTION FLIGHT: <br>FLIGHT NUMBER</label>
+                        <input type="text" id="out_flight_no" name="out_flight_no" class="form-control"
+                            ng-model="requestData.out_coonect_flight_number" placeholder="Flight number" disabled
+                            required>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="form-group">
+                        <label>COMMENTS</label>
+                        <textarea class="form-control" ng-model="requestData.comments"
+                            placeholder="Write your comments"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-6 text-left">
+                    <label id="price">{{meetCost}}</label>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <button ng-click="BookRequest()" class="btn btn-yellow confirm">Book & Pay</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Payment Process -->
+<div class="modal fade meet_mobile_payment" id="meetgreet-paymentProcess" tabindex="-1" role="dialog" aira-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-box">
+                <div class="step1" ng-show="is_step1">
+                    <div class="header">
+                        <h3>Meet & Greet Details</h3>
+                        <div class="status-line">
+                            <img src="/assets/img/step1_payment_process.png" alt="">
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Contact person:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.contact_person}}</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Phone:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.phone}}</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-4 text-left">
+                                <p>Email:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-8 text-right">
+                                <b>{{charter_data.email}}</b>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Company:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.company}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_arrival">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p class="text_flight_type">Inbound:</p>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_arrival">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Flight number:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.in_flight_number}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_arrival">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Date of Arrival:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.in_date}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_arrival">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Time of Arrival:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.in_time}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_arrival">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Luggage:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.in_luggage}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_arrival">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Booking reference:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.in_booking_reference}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_arrival">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Connection Flight:
+                                    Departure Time from (OSL)</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.in_connect_flight_number}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_departure">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p class="text_flight_type">Outbound:</p>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_departure">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Flight number:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.out_flight_number}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_departure">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Date of Arrival:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.out_date}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_departure">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Time of Arrival:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.out_time}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_departure">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Luggage:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.out_luggage}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_departure">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Booking reference:</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.out_booking_reference}}</b>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="is_departure">
+                            <div class="col-xs-6 col-sm-6 text-left">
+                                <p>Connection Flight:</p>
+                                <p>Departure Time from (OSL)</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 text-right">
+                                <b>{{charter_data.out_connect_flight_number}}</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 price_detail">
+                                <p class="exec_confirm_price">{{totalCost}}</p>
+                                <p>VAT applied</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 next">
+                                <a class="btn btn-yellow" ng-click="step1()">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step2" ng-show="is_step2">
+                    <div class="header">
+                        <h3>Add Passengers</h3>
+                        <div class="status-line">
+                            <img src="/assets/img/step2_payment_process.png" alt="">
+                        </div>
+                    </div>
+                    <div class="body">
+                        <div class="select-box">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+                                    <label ng-style="{'color': select_passenger_style}">SELECT PASSENGERS</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-12">
+                                    <div ng-dropdown-multiselect="" options="passengers"
+                                        selected-model="selected_passenger" extra-settings="selectorsettings"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <form name="mobile_meet_input_form" id="meet_input_form">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+                                    <label>ADD PASSENGER</label>
+                                </div>
+                                <div class="col-xs-12 col-sm-3">
+                                    <div class="form-group">
+                                        <select name="gender" class="form-control" ng-model="newPassenger.gender"
+                                            required>
+                                            <option disabled selected value>Gender</option>
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-9">
+                                    <div class="form-group">
+                                        <input type="text" name="first_name" class="form-control"
+                                            ng-model="newPassenger.first_name" placeholder="First Name" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" name="last_name" class="form-control"
+                                            ng-model="newPassenger.last_name" placeholder="Last Name" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" id="mobile_meet_birth" name="mobile_meet_birth" class="form-control"
+                                            ng-model="newPassenger.birth" placeholder="Date birth" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+                                    <div class="form-group">
+                                        <input id="mobile_meet_country" type="text" name="mobile_meet_country" class="form-control"
+                                            ng-model="newPassenger.nationality" placeholder="Nationality" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" name="passport_no" class="form-control"
+                                            ng-model="newPassenger.passport_no" placeholder="Passport NO." required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+                                    <div class="form-group">
+                                        <input type="text" id="mobile_meet_passport_expiry" name="mobile_meet_passport_expiry"
+                                            class="form-control" ng-model="newPassenger.passport_expiry"
+                                            placeholder="Passport Expiry Date" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12">
+                                    <div class="form-group">
+                                        <input type="submit" id="add_passenger" class="form-control button"
+                                            value="ADD PASSENGER" ng-click="AddPassenger()">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="footer">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 price_detail">
+                                <p class="exec_confirm_price">{{totalCost}}</p>
+                                <p>VAT applied</p>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 next">
+                                <a class="btn btn-back" ng-click="step2_back()">Back</a>
+                                <a class="btn btn-yellow" ng-click="step2()">Next</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="step3" ng-show="is_step3">
+                    <form name="mobile_meet_payment_form" id="mobile_meet_payment_form">
+                        <div class="header">
+                            <h3>Select Payment</h3>
+                            <div class="status-line">
+                                <img src="/assets/img/step3_payment_process.png" alt="">
+                            </div>
+                        </div>
+                        <div class="body">
+                            <div class="part1">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <label>1. Select your payment method.</label>
+                                        <div class="radio-box">
+                                            <label class="container">Wire Transfer<input type="radio"
+                                                    ng-click="getPaymentMethod('wire')" name="payment"><span
+                                                    class="checkmark"></span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row" ng-show="is_wire">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <p>Type in your preferred email for receving the invoice.</p>
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email" name="email"
+                                                ng-model="transfermail" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="radio-box box-img">
+                                            <div class="card_text">
+                                                <label class="container">Credit Card<input type="radio"
+                                                        ng-click="getPaymentMethod('credit')" name="payment"><span
+                                                        class="checkmark"></span>
+                                            </div>
+                                            <div class="card_logo">
+                                                <img src="/assets/img/pay_logos.png"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="part2">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <label>2. Confirmation</label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12">
+                                        <div class="check-box confirm_box" ng-style="{'border-color':agreeTermStyle}">
+                                            <label class="container">I have read and I agree to <a href="/terms"
+                                                    target="_blank">Terms & Privacy.</a><input type="checkbox"
+                                                    name="agree" ng-change="getagree()" ng-model="agree"> <span
+                                                    class="checkmark"></span></label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 price_detail">
+                                    <p class="exec_confirm_price">{{totalCost}}</p>
+                                    <p>VAT applied</p>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 next">
+                                    <a type="submit" class="btn btn-yellow confirm" ng-click="confirm()">Confirm</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade CustomBookSuccessMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="step thanks text-center">
+                <h2 style="color: #c29834; font-size: 26px;">Thank you <br> for your request.</h2>
+                <p><b>Status: <span style="color: red;">Pending</span></b></p><br>
+                <p>Our partner operators is giving you the best price available and you will receive a quote shortly.
+                </p><br>
+                <p>Our crew will get in touch with you in a short time.</p><br>
+                <p>To see more details about your request, please<br><a class="redirect_upcoming"
+                        href="/member/upcoming-request">Go to Upcoming Request</a><br></p>
+                <a class="btn btn-border-gold NewRequest">Close</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -13,15 +13,17 @@ class UserRegister extends Mailable
 
     public $password;
     public $name;
+    public $email;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($password, $first_name, $last_name)
+    public function __construct($password, $first_name, $email)
     {   
         $this->password = $password;
-        $this->name = $first_name." ".$last_name;
+        $this->name = $first_name;
+        $this->email = $email;
     }
 
     /**
@@ -31,8 +33,8 @@ class UserRegister extends Mailable
      */
     public function build()
     {
-        return $this->view('email.user-register', compact('password', 'name'))
-        ->from("smtp@fantasylab.no", "AccessOslo")
+        return $this->view('email.user-register', compact('password', 'name', 'email'))
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('Welcome to Access Oslo');
     }
 }

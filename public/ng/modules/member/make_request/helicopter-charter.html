@@ -1,17 +1,17 @@
 <div class="step step-1" ng-show="step1">
     <form id="helicopter1_form">
       <div class="row">
-          <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                  <label>DEPARTURE AIRPORT</label>
-                  <input type="text" name="helicopter_departure" id="helicopter_departure" class="form-control" placeholder="Departure Airport" ng-model="helicopterflight.departure" required>                  
-              </div>
+          <div class="col-xs-12 col-sm-6">                  
+                <div class="airport dropdown form-group">
+                    <label>DEPARTURE AIRPORT</label>
+                    <input class="form-control" name="helicopter_departure" id="helicopter_departure" ng-model="helicopterflight.departure" type="text" data-provide="typeahead" placeholder="Departure Airport" required>
+                </div>
           </div>
-          <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                  <label>DESTINATION AIRPORT</label>
-                  <input type="text" name="helicopter_destination" id="helicopter_destination" class="form-control" placeholder="Destination Airport" ng-model="helicopterflight.destination" required>                  
-              </div>
+          <div class="col-xs-12 col-sm-6">              
+                <div class="airport dropdown form-group">
+                    <label>DESTINATION AIRPORT</label>
+                    <input class="form-control" name="helicopter_destination" id="helicopter_destination" ng-model="helicopterflight.destination" type="text" data-provide="typeahead" placeholder="Destination Airport" required>
+                </div>
           </div>
       </div>
       <div class="row">
@@ -52,49 +52,63 @@
           </div>
       </div>
     </form>
-  </div>
-  <div class="step step-2" ng-show="step2">
+</div>
+<div class="step step-2" ng-show="step2">
     <form id="helicopter2_form">
-      <div class="row">
-          <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                  <label>Contact Person</label>
-                  <input type="text" name="helicopter_contact_person" id="helicopter_contact_person" class="form-control" placeholder="Nohman Janjua" ng-model="helicopterflight.contact_person" required>                  
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                  <label>Phone</label>
-                  <input type="tel" name="helicopter_phone" id="helicopter_phone" class="form-control" required>                  
-              </div>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                  <label>Email</label>
-                  <input type="email" name="helicopter_email" id="helicopter_email" class="form-control" placeholder="nohman@janjua.net" ng-model="helicopterflight.email" required>                 
-              </div>
-          </div>
-          <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                  <label>COMPANY NAME</label>
-                  <input type="text" name="helicopter_company" id="helicopter_company" class="form-control" placeholder="FantasyLab"  ng-model="helicopterflight.company" required>                 
-              </div>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-xs-12">
-              <div class="form-group">
-                  <label>COMMENTS</label>
-                  <textarea name="helicopter_comments" id="helicopter_comments" class="form-control" placeholder="Write your comments"  ng-model="helicopterflight.comments" ></textarea>
-              </div>
-          </div>
-      </div>
-      <div class="row">
-          <div class="col-xs-12 text-right">
-              <button type="submit" class="btn btn-yellow"  ng-click="OnBook()">GET FREE QUOTE</button>
-          </div>
-      </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label>Contact Person</label>
+                    <input type="text" name="helicopter_contact_person" id="helicopter_contact_person" class="form-control" placeholder="Nohman Janjua" ng-model="helicopterflight.contact_person" required>                  
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="tel" name="helicopter_phone" id="helicopter_phone" class="form-control" required>                  
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" name="helicopter_email" id="helicopter_email" class="form-control" placeholder="nohman@janjua.net" ng-model="helicopterflight.email" required>                 
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+                <div class="form-group">
+                    <label>COMPANY NAME</label>
+                    <input type="text" name="helicopter_company" id="helicopter_company" class="form-control" placeholder="FantasyLab"  ng-model="helicopterflight.company">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label>COMMENTS</label>
+                    <textarea name="helicopter_comments" id="helicopter_comments" class="form-control" placeholder="Write your comments"  ng-model="helicopterflight.comments" ></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 text-right">
+                <button type="submit" class="btn btn-yellow confirm"  ng-click="OnBook()">GET FREE QUOTE</button>
+            </div>
+        </div>
     </form>
-  </div>
+</div>
+<div class="modal fade CustomBookSuccessMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="step thanks text-center">
+                <h2 style="color: #c29834; font-size: 26px;">Thank you <br> for your request.</h2>
+                <p><b>Status: <span style="color: red;">Pending</span></b></p><br>
+                <p>Our partner operators is giving you the best price available and you will receive a quote shortly.</p><br>
+                <p>Our crew will get in touch with you in a short time.</p><br>
+                <p>To see more details about your request, please<br><a class="redirect_upcoming" href="/member/upcoming-request">Go to Upcoming Request</a><br></p>
+                <a ng-click="closeSuccess()" class="btn btn-border-gold">Close</a>
+            </div>
+        </div>
+    </div>
+</div>

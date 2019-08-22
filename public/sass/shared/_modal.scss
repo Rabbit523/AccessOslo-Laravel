@@ -1,7 +1,8 @@
 #AccessModal {
     .modal-content {
         border-radius: 0px;
-        padding: 40px 20px;
+        padding: 10px 30px 40px 30px;
+        background: #f5f5f5;
         .close {
             position: absolute;
             font-size: 35px;
@@ -14,12 +15,17 @@
             text-align: center;
             border: none;
             h4 {
-                color: $purple;
-                font-family: 'Gotham-book';
+                color: $yellow;
+                font-family: 'Gotham';
                 font-weight: normal;
-                font-size: 28px;
-                text-transform: uppercase;
+                text-align: left;
+                font-size: 26px;
                 margin: 20px 0px 0px;
+            }
+            p {
+              font-family: 'Gotham';
+              text-align: left;
+              margin: 0;
             }
             .timeline {
                 position: relative;
@@ -34,7 +40,7 @@
                 }
                 p {
                     display: inline;
-                    color: #dfe2f6;
+                    color: #f4eedf;
                     font-family: 'Gotham';
                     font-size: 14px;
                     margin: 15px 0px 0px;
@@ -45,7 +51,7 @@
                         float: right;
                     }
                     &.active {
-                        color: $purple;
+                        color: $yellow;
                     }
                 }
             }
@@ -59,44 +65,38 @@
             }
             .form-control {
                 @include placeholderColor(#b0b0b0);
-                background: #f5f5f5;
-                font-size: 14px;
+                background: #ffff;
+                font-size: 15px;
                 color: #b0b0b0;
                 padding: 7px 10px;
                 height: auto;
+
                 &.user {
-                    background-image: url('../assets/img/icon-user-purple.png');
                     background-repeat: no-repeat;
                     background-position: 10% center;
-                    padding-left: 25px;
                     background-size: 15px auto;
                 }
                 &.phone {
-                    background-image: url('../assets/img/icon-phone-purple.png');
                     background-repeat: no-repeat;
                     background-position: 4% center;
-                    padding-left: 30px;
                     background-size: 15px auto;
                 }
                 &.email {
-                    background-image: url('../assets/img/icon-email-purple.png');
                     background-repeat: no-repeat;
                     background-position: 4% center;
-                    padding-left: 30px;
                     background-size: 15px auto;
                 }
             }
-            [class^="col-"] {
-                padding-right: 0px;
-                &:last-child {
-                    padding-right: 15px;
-                }
-            }
+            label{
+              font-size: 12px;
+              color: #656668;
+              text-transform: uppercase;
+            }            
             .btn-purple {
                 padding: 15px 50px;
                 img {
                     width: 18px;
-                    margin-left: 10px;                
+                    margin-left: 10px;
                 }
             }
             small {
@@ -106,6 +106,13 @@
                 font-size: 12px;
                 color: #929292;
             }
+			#price {
+				color: #c29834;
+				font-size: 24px;
+				font-family: "Gotham-Book";
+				padding-top: 5px;
+				text-transform: lowercase;
+			}
         }
     }
 }

@@ -19,15 +19,20 @@ use PayPal\Api\PaymentExecution;
 use PayPal\Auth\OAuthTokenCredential;
 use PayPal\Rest\ApiContext;
 
+use App\Models\Core\Charters;
 use App\Models\Core\BookingCharters;
 use App\Models\Core\BookingLimousine;
 use App\Models\Core\BookingMeet;
 use App\Models\Core\HandlingRequest;
 use App\Models\Core\EmptyLegUserBooking;
+use App\Models\Core\EmptyLegBooking;
 use App\Models\Core\User;
 
 use App\Mail\LimousineConfirmation;
 use App\Mail\MeetConfirmation;
+use App\Mail\BookingCargoConfirmation;
+use App\Mail\BookingConfirmation;
+use App\Mail\EmptyLegConfirmation;
 use App\Mail\BookingTravel;
 use App\Mail\UserRegister;
 use App\Mail\PassengerTax;
@@ -37,6 +42,7 @@ use App\Mail\HandlingRequestConfirmation;
 use Redirect;
 use Session;
 use URL;
+use Alert;
 
 class PaymentController extends Controller
 {
@@ -51,7 +57,7 @@ class PaymentController extends Controller
     public function payWithpaypal(Request $request) {
         $payer = new Payer();
         $payer->setPaymentMethod('paypal');
-
+     
         $item_1 = new Item();
         $item_1->setName($request->item)->setCurrency('EUR')->setQuantity(1)->setPrice($request->amount);
         $item_list = new ItemList();
@@ -87,21 +93,27 @@ class PaymentController extends Controller
             }
         }
 
+        //save data for processing data for the database
         Session::put('type', $request->type);
         Session::put('booking_id', $request->item_number);
         Session::put('amount', $request->amount);
         Session::put('paypal_payment_id', $payment->getId());
         Session::save();
-        if (isset($redirect_url)) {
-            return Redirect::away($redirect_url);
-        } 
-        
-        Session::put('error', 'Unknon error occurred');
-        return Redirect::to('/');
+
+        //redirect to paypal
+        if (isset($request->redirect_origin)) {
+            return $redirect_url;
+        } else {
+            if (isset($redirect_url)) {
+                return Redirect::away($redirect_url);
+            } 
+    
+            return Redirect::to('/');
+        }        
     }
 
-    public function getPaymentStatus(Request $request) {
-        $payment_id = Session::get('paypal_payment_id');
+    public function getPaymentStatus(Request $request) {    
+        $payment_id = Session::get('paypal_payment_id');        
         $booking_type = Session::get('type');
         $amount = Session::get('amount');
         $booking_id = Session::get('booking_id');
@@ -109,7 +121,6 @@ class PaymentController extends Controller
         
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
             // notificationMsg('error','payment failed');
-            Session::put('error', 'Payment failed');
             return Redirect::back();
         } 
         
@@ -120,75 +131,155 @@ class PaymentController extends Controller
         $result = $payment->execute($execution, $this->apiContext);
 
         if ($result->getState() == 'approved') {
-            Session::put('succss', 'Payment success');
             
             if ($booking_type == "charters") {
-                $charter = BookingCharters::where('id', $booking_id)->first();
-                $charter->status = "paid";
-                $charter->member_notice = "0";
+                $estimate = Charters::where('id', $booking_id)->first();
+                $estimate->status = 'paid';
+                $estimate->save();
+                $estimates = Charters::get();
+                foreach($estimates as $sel) {
+                    if ($sel->charter_id == $estimate->charter_id) {
+                        if ($sel->id != $estimate->id) {
+                            Charters::where('id', $sel->id)->delete();
+                        }
+                    }
+                }
+                $charter = BookingCharters::where('id', $estimate->charter_id)->first();
+                $charter->total_cost = $estimate->total_cost;
+                $charter->aircraft = $estimate->aircraft;
+                $charter->partner_name = $estimate->partner_name;
+                $charter->is_added = "1";
+                $charter->status = "paid";                
+                $charter->payment_id = rand((int)1000000000,(int)9999999999);
                 $charter->save();
+                Mail::to($charter->email)->send(new BookingConfirmation($charter));
+                Mail::to("contact@accessoslo.no")->send(new BookingConfirmation($charter));
+                Mail::to("admin@fantasylab.io")->send(new BookingConfirmation($charter));
                 if (Auth::check()) {
-                    return Redirect::to('/member/request-history');
+                    Alert::success('Paid success!')->autoclose(5000);
+                    return Redirect::to('/member/upcoming-request');
                 } else {
                     $user = User::where('email', $charter->email)->first();
                     Auth::login($user);   
-                    return Redirect::to('/member/request-history');
+                    Alert::success('Paid success!')->autoclose(5000);
+                    return Redirect::to('/member/upcoming-request');
                 }
             } else if ($booking_type == "meet") {
-                $meet = BookingMeet::where('id', $booking_id)->first();                
+                $meet = BookingMeet::where('id', $booking_id)->first();
                 $meet->status = "paid";
-                $meet->member_notice = "0";
+                $meet->is_added = "1";
+                $meet->total_cost = $amount;
+                $meet->payment_id = rand((int)1000000000,(int)9999999999);
                 $meet->save();
+                Mail::to($meet->email)->send(new MeetConfirmation($meet));
+                Mail::to("contact@accessoslo.no")->send(new MeetConfirmation($meet));
+                Mail::to("admin@fantasylab.io")->send(new MeetConfirmation($meet));
                 if (Auth::check()) {
-                    return Redirect::to('/member/request-history');
+                    Alert::success('Paid success!')->autoclose(5000);
+                    return Redirect::to('/member/upcoming-request-type?charter=meet&status=all-status&show_mode=mode1');
                 } else {
                     $user = User::where('email', $meet->email)->first();
-                    Auth::login($user);   
-                    return Redirect::to('/member/request-history');
+                    Auth::login($user);
+                    Alert::success('Paid success!')->autoclose(5000);
+                    return Redirect::to('/member/upcoming-request-type?charter=meet&status=all-status&show_mode=mode1');
                 }
             } else if ($booking_type == "limousine") {
                 $limousine = BookingLimousine::where('id', $booking_id)->first();
                 $limousine->total_cost = $amount;
-                $limousine->status = "paid";
-                $limousine->member_notice = "0";
+                $limousine->status = "paid";                
+                $limousine->is_added = "1";
+                $limousine->payment_id = rand((int)1000000000,(int)9999999999);
                 $limousine->save();
+                Mail::to($limousine->email)->send(new LimousineConfirmation($limousine));
+                Mail::to("admin@fantasylab.io")->send(new LimousineConfirmation($limousine));
+                Mail::to("contact@accessoslo.no")->send(new LimousineConfirmation($limousine));
                 if (Auth::check()) {
-                    return Redirect::to('/member/request-history');
+                    Alert::success('Paid success!')->autoclose(5000);
+                    return Redirect::to('/member/upcoming-request-type?charter=limousine&status=all-status&show_mode=mode1');
                 } else {
                     $user = User::where('email', $limousine->email)->first();
-                    Auth::login($user);   
-                    return Redirect::to('/member/request-history');                    
-                }
-            } else if ($booking_type == "handling") {
-                $handling = HandlingRequest::where('id', $booking_id)->first();
-                $handling->status = "paid";
-                $handling->member_notice = "0";
-                $handling->save();
-                if (Auth::check()) {
-                    return Redirect::to('/member/request-history');
-                } else {
-                    $user = User::where('email', $handling->email)->first();
-                    Auth::login($user);   
-                    return Redirect::to('/member/request-history');
+                    Auth::login($user);
+                    Alert::success('Paid success!')->autoclose(5000);
+                    return Redirect::to('/member/upcoming-request-type?charter=limousine&status=all-status&show_mode=mode1');                    
                 }
             } else if ($booking_type == "empty") {
                 $empty = EmptyLegUserBooking::where('id', $booking_id)->first();
                 $empty->status = "paid";
-                $empty->price = $amount;
-                $empty->currency = "EUR";
-                $empty->member_notice = "0";
+                $empty->is_added = "1";
+                $empty->payment_id = rand((int)1000000000,(int)9999999999);
                 $empty->save();
+                EmptyLegBooking::where('id', $empty->charter_id)->delete();
+                Mail::to($empty->email)->send(new EmptyLegConfirmation($empty));
+                Mail::to("contact@accessoslo.no")->send(new EmptyLegConfirmation($empty));
+                Mail::to("admin@fantasylab.io")->send(new EmptyLegConfirmation($empty));
                 if (Auth::check()) {
-                    return Redirect::to('/member/request-history');
+                    Alert::success('Paid success!')->autoclose(5000);
+                    return Redirect::to('/member/upcoming-request-type?charter=emptyleg&status=all-status&show_mode=mode1');
                 } else {
                     $user = User::where('email', $empty->email)->first();
-                    Auth::login($user);   
-                    return Redirect::to('/member/request-history');
+                    Auth::login($user);
+                    Alert::success('Paid success!')->autoclose(5000);
+                    return Redirect::to('/member/upcoming-request-type?charter=emptyleg&status=all-status&show_mode=mode1');
                 }
             }
         } else {
-            Session::put('error', 'Payment failed');
+            if ($booking_type == "meet") {
+                Alert::error('Something went wrong', 'Oops!')->autoclose(5000);
+                BookingMeet::where('id', $booking_id)->delete();
+            } else if ($booking_type == "limousine") {
+                Alert::error('Something went wrong', 'Oops!')->autoclose(5000);
+                BookingLimousine::where('id', $booking_id)->delete();
+            } else if ($booking_type == "empty") {
+                Alert::error('Something went wrong', 'Oops!')->autoclose(5000);
+                EmptyLegUserBooking::where('id', $booking_id)->first();
+            }
             return Redirect::back();
         }        
+    }
+
+    public function setReviewStatus() {
+        $nextday = strtotime(date('Y-m-d', strtotime(' +1 day')));
+        $charters = BookingCharters::where('booking_type', 'executive')->where('status', 'paid')->get();
+        foreach ($charters as $charter) {
+            if ($charter->flight_type == "One Way") {
+                if (strtotime($charter->date) == $nextday) {
+                    $charter->is_review = "true";
+                    $charter->save();
+                }
+            } else {
+                if (strtotime($charter->return_date) == $nextday) {
+                    $charter->is_review = "true";
+                    $charter->save();
+                }
+            }
+        }
+        $meets = BookingMeet::where('status', 'paid')->get();
+        foreach ($meets as $meet) {
+            if (strtotime($meet->date) == $nextday) {
+                $meet->is_review = "true";
+                $meet->save();
+            }
+        }
+        $limousines = BookingLimousine::where('status', 'paid')->get();
+        foreach ($limousines as $limousine) {
+            if ($limousine->type_flight == "One Way") {
+                if (strtotime($limousine->date) == $nextday) {
+                    $limousine->is_review = "true";
+                    $limousine->save(); 
+                }  
+            } else {
+                if (strtotime($limousine->return_date) == $nextday) {
+                    $limousine->is_review = "true";
+                    $limousine->save();
+                }
+            }
+        }
+        $emptys = EmptylegUserBooking::where('status', 'paid')->get();
+        foreach($emptys as $empty) {
+            if (strtotime($empty->end_date) == $nextday) {
+                $empty->is_review = "true";
+                $empty->save();
+            }
+        }
     }
 }

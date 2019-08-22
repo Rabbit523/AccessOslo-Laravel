@@ -3,6 +3,27 @@
     margin: 0px 0px 0px;
     padding-bottom: 50px;
 	background: #f8f6f0;
+	.search-box {
+		margin-top: 30px;
+		padding-top: 20px;
+		.form-control {
+			height: 45px;
+			font-size: 15px;
+		}
+		input[type="submit"] {
+			border: 1px solid #c29834;
+			color: #fff;
+			background: #c29834;
+			transition: all 0.1s linear;
+			-webkit-transition: all 0.1s linear;
+			-moz-transition: all 0.1s linear;
+			-o-transition: all 0.1s linear;
+			font-family: "Gotham";
+		}
+		input[type="submit"]:focus {
+			background: #b48d2f;
+		}
+	}
     .top-box{
 		margin-top: 30px;
         margin-bottom: 30px;
@@ -81,7 +102,10 @@
                 padding: 0px;
             }
             .info-box{
-                padding: 20px;
+				padding-right: 20px;
+                padding-left: 20px;
+				padding-top: 35px;
+				padding-bottom: 28px;
                 h3{
                     @include title(#8e8e8e, 16);
                     margin-top: 5px;
@@ -101,13 +125,16 @@
                     display: block;
                     width: 100%;
                     li{
-                        @include title(#8e8e8e, 12);
+                        @include title(#8e8e8e, 14);
                         display: block;
-                        width: 25%;
+                        width: 33%;
                         float: left;
                         @include breakpoint(mobile){
                             width: 100%;
                         }
+						span {
+						    color: #000;
+						}
                     }
                 }
                 .box-left{
@@ -143,10 +170,10 @@
 }
 
 #modal-empty-leg {
-	.modal-header {
-		.close {
-			margin-top: 10px;
-			font-size: 45px;
+	.modal-body {
+		padding: 0;
+		.row {
+			margin: 0;
 		}
 	}
 	h3 {
@@ -157,9 +184,6 @@
 		height: auto;
 	}
 	.slider-box {
-		.minus-margin {
-			margin: -15px 0px 0px -15px;
-		}
 		.arrow.arrow-prev {
 			left: 0px;
 			top: 40%;
@@ -171,7 +195,7 @@
 	}
 	.info-box {
 		margin-top: 15px;	
-		margin-left: -35px;
+		text-align: left;
 		label {
 			color: #8e8e8e;
 			display: inline-block;
@@ -208,8 +232,8 @@
 	}
 	.detail_info {
 		font-size: 15px;
-		padding-left: 20px;
-		padding-right: 20px;		
+		padding-left: 19px;
+		padding-right: 19px;		
 		display: table;
 		width: 100%;
 		margin-top: 30px;
@@ -255,18 +279,10 @@
 			margin-left: 90px;
 			margin-right: 90px;
 			display: inline-block;
-			select {			
-				height: 45px;
+			.confirm_box {
+				text-align: right;
+				float: right;
 			}
-			.firstname {			
-				height: 45px;
-			}
-			.company {				
-				height: 45px;
-			}
-			.email {				
-				height: 45px;
-			}		
 			.request {
 				float: right;
 				height: 45px;
@@ -281,17 +297,18 @@
 			.form-group {
 				margin-bottom: 20px;			
 				&.success:after, &.error:after {	
-					right: 17px;		
+					top: 75px;
 				}
 				.form-control {
 					line-height: 35px;
+					height: auto;
 				}
 				#phone {
 					height: 45px;
 				}
 				label {
 					float: left;
-					font-size: 15px;
+					font-size: 12px;
 				}
 			}
 		}

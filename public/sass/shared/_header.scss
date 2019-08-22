@@ -1,14 +1,18 @@
 header {
     display: block;
-    width: 100%;
-    margin: 30px 0px 0px;
+    width: 100%;    
     padding: 0px;
-    position: relative;
+    position: absolute;
     z-index: 8;
     @include breakpoint(sm_pc){
         background: #fff;
         margin-top: 0px;
     }
+	.sticky {
+	  position: fixed;
+	  top: 0;
+	  width: 100%;
+	}
     .box-top-nav {
         text-align: right;
         display: block;
@@ -66,9 +70,9 @@ header {
             }
         }
     }
-    .navbar-accessoslo{
+	.navbar-accessoslo-transparent{
         background: transparent;
-        color: #FFF;
+		color: #FFF;
         margin-bottom: 0px;
         border-bottom: solid 3px #080808;
         font-family: 'Gotham';
@@ -82,7 +86,7 @@ header {
                 display: inline-block;
                 margin: 0px 15px;
                 max-width: 180px;
-                padding-top: 15px;
+                padding-top: 20px;
                 @include breakpoint(md_pc){
                     max-width: 130px;
                     margin-top: 10px;
@@ -90,6 +94,13 @@ header {
                 @include breakpoint(sm_pc){
                     margin-top: 0px;
                 }
+				img {
+					width: 100%;
+				}
+				&.locale-no {
+					max-width: 175px;
+					margin: 0px 10px;
+				}
             }
             .navbar-toggle {
                 border-color: #000;
@@ -100,7 +111,7 @@ header {
             }
         }
         #navbar {
-            background: #fff;
+            background: transparent;
             padding-top: 10px;
             padding-bottom: 10px;
             box-shadow: 0px 2px 5px 1px rgba(79, 79, 79, 0.15);
@@ -120,28 +131,40 @@ header {
             }
             .navbar-right{
                 margin-right: 0px;
+				display: flex;
+				ul {
+					padding: 0;
+				}
                 @include breakpoint(tablet){
                     margin-right: -15px;
                 }
-                li:first-child{                    
-                    @include breakpoint(tablet){
-                        margin-right: 0px;
-                    }
-                    a {
-                      font-size: 12px;                      
-                      text-align: right;
-                      padding: 15px;
-                      text-transform: uppercase;
-                    }					
-					
-                }
+                .login {
+					color: #fff;
+					text-align: right;
+					padding: 15px;
+					text-transform: uppercase;
+					font-size: 13px;
+					text-decoration: none;
+					&:hover,&:focus {
+						background: transparent;
+				    }
+					&.locale-no {
+						padding: 13px 12px 12px 12px;
+					}
+				}
                 .btn-yellow {
-                    padding: 10px 25px;
                     margin: 3px 0px 0px;
+					color: #fff;
+					text-align: right;
+					padding: 15px;
+					text-transform: uppercase;
+					font-size: 13px;
+					&.locale-no {
+						padding: 11px;
+					}
                 }
 				.btn-dashboard {
-					font-size: 10px !important;					
-					padding: 8px !important;					
+					padding: 8px 15px !important;
 					margin-top: 6px;
 				}
             }
@@ -161,6 +184,231 @@ header {
                 > li {
                     background: transparent;
                     position: relative;
+                    @include breakpoint(tablet) {
+                        display: inline-block;
+                    }
+                    @include breakpoint (mobile) {
+                        display: block;
+                    }
+                    ul {
+					  border-radius: 0;
+                      li {
+                        a {
+                          padding: 15px;
+                          font-size: 12px;
+                          color: #48539b;
+                          text-transform: uppercase;
+                          &:hover,&:active, &:focus {
+
+                          }
+                          span {
+                            &.green {
+                                background: #7dc635;
+                                color: #fff;
+                                padding: 3px 5px;
+                                border-radius: 10px;
+                            }
+                          }
+                        }
+                      }
+                    }
+                    &:last-child {
+                        margin-right: 0px;
+                    }
+                    > a {
+                        color: #fff;
+                        text-transform: uppercase;
+                        padding: 10px 8px;
+                        font-size: 13px;
+                        position: relative;
+                        z-index: 2;
+                        @include breakpoint(md_pc){
+                            padding: 10px 5px;
+                        }
+                        @include breakpoint(sm_pc) {
+                            padding: 20px 10px;
+                        }
+                        @include breakpoint(tablet){
+                            padding: 20px 6px;
+                        }
+                        @include breakpoint(mobile){
+                            padding: 20px 10px;
+                        }
+                        &:hover, &:focus{
+                            background: transparent;
+                        }
+                        span {
+                            color: #fff;
+                            &.notification{
+                                color: #fff;
+                                padding: 3px 5px;
+                                border-radius: 10px;
+                                &.gold {
+                                    background: $yellow;
+                                }
+                                &.green {
+                                    background: #7dc635;
+                                }
+                                &.red{
+                                    background: #ea3f3f;
+                                }
+                            }
+                        }
+                    }
+                    > ul {
+                        @include breakpoint(mobile){
+                            text-align: center;
+                            font-size: 18px;
+                        }
+                    }
+                    &:hover, &.active{
+                        &:before {
+                            opacity: 1;
+                            top: 0px;
+                        }
+                    }
+                }
+            }
+        }
+	}
+    .navbar-accessoslo{
+        background: #fff;
+        color: #FFF;
+        margin-bottom: 0px;
+        border-bottom: solid 3px #080808;
+        font-family: 'Gotham';
+        border-radius: 0px;
+        border: none;
+        .container {
+            position: relative;
+        }
+        .navbar-header {
+            .brand-box {
+                display: inline-block;
+                margin: 0px 15px;
+                max-width: 180px;
+                padding-top: 20px;
+                @include breakpoint(md_pc){
+                    max-width: 130px;
+                    margin-top: 10px;
+                }
+                @include breakpoint(sm_pc){
+                    margin-top: 0px;
+                }
+				img {
+					width: 100%;
+				}
+				&.locale-no {
+					max-width: 175px;
+					margin: 0px 10px;
+				}
+            }
+            .navbar-toggle {
+                border-color: #000;
+				@include breakpoint(sm_pc){
+                    border: none;
+                }
+                margin-top: 12px;
+                .icon-bar {
+                    background: #000;
+                }
+            }
+        }
+        #navbar {
+            background: transparent;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            box-shadow: 0px 2px 5px 1px rgba(79, 79, 79, 0.15);
+            @include breakpoint(md_pc){
+                padding-left: 0px;
+                padding-right: 0px;
+            }
+            @include breakpoint(sm_pc){
+                box-shadow: none;
+                padding: 10px 0px;
+            }
+            @include breakpoint(mobile){
+                position: absolute;
+                top: 37px;
+                width: 100%;
+				background: #fff;
+            }
+            .navbar-right{
+                margin-right: 0px;
+				display: flex;
+				ul {
+					padding: 0;
+					li {
+						a {
+							padding: 15px;
+							text-transform: uppercase;
+							color: #48539b;
+						}
+					}
+				}
+                @include breakpoint(tablet){
+                    margin-right: 0px;
+                }
+				@include breakpoint(mobile){
+					margin: 0;
+					text-align: center;
+				}
+                .login {
+					color: #48539b;
+					text-align: right;
+					padding: 15px;
+					text-transform: uppercase;
+					font-size: 13px;
+					text-decoration: none;
+					&:hover,&:focus {
+						background: transparent;
+				    }
+					&.locale-no {
+						padding: 13px 12px 12px 12px;
+					}
+				}
+                .btn-yellow {
+                    margin: 3px 0px 0px;
+					color: #fff;
+					text-align: right;
+					padding: 15px;
+					text-transform: uppercase;
+					font-size: 13px;
+					&.locale-no {
+						padding: 11px;
+					}
+                }
+				.btn-dashboard {
+					padding: 8px 15px !important;
+					margin-top: 6px;
+					@include breakpoint (mobile) {
+						margin-left: 15px;
+					}
+				}
+            }
+            .box-left {
+                font-size: 12px;
+                margin-top: 5px;
+                @include breakpoint(md_pc){
+                    font-size: 11px
+                }
+                @include breakpoint (sm_pc) {
+                    text-align: center;
+                    font-size: 10px;
+                }
+                @include breakpoint(mobile){
+                    font-size: 20px;
+					margin: 0;
+					text-align: left;
+					padding-left: 5px;
+					padding-right: 20px;
+                }
+                > li {
+                    background: transparent;
+                    position: relative;
+					@media (max-width: 320px) {
+						background: #fff;
+					}
                     @include breakpoint(tablet) {
                         display: inline-block;
                     }
@@ -195,6 +443,7 @@ header {
                         color: #48539b;
                         text-transform: uppercase;
                         padding: 10px 8px;
+                        font-size: 13px;
                         position: relative;
                         z-index: 2;
                         @include breakpoint(md_pc){
@@ -207,13 +456,16 @@ header {
                             padding: 20px 6px;
                         }
                         @include breakpoint(mobile){
-                            padding: 20px 10px;
+                            padding: 20px 10px !important;
                         }
                         &:hover, &:focus{
                             background: transparent;
                         }
                         span {
                             color: $yellow;
+							@include breakpoint(mobile) {
+								float: right;
+							}
                             &.notification{
                                 color: #fff;
                                 padding: 3px 5px;
@@ -232,7 +484,7 @@ header {
                     }
                     > ul {
                         @include breakpoint(mobile){
-                            text-align: center;
+                            text-align: left;
                             font-size: 18px;
                         }
                     }

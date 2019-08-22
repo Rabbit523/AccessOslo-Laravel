@@ -24,7 +24,7 @@ class EmptyLegUserBooking extends Model
      * @var array
      */
 
-    protected $fillable = ['flight_no', 'gender', 'contact_person', 'phone', 'email', 'company', 'status', 'is_added', 'departure', 'destination', 'end_date', 'end_time', 'partner_name', 'aircraft', 'price', 'currency', 'member_notice'];
+    protected $fillable = ['flight_no', 'gender', 'contact_person', 'phone', 'email', 'company', 'status', 'is_added', 'departure', 'destination', 'end_date', 'end_time', 'partner_name', 'aircraft', 'price', 'currency', 'member_notice', 'charter_id', 'passengers'];
 
     /**
      * The attributes that should be hidden for arrays.

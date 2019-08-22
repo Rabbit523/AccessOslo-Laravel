@@ -3,72 +3,160 @@
     position: relative;
     width: 100%;
     padding: 0px;
-    margin: -103px 0px 0px;
     @include breakpoint(tablet){
         margin-top: 0px;
     }
+	@include breakpoint(mobile){
+		.home-page-background {
+			display: none;
+		}
+	}
     .wrapper-tabs {
         position: absolute;
         z-index: 5;
         margin: auto;
         left: 0px;
         right: 0px;
-        top: 40%;
+        top: 33%;
         @include breakpoint(mobile){
             position: relative;
-            margin-top: 20px;
+			background: #e3e3e3;
         }
-        .nav-tabs {
-            border-bottom: 5px solid $purple;
-            li {
-                margin-bottom: 0px;
-                @include breakpoint(mobile){
-                    display: block;
-                    width: 100%;
-                }
-                &.active {
-                    a {
-                        background: $purple;
-                    }
-                }
-                a {
-                    color: #FFF;
-                    font-family: 'Gotham';
-                    font-size: 16px;
-                    font-weight: bold;
-                    text-transform: uppercase;
-                    border-radius: 0px;
-                    background: rgba(255, 255, 255, 0.3);
-                    border-color: transparent;
-                    outline: none;
-                    margin-right: 10px;
-                    @include breakpoint(mobile){
-                        background: rgba(64, 63, 63, 0.3);
-                        margin-right: 0px;
-                    }
-                }
-                &:hover {
-                    a {
-                        background: #FFF;
-                        color: $purple;
-                    }
-                }
-            }
-        }
+		.full-sized {
+			@include breakpoint(mobile) {
+				display: none;
+			}
+		}
+		.small-sized {
+			display: none;
+			.tab-content {
+				padding: 0;
+				.container {
+					background: #fff;
+					padding: 10px;
+					margin-top: 3px;
+					span {
+						color: #48539b;
+						font-size: 14px;
+						text-transform: uppercase;
+						&.caret {
+							float: right;
+							border-radius: 50%;
+							background: #c29834;
+							color: #c29834;
+							width: 23px;
+							height: 23px;
+							transform: rotate(0deg);
+							transition: all 0.3s ease-Out;
+							-moz-transition: all 0.3s ease-Out;
+							-o-transition: all 0.3s ease-Out;
+							-webkit-transition: all 0.3s ease-Out;
+							i {
+								font-size: 19px;
+								position: relative;
+								left: 2px;
+								top: -5px;
+								color: #fff;
+							}
+							&.collapsed {
+								transform: rotate(180deg);
+							}
+						}
+					}
+				}
+				form {
+					padding-left: 10px;
+					padding-right: 10px;
+					label {
+						color: #5f6062;
+						font-size: 12px;
+					}
+					.form-group {
+						.form-control {
+							height: 45px;
+							&.btn-submit {
+								background:	#c29834;
+								color: #fff;
+							}
+						}
+					}
+				}
+			}
+			@include breakpoint(mobile) {
+				display: block;
+			}
+		}
+		.book_tab {
+			margin-bottom: 20px;
+			min-height: 30px;
+			display: flex;
+		}
+		.checkmark {
+			position: absolute;
+			left: 0;
+			height: 30px;
+			width: 30px;
+			background-color: #e5e5e5;
+			border-radius: 50%;
+			&:after {
+				content: "";
+				position: absolute;
+				display: none;
+			}
+		}
+		.container {
+			display: block;
+			position: relative;
+			padding-left: 35px;
+			cursor: pointer;
+			font-size: 18px;
+			color: #fff;
+			margin-bottom: 0;
+			width: 100%;
+			min-height: 30px;
+			text-decoration: none;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+			input {
+				position: absolute;
+				opacity: 0;
+				cursor: pointer;
+				height: 0;
+				width: 0;
+				&:checked {
+					~.checkmark:after {
+						display: block;
+					}
+					~.checkmark {
+						background: #c29834;
+					}
+				}
+			}
+			.checkmark:after {
+				background-color: #fff;
+				position: absolute;
+				top: 8px;
+				left: 8px;
+				height: 14px;
+				width: 14px;
+				border: 1px solid #e0e0e0;
+				border-radius: 50%;
+			}
+		}
         .tab-content {
-            background: rgba(255, 255, 255, 0.3);
             color: #FFF;
             padding: 20px;
             @include breakpoint(mobile){
                 padding: 20px 0px;
+				margin-top: 55px;
             }
             .tab-pane {
                 [class^="col-"] {
                     padding-right: 0px;
+					padding-left: 0px;
                     @include breakpoint(mobile){
-                        padding-right: 15px;
-                    }
-                    &:last-child {
                         padding-right: 15px;
                     }
                 }
@@ -79,8 +167,11 @@
                     margin-bottom: 0px;
                     @include breakpoint(mobile){
                         margin-bottom: 15px;
-                    }					
-                }
+                    }
+                    &::after {
+                      top: 80px;                      
+                    }
+                }				
                 &#search {
                     input[type="submit"]{
                         background-image: url('../assets/img/icon-search.png');
@@ -88,9 +179,24 @@
                         background-position: center center;
                     }
                 }
+                input, .form-control {
+                  height: 45px;
+                  font-size: 15px;
+                }
                 input[type="submit"]{
-                    @extend .submit-purple;
-                }				
+                    border: 1px solid $yellow;
+                    color: #fff;
+                    background: $yellow;
+					margin-top: 10px;
+                    transition: all 0.1s linear;
+                    -webkit-transition: all 0.1s linear;
+                    -moz-transition: all 0.1s linear;
+                    -o-transition: all 0.1s linear;
+                    font-family: "Gotham";
+                    &:hover,&:focus {
+                      background: #b48d2f;
+                    }
+                }
                 .form-control {
                     @include placeholderColor(#333333);
                 }

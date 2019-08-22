@@ -4,11 +4,14 @@
         background: white;
         color: #333333;
         padding: 20px 30px;
-        margin-bottom: 20px;
+        margin-bottom: 3px;
         .action{
             a{
                 color: $purple;
 				cursor: pointer;
+				&:first-child {
+					padding-right: 10px;
+				}
             }
         }
     }

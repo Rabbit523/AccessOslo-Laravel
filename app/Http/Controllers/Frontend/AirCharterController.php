@@ -6,18 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 use App\Models\Core\PageSettings;
-
+use App\Models\Core\EmptyLegBooking;
 class AirCharterController extends Controller
-{   
-    public function passenger() {
-        $page = PageSettings::where('id', '1')->first();
-        return view('pages.air-charter.passenger', [
-            "title" => "Home",
-            "page" => "accessoslo-passenger-charter accessoslo-template-2",
-            "data" => $page
-        ]);
-    }
-
+{    
     public function executive() {
         $page = PageSettings::where('id', '2')->first();
         return view('pages.air-charter.executive', [
@@ -55,6 +46,20 @@ class AirCharterController extends Controller
             "page" => "accessoslo-helicopter-charter accessoslo-template-2",
             "data" => $page,
             "ngApp" => "accessosloApp"           
+        ]);
+    }
+
+    public function emptylegFlights() {
+        $datas = EmptyLegBooking::where('end_date', '>=', date("m/d/Y"))->orderBy('updated_at', 'desc')->paginate(3);
+        $counts = EmptyLegBooking::where('end_date', '>=', date("m/d/Y"))->count();
+        $date = date("m/d?Y");
+        $departure = "";
+        $destination = "";
+        $time = "";
+        $type = "empty";
+        return view('pages.home', compact('datas', 'counts', 'date', 'departure', 'destination', 'time', 'type'), [
+            "title" => "Home",
+            "page" => "accessoslo-home"
         ]);
     }
 }

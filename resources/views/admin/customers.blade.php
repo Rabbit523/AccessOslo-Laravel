@@ -1,4 +1,4 @@
-@extends('layouts.private') @section('title', 'Hjem') @section('content')
+@extends('layouts.private') @section('title', 'Admin Portal') @section('content')
 <div class="page-container">
     <header>
         <div class="container-fluid">
@@ -44,16 +44,16 @@
                             @foreach($users as $user)
                             <div class="item">
                                 <div class="row">
-                                    <div class="label-table member-since">{{$user->created_at}}</div>
+                                    <div class="label-table member-since"><?php $name = explode(" ", $user->created_at); echo $name[0];?></div>
                                     <div class="label-table title">{{$user->gender}}</div>
                                     <div class="label-table first-name">{{$user->first_name}}</div>
                                     <div class="label-table last-name">{{$user->last_name}}</div>
                                     <div class="label-table phone">{{$user->phone}}</div>
                                     <div class="label-table email">{{$user->email}}</div>
                                     @if($user->profile_complete == "true")
-                                    <div class="label-table action"><a class="view_details" id="{{$user->id}}">View details</a></div>                                                                     
+                                    <div class="label-table action"><a class="view_details" id="{{$user->id}}">View details</a><a class="delete_user" id="{{$user->id}}">Delete</a></div>                                                                     
                                     @elseif($user->profile_complete == "false")
-                                    <div class="label-table action"><a class="view_details">Not Completed</a></div>                                    
+                                    <div class="label-table action"><a class="view_details">Not Completed</a><a class="delete_user" id="{{$user->id}}">Delete</a></div>
                                     @endif
                                 </div>
                             </div>

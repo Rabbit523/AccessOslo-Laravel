@@ -69,8 +69,7 @@ accessosloEventtravel.directive('accessosloEventtravel', ["accessosloAPI", funct
             $scope.visible_step1 = false;
             $scope.visible_step2 = true;
             $scope.quoteDetails.travel_type = "group";
-            $scope.quoteDetails.phone = $("#mobile-number").intlTelInput("getNumber");
-            var loading = new Loading({ title: 'Please check your email.', discription: 'Loading...' });
+            $scope.quoteDetails.phone = $("#mobile-number").intlTelInput("getNumber");            
             accessosloAPI.services.booking($scope.quoteDetails, function (response) {              
               setTimeout(() => loading.out(), 10000);               
             });         

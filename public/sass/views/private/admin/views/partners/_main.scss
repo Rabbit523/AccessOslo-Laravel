@@ -12,21 +12,24 @@
         &.contact{
             width: 18%;
         }
-        &.phone{
-            width: 12%;
-        }
-        &.email{
-            width: 16%;
-        }
+        &.partner-type{
+            width: 20%;
+        }        
         &.last-audit{
-            width: 15%;
+            width: 18%;
         }
         &.permission{
-            width: 12%;
+            width: 10%;
         }
         &.action{
             text-align: right;
-            width: 10%;
+            width: 18%;
         }
     }
+	.datepicker table tr td span.active:hover, .datepicker table tr td span.active:hover:hover, .datepicker table tr td span.active.disabled:hover, .datepicker table tr td span.active.disabled:hover:hover, .datepicker table tr td span.active:active, .datepicker table tr td span.active:hover:active, .datepicker table tr td span.active.disabled:active, .datepicker table tr td span.active.disabled:hover:active, .datepicker table tr td span.active.active, .datepicker table tr td span.active:hover.active, .datepicker table tr td span.active.disabled.active, .datepicker table tr td span.active.disabled:hover.active, .datepicker table tr td span.active.disabled, .datepicker table tr td span.active:hover.disabled, .datepicker table tr td span.active.disabled.disabled, .datepicker table tr td span.active.disabled:hover.disabled, .datepicker table tr td span.active[disabled], .datepicker table tr td span.active:hover[disabled], .datepicker table tr td span.active.disabled[disabled], .datepicker table tr td span.active.disabled:hover[disabled] {
+		background-color: #7d7d7d;
+	}
+	.datepicker table tr td span.active, .datepicker table tr td span.active:hover, .datepicker table tr td span.active.disabled, .datepicker table tr td span.active.disabled:hover {
+	    background-image: linear-gradient(to bottom, #7d7d7d, #7d7d7d);
+	}
 }

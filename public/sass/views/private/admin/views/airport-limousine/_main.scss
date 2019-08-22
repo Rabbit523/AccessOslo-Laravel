@@ -9,21 +9,27 @@
         min-height: 25px;
         &.booking-id{
             width: 9%;
+			text-align: left;
         }
         &.date{
             width: 8%;
+			text-align: center;
         }
         &.contact{
             width: 15%;
+			text-align: center;
         }
         &.from-address{
-            width: 16%;
+            width: 19%;
+			text-align: center;
         }
         &.to-address{
-            width: 16%;
+            width: 19%;
+			text-align: center;
         }
         &.type-car{
-            width: 15%;
+            width: 9%;
+			text-align: center;
         }
         &.status{
             width: 11%;

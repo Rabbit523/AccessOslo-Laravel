@@ -4,13 +4,14 @@
         background: white;
         color: #333333;
         padding: 20px 30px;
-        margin-bottom: 20px;
+        margin-bottom: 3px;
         .title{
             a{
                 display: inline;
                 font-size: em(16);
                 opacity: 0;
                 visibility: hidden;
+				cursor: pointer;
                 transition: all 0.3s ease-out;
                 -moz-transition: all 0.3s ease-out;
                 -webkit-transition: all 0.3s ease-out;

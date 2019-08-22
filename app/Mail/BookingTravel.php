@@ -28,13 +28,13 @@ class BookingTravel extends Mailable
      */
     public function build()
     {
-        if ($travel->travel_type == "private") {
+        if ($this->travel->travel_type == "private") {
             return $this->view('email.booking-travel-confirmation', compact('travel'))
-            ->from("contact@accessoslo.no", "AccessOslo")
+            ->from("contact@accessoslo.no", "Access Oslo")
             ->subject('Destination Oslo - Booking Confirmation');
-        } else if ($travel->travel_type == "group") {
+        } else if ($this->travel->travel_type == "group") {
             return $this->view('email.booking-travel-confirmation', compact('travel'))
-            ->from("contact@accessoslo.no", "AccessOslo")
+            ->from("contact@accessoslo.no", "Access Oslo")
             ->subject('Event & Group Travel - Booking Confirmation');
         }
         

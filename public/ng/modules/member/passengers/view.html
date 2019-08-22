@@ -1,19 +1,20 @@
 <div class="col-xs-12 col-sm-6 box-right">
     <h2>Passenger Information</h2>
-    <h3>Security Questions</h3>
+    <h3>Your passengers</h3>
     <div class="box-wrapper" ng-repeat="passenger in passengers">
         <div class="box">
             <div class="header">
                 <h4>{{passenger.gender}}. {{passenger.first_name}} {{passenger.last_name}}</h4>
                 <div class="options-box">
-                    <!-- <a class="edit"><img src="/assets/img/icon-edit.png" alt=""></a> -->
                     <a class="delete" data-source="{{passenger.id}}" ng-click="OnDelete(passenger)"><img src="/assets/img/icon-remove.png" alt=""></a>
                 </div>
             </div>
-            <div class="info-box">                
+            <div class="info-box">
                 <p><b>Date of Birth:</b> {{passenger.birth}}</p>
                 <p><b>Nationality:</b> {{passenger.nationality}}</p>
+                <p><b>Passport NO:</b> {{passenger.passport_no}}</p>
+                <p><b>Passport Expiry:</b> {{passenger.passport_expiry}}</p>
             </div>
-        </div>                              
+        </div>
     </div>
 </div>

@@ -7,16 +7,16 @@
         font-size: em(14);
         line-height: 25px;
         &.member-since{
-            width: 15%;
+            width: 10%;
         }
         &.title{
             width: 9%;
         }
         &.first-name{
-            width: 16%;
+            width: 12%;
         }
         &.last-name{
-            width: 17%;
+            width: 12%;
         }
         &.email{
             width: 19%;
@@ -25,7 +25,7 @@
             width: 14%;
         }
         &.action{
-            width: 10%;
+            width: 24%;
             text-align: right;
         }
     }

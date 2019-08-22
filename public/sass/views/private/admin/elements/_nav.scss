@@ -8,6 +8,7 @@ nav{
     position: absolute;
     width: $sidebar-width;
     border-right: solid 1px #d3d3d3;
+	z-index: 10;
     .brand{
         background: $yellow;
         display: block;

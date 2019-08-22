@@ -1,16 +1,63 @@
 <div class="step step-1 current">
     <form id="handling_form">
         <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                    <label for="">AIRPORT</label>
-                    <input type="text" name="handling_airport" id="handling_airport" class="form-control" placeholder="Oslo Gradermoen" ng-model="handlingData.airport" required>                    
-                </div>
+            <div class="col-xs-12 col-sm-6">                
+                <div class="airport dropdown form-group">
+                    <label for="">AIRPORT</label>                    
+                    <select class="form-control" ng-model="handlingData.airport" required>
+                        <option disabled selected value>Airport</option>
+                        <option value="ENGM">ENGM (OSL) Oslo, Gardermoen</option>
+                        <option value="ENTO">ENTO (TRF) Sandefjord, Torp</option>
+                        <option value="ENAL">ENAL (AES) Ålesund, Vigra</option>
+                        <option value="ENAN">ENAN (ANX) Andøya, Andenes</option>
+                        <option value="ENAT">ENAT (ALF) Alta</option>
+                        <option value="ENBL">ENBL (FDE) Førde, Bringeland</option>
+                        <option value="ENBN">ENBN (BNN) Brønnøysund, Brønnøy</option>
+                        <option value="ENBO">ENBO (BOO) Bodø</option>
+                        <option value="ENBR">ENBR (BGO) Bergen, Flesland</option>
+                        <option value="ENBS">ENBS (BJF) Båtsfjord</option>
+                        <option value="ENBV">ENBV (BVG) Berlevåg</option>
+                        <option value="ENCN">ENCN (KRS) Kristiansand, Kjevik</option>
+                        <option value="ENDU">ENDU (BDU) Bardufoss</option>
+                        <option value="ENEV">ENEV (EVE) Harstad/Narvik, Evenes</option>
+                        <option value="ENFL">ENFL (FRO) Florø</option>
+                        <option value="ENHD">ENHD (HAU) Haugesund, Karmøy</option>
+                        <option value="ENHF">ENHF (HFT) Hammerfest</option>
+                        <option value="ENHK">ENHK (HAA) Hasvik</option>
+                        <option value="ENHV">ENHV (HVG) Honningsvåg</option>
+                        <option value="ENKB">ENKB (KSU) Kristiansund, Kvernberget</option>
+                        <option value="ENKR">ENKR (KKN) Kirkenes, Høybuktmoen</option>
+                        <option value="ENLK">ENLK (LKN) Leknes</option>
+                        <option value="ENMH">ENMH (MEH) Mehamn</option>
+                        <option value="ENML">ENML (MOL) Molde, Årø</option>
+                        <option value="ENMS">ENMS (MJF) Mosjøen, Kjærstad</option>
+                        <option value="ENNA">ENNA (LKL) Lakselv, Banak</option>
+                        <option value="ENOL">ENOL (OLA) Ørland</option>                    
+                        <option value="ENOV">ENOV (HOV) Ørsta-Volda</option>
+                        <option value="ENRA">ENRA (MQN) Mo i Rana, Røssvoll</option>
+                        <option value="ENRM">ENRM (RVK) Rørvik</option>
+                        <option value="ENRO">ENRO (RRS) Røros</option>
+                        <option value="ENRS">ENRS (RET) Røst</option>
+                        <option value="ENSB">ENSB (LYR) Svalbard, Longyearbyen</option>
+                        <option value="ENSD">ENSD (SDN) Sandane, Anda</option>
+                        <option value="ENSG">ENSG (SOG) Sogndal, Haukåsen</option>
+                        <option value="ENSH">ENSH (SVJ) Svolvær, Helle</option>
+                        <option value="ENSK">ENSK (SKN) Stokmarknes, Skagen</option>                    
+                        <option value="ENSO">ENSO (SRP) Stord, Sørstokken</option>
+                        <option value="ENSR">ENSR (SOJ) Sørkjosen, Nordreisa</option>
+                        <option value="ENSS">ENSS (VAW) Vardø, Svartnes</option>
+                        <option value="ENST">ENST (SSJ) Sandnessjøen, Stokka</option>
+                        <option value="ENTC">ENTC (TOS) Tromsø, Langnes</option>
+                        <option value="ENVA">ENVA (TRD) Trondheim, Værnes</option>
+                        <option value="ENVD">ENVD (VDS) Vadsø</option>
+                        <option value="ENZV">ENZV (SVG) Stavanger, Sola</option>                    
+                    </select>
+                </div>                
             </div>
             <div class="col-xs-12 col-sm-6">
                 <div class="form-group">
                     <label for="">COMPANY</label>
-                    <input type="text" name="handling_company" id="handling_company" class="form-control" placeholder="FantasyLab" ng-model="handlingData.company" required>                    
+                    <input type="text" name="handling_company" id="handling_company" class="form-control" placeholder="FantasyLab" ng-model="handlingData.company">
                 </div>
             </div>
         </div>
@@ -46,7 +93,7 @@
                     <label for="">FLIGHT TYPE</label>
                     <div class="clearfix"></div>
                     <label class="radio-inline"><input type="radio" value="private" name="flight" ng-model="handlingData.flight_type" required>Private</label>
-                    <label class="radio-inline"><input type="radio" value="comercial" name="flight" ng-model="handlingData.flight_type" required>Comercial</label>                                    
+                    <label class="radio-inline"><input type="radio" value="commercial" name="flight" ng-model="handlingData.flight_type" required>Commercial</label>                                    
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-3">
@@ -81,13 +128,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-12 col-sm-6">
-                <div class="form-group">
-                    <label for="">FAX:</label>
-                    <input type="text" name="handling_fax" id="handling_fax" class="form-control" placeholder="Number" ng-model="handlingData.fax" required>                    
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
+            <div class="col-xs-12 col-sm-12">
                 <div class="form-group">
                     <label for="">EMAIL:</label>
                     <input type="email" name="handling_email" id="handling_email" class="form-control" placeholder="nohman@janjua.net" ng-model="handlingData.email" required>                   
@@ -100,7 +141,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">FLIGHT NO.</label>
+                            <label for="">FLIGHT NO</label>
                             <input type="text" name="inbound_flight" id="inbound_flight" class="form-control" placeholder="DF498JSO" ng-model="handlingData.inbound_flight" required>                            
                         </div>
                     </div>
@@ -108,7 +149,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">DATE:</label>
+                            <label for="">DATE</label>
                             <input type="text" name="inbound_date" id="inbound_date" class="form-control" placeholder="25.03.2018" ng-model="handlingData.inbound_date" required>                            
                         </div>
                     </div>
@@ -116,7 +157,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">ORIG. / DEST.</label>
+                            <label for="">ORIG</label>
                             <input type="text" name="inbound_orig" id="inbound_orig" class="form-control" placeholder="Variable" ng-model="handlingData.inbound_orig" required>                            
                         </div>
                     </div>
@@ -124,7 +165,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">CAPTAIN:</label>
+                            <label for="">CAPTAIN</label>
                             <input type="text" name="inbound_captain" id="inbound_captain" class="form-control" placeholder="Nohman Janjua" ng-model="handlingData.inbound_captain" required>                            
                         </div>
                     </div>
@@ -132,26 +173,18 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">STA / STD (UTC):</label>
+                            <label for="">STA (UTC)</label>
                             <input type="text" name="inbound_utc" id="inbound_utc" class="form-control" placeholder="Variable" ng-model="handlingData.inbound_utc" required>                            
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <label for="">PAX:</label>
-                            <input type="text" name="inbound_pax" id="inbound_pax" class="form-control" placeholder="Variable" ng-model="handlingData.inbound_pax" required>                            
-                        </div>
-                    </div>
-                </div>
+                </div>                
             </div>
             <div class="col-xs-12 col-sm-6">
                 <h5>OUTBOUND:</h5>
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">FLIGHT NO.</label>
+                            <label for="">FLIGHT NO</label>
                             <input type="text" name="outbound_flight" id="outbound_flight" class="form-control" placeholder="DF498JSO" ng-model="handlingData.outbound_flight" required>                            
                         </div>
                     </div>
@@ -159,7 +192,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">DATE:</label>
+                            <label for="">DATE</label>
                             <input type="text" name="outbound_date" id="outbound_date" class="form-control" placeholder="25.03.2018" ng-model="handlingData.outbound_date" required>                            
                         </div>
                     </div>
@@ -167,7 +200,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">ORIG. / DEST.</label>
+                            <label for="">DESTINATION</label>
                             <input type="text" name="outbound_orig" id="outbound_orig" class="form-control" placeholder="Variable" ng-model="handlingData.outbound_orig" required>                            
                         </div>
                     </div>
@@ -175,7 +208,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">CAPTAIN:</label>
+                            <label for="">CAPTAIN</label>
                             <input type="text" name="outbound_captain" id="outbound_captain" class="form-control" placeholder="Nohman Janjua" ng-model="handlingData.outbound_captain" required>                            
                         </div>
                     </div>
@@ -183,18 +216,18 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <label for="">STA / STD (UTC):</label>
+                            <label for="">STD (UTC)</label>
                             <input type="text" name="outbound_utc" id="outbound_utc" class="form-control" placeholder="Variable" ng-model="handlingData.outbound_utc" required>                           
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <label for="">PAX:</label>
-                            <input type="text" name="outbound_pax" id="outbound_pax" class="form-control" placeholder="Variable" ng-model="handlingData.outbound_pax" required>                           
-                        </div>
-                    </div>
+                </div>              
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="form-group">
+                    <label for="">Upload Documents, e.g handling request, GENDEC etc...</label>
+                    <input type='file' name='file' id="file_upload"></input>
                 </div>
             </div>
         </div>
@@ -208,8 +241,22 @@
         </div>
         <div class="row">
             <div class="col-xs-12 text-right">
-                <button id="request-button" type="submit" class="btn btn-yellow" ng-click="OnSend()">Send Request</button>
+                <button id="request-button" type="submit" class="btn btn-yellow confirm" ng-click="OnSend()">Send Request</button>
             </div>
         </div>
     </form>
+</div>
+<div class="modal fade CustomBookSuccessMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="step thanks text-center">
+                <h2 style="color: #c29834; font-size: 26px;">Thank you <br> for your request.</h2>
+                <p><b>Status: <span style="color: red;">Pending</span></b></p><br>
+                <p>Our partner operators is giving you the best price available and you will receive a quote shortly.</p><br>
+                <p>Our crew will get in touch with you in a short time.</p><br>
+                <p>To see more details about your request, please<br><a class="redirect_upcoming" href="/member/upcoming-request">Go to Upcoming Request</a><br></p>
+                <a ng-click="closeSuccess()" class="btn btn-border-gold">Close</a>
+            </div>
+        </div>
+    </div>
 </div>

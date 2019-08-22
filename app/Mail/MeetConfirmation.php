@@ -30,7 +30,7 @@ class MeetConfirmation extends Mailable
     public function build()
     {
         return $this->view('email.meet-confirmation', compact('meet'))
-        ->from("contact@accessoslo.no", "AccessOslo")
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('Meet & Greet - Arrival - Booking Confirmation');
     }
 }

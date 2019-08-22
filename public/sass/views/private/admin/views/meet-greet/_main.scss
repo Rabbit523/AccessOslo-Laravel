@@ -7,29 +7,32 @@
         font-size: em(14);
         line-height: 25px;
         &.booking-id{
-            width: 11%;
+            width: 8%;
+			text-align: left;
         }
         &.contact{
-            width: 13%;
+            width: 14%;
+			text-align: center;
         }
         &.email{
-            width: 13%;
+            width: 24%;
+			text-align: center;
         }
         &.phone{
             width: 13%;
+			text-align: center;
         }
         &.date{
-            width: 12%;
-        }
-        &.service{
-            width: 20%;
-        }
+            width: 14%;
+			text-align: center;
+        }     
 		&.status {
-			width: 12%;
+			width: 13%;
+			text-align: center;
 		}
         &.toggle{
-            text-align: center;
-            width: 6%;
+            text-align: right;
+            width: 14%;
         }
     }
 }

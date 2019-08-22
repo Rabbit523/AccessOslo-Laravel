@@ -3,24 +3,22 @@
     position: relative;
     width: 100%;
     padding: 0px;
-    margin: -100px 0px 0px;
     @include breakpoint(tablet){
         margin-top: 0px;
     }
     .wrapper-items {
-        position: absolute;
-        z-index: 5;
-        margin: auto;
-        left: 0px;
-        right: 0px;
-        top: 22%;
+		padding-top: 100px;
+        margin-bottom: 50px;
         @include breakpoint(tablet){
             position: relative;
             top: 0px;
             margin-top: 30px;
         }
+		@include breakpoint(mobile) {
+			margin-top: 0px;
+		}
         h1 {
-            @include title(#FFF,24);
+            @include title(#000,24);
             margin-top: 0px;
             margin-bottom: 30px;
             display: block;
@@ -30,7 +28,11 @@
         }
         .box{
             display: block;
-            border: solid 20px rgba(255, 255, 255, 0.3);
+            border: 20px solid #fff;
+			box-shadow: 0px 0px 15px 0px rgba(61, 47, 12, 0.15);
+			@include breakpoint (mobile) {
+				margin-bottom: 30px;
+			}
             .wrapper {
                 background: rgba(255, 255, 255, 0.8);
                 padding: 20px 0px;

@@ -1,8 +1,14 @@
 .introduction {
     display: block;
-    margin: 50px 0px 50px;
+    margin: 50px 0px 30px;
     padding: 0px;
     width: 100%;
+	@include breakpoint (mobile) {
+		padding-top: 50px !important;
+		.container {
+			top: 24%;
+		}
+	}
     .box{
         @include shadowBox;
         display: block;
@@ -16,7 +22,6 @@
             padding: 10px;
         }
         h1{
-            text-transform: uppercase;
             color: $purple;
             margin: 0px 0px 20px 0px;
             font-family: 'Gotham-book';

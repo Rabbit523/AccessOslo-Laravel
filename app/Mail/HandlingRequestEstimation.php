@@ -29,7 +29,7 @@ class HandlingRequestEstimation extends Mailable
     public function build()
     {
         return $this->view('email.handling-estimation', compact('handling'))
-        ->from("contact@accessoslo.no", "AccessOslo")
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('Aircraft Chaters- Booking Estimation');
     }
 }

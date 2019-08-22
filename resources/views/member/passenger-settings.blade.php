@@ -18,62 +18,80 @@
                           <h2>Passenger Settings</h2>
                           <h3>Add new passenger</h3>
                           <p>Please add the information about the people you travel with. Add as many as you may need.</p>
-                          <form name="input_form" id="input-form">
+                          <form name="input_form" id="input_form">
                               <div class="row">
-                                  <div class="col-xs-12 col-sm-6 text-right">
+                                  <div class="col-xs-6 col-sm-6 text-right">
                                       <label for="">Gender</label>
                                   </div>
-                                  <div class="col-xs-12 col-sm-6">
+                                  <div class="col-xs-6 col-sm-6">
                                       <div class="form-group">
                                           <select name="gender" id="gender" class="form-control" required>
                                               <option disabled selected value>Gender</option>
-                                              <option value="Mr">Mr</option>
-                                              <option value="Mrs">Mrs</option>
-                                              <option value="Miss">Miss</option>
-                                              <option value="Sir">Sir</option>
+                                              <option value="male">Male</option>
+                                              <option value="female">Female</option>
                                           </select>
                                       </div>
                                   </div>
                               </div>
                               <div class="row">
-                                  <div class="col-xs-12 col-sm-6 text-right">
+                                  <div class="col-xs-6 col-sm-6 text-right">
                                       <label for="">First name</label>
                                   </div>
-                                  <div class="col-xs-12 col-sm-6">
+                                  <div class="col-xs-6 col-sm-6">
                                       <div class="form-group">
                                           <input type="text" name="firstname" id="first_name" class="form-control" required>
                                       </div>
                                   </div>
                               </div>
                               <div class="row">
-                                  <div class="col-xs-12 col-sm-6 text-right">
+                                  <div class="col-xs-6 col-sm-6 text-right">
                                       <label for="">Last name</label>
                                   </div>
-                                  <div class="col-xs-12 col-sm-6">
+                                  <div class="col-xs-6 col-sm-6">
                                       <div class="form-group">
                                           <input type="text" name="lastname" id="last_name" class="form-control" required>
                                       </div>
                                   </div>
                               </div>                                                                           
                               <div class="row">
-                                  <div class="col-xs-12 col-sm-6 text-right">
+                                  <div class="col-xs-6 col-sm-6 text-right">
                                       <label for="">Date of birth</label>
                                   </div>
-                                  <div class="col-xs-12 col-sm-6">
+                                  <div class="col-xs-6 col-sm-6">
                                       <div class="form-group">
                                           <input type="text" name="birth" id="birth" class="form-control" placeholder="dd/mm/yyyy" required>
                                       </div>
                                   </div>
                               </div>
                               <div class="row">
-                                  <div class="col-xs-12 col-sm-6 text-right">
+                                  <div class="col-xs-6 col-sm-6 text-right">
                                       <label for="">Nationality</label>
                                   </div>
-                                  <div class="col-xs-12 col-sm-6">
+                                  <div class="col-xs-6 col-sm-6">
                                     <div class="input-group">
                                         <div class="form-group">
                                             <input id="nationality" type="text" name="nationality" class="form-control" required>                                        
                                         </div>
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-xs-6 col-sm-6 text-right">
+                                      <label for="">Passport NO</label>
+                                  </div>
+                                  <div class="col-xs-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input id="passport_no" type="text" name="passport_no" class="form-control" required>                                        
+                                    </div>
+                                  </div>
+                              </div>
+                              <div class="row">
+                                  <div class="col-xs-6 col-sm-6 text-right">
+                                      <label for="">Passport Expiry</label>
+                                  </div>
+                                  <div class="col-xs-6 col-sm-6">
+                                    <div class="form-group">
+                                        <input id="passport_expiry" type="text" name="passport_expiry" class="form-control" required>                                        
                                     </div>
                                   </div>
                               </div>
@@ -94,11 +112,10 @@
 @endsection
 
 @section('scripts')
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@include('sweet::alert')
 <script src="/js/vendor/utils.js"></script>
 <script src="/js/vendor/data.js"></script>
 <script src="/js/vendor/intlTelInput.js"></script>
-<script src="/js/vendor/countrySelect.min.js"></script>
 <script src="/js/accessoslo.js"></script>
 <script>jQuery(function(){new Accessoslo.Controllers.MemberPassengerSettings();});</script>
 @endsection

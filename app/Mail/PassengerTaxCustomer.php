@@ -30,7 +30,7 @@ class PassengerTaxCustomer extends Mailable
     public function build()
     {
         return $this->view('email.passenger-tax-confirmation', compact('passenger'))
-        ->from("contact@accessoslo.no", "AccessOslo")
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('Air Passenger Tax Confirmation');
     }
 }

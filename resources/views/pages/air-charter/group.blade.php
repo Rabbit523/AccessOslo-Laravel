@@ -1,15 +1,25 @@
-@extends('layouts.public') 
-@section('title', $data->meta_title) 
-@section('description', $data->meta_description)
+<?php $lang = app()->getLocale();?>
+@extends('layouts.public')
+@if ($lang == "nb")
+@section('title', $data->nb_meta_title)
+@section('description', $data->nb_meta_description)
+@else
+@section('title', $data->en_meta_title)
+@section('description', $data->en_meta_description)
+@endif
 @section('content')
 <div class="wrapper-general">
   <section class="introduction">
-      <img src="/assets/img/bg/executive-charter.jpg" alt="" class="img-responsive">
+      <img src="{{$data->banner_img}}" alt="" class="img-responsive">
       <div class="container wrapper-content">
           <div class="col-xs-12">
           @if($data->status == "published")
-            {!! $data->page_title !!}            
-          @else
+            @if ($lang == "nb")
+                {!! $data->nb_page_title !!}
+                @else
+                {!! $data->en_page_title !!}
+                @endif
+            @else
             <h2> GROUP CHARTER </h2>
           @endif
           </div>
@@ -17,24 +27,15 @@
   </section>
   <section class="content-box">
       <div class="container">
-          <div class="row">
-              <div class="col-xs-12">
-                  <div class="box box-top">
-                  @if($data->status == "published")
-                    {!! $data->page_content !!}
-                  @else
-                      <h3>EXPERIENCE THE LUXURY AND EFFECTIVENESS OF PRIVATE AIR TRAVEL</h3>
-                      <h4>Get an instant charter quote and up to date market prices for your journey. Our focus is to provide you with the most cost effective aircraft charter service that matches your needs.</h4>
-                      <p>Our aviation partners have the highest standard quality, technology and maintenance programs that ensure you a safe, economical, and on time operation.</p>
-                  @endif
-                  </div>
-              </div>
-          </div>
           <div class="row wrapper-box">
               <div class="col-xs-12 col-sm-6">
                   <div class="box box-left">
                   @if($data->status == "published")
-                    {!! $data->extra_content !!}
+                    @if ($lang == "nb")
+                    {!! $data->nb_page_content !!}
+                    @else
+                    {!! $data->en_page_content !!}
+                    @endif
                   @else
                       <h3>WHY CHARTER AN AIRCRAFT?</h3>
                       <ul>
@@ -61,8 +62,10 @@
 @endsection
 
 @section('scripts')
+<script src="/js/vendor/wickedpicker.js"></script>
 <script src="/js/vendor/utils.js"></script>
 <script src="/js/vendor/data.js"></script>
 <script src="/js/vendor/intlTelInput.js"></script>
+@include('sweet::alert')
 <script src="/ng/directives/group-charter/group-charter.js"></script>
 @endsection

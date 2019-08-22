@@ -1,193 +1,95 @@
-@extends('layouts.public') 
-@section('title', $partner->meta_title) 
-@section('description', $partner->meta_description)
+<?php $lang = app()->getLocale();?>
+@extends('layouts.public')
+@if ($lang == "nb")
+@section('title', $partner->nb_meta_title)
+@section('description', $partner->nb_meta_description)
+@else
+@section('title', $partner->en_meta_title)
+@section('description', $partner->en_meta_description)
+@endif
 @section('content')
 <div class="wrapper-general">
-        <section class="introduction">
-            <div class="container">
-                <div class="row">
+    <section class="introduction">
+        <img src="{{$partner->banner_img}}" alt="" class="img-responsive">
+        <div class="container wrapper-content">
+            <div class="col-xs-12">
+                @if($partner->status == "published")
+                    @if($lang == "nb")
+                    {!! $partner->nb_page_title !!}
+                    @else
+                    {!! $partner->en_page_title !!}
+                    @endif
+                @else
+                    <h2> PARTNERS </h2>
+                @endif
+            </div>
+        </div>
+    </section>
+    <section class="wrapper-content">
+        <div class="container">
+            @if($a_count !=0)
+            <div class="partners-group">
+                <div class="title">
+                    <h2>Air Charter</h2>
+                </div>
+                <div class="clearfix"></div>
+                <div class="row grid">
+                    @foreach($datas as $data)
+                    @if($data->type =="aircharter")
                     <div class="col-xs-12 col-sm-4">
-                        <div class="box">
-                        @if ($partner->status == "published")
-                            {!! $partner->page_title !!}
-                            {!! $partner->page_content !!}
-                        @else
-                            <h1>Partners</h1>
-                            <p>Lorem ipsum dolor sit amet consectetur ipsum 
-                            dolor remi obligado remi opsum. This is just a 
-                            dummy text for you to read meanwhile we are 
-                            working on new text. Lorem ipsum dolor sit 
-                            amet consectetur.</p>
-                            <span class="share">
-                                <i class="fa fa-share-alt" aria-hidden="true"></i>
-                            </span>
-                        @endif
+                        <div class="item">
+                            <figure>
+                                @if($data['main_img'] != null)                                    
+                                <img src="{{$data->main_img}}" class="center-block img-responsive" alt="">
+                                @else 
+                                <img src="/assets/img/partners-logo.jpg" class="center-block img-responsive" alt="">
+                                @endif
+                            </figure>
+                            <div class="box-top">
+                                <h3>{{$data->partner_name}}</h3>
+                                <p>{{$data->description}}</p>
+                                <a class="btn btn-border-gold view_details" id="{{$data->id}}">View partner</a>
+                            </div>                                
                         </div>
                     </div>
-                    <div class="col-xs-12 col-sm-8">
-                        <div class="slider">
-                            <img src="/assets/img/bg/slider-partners.jpg" class="img-responsive" alt="">
-                        </div>
-                    </div>
+                    @endif
+                    @endforeach
                 </div>
             </div>
-        </section>
-        <section class="wrapper-content">
-            <div class="container">
-                <div class="partners-group">
-                    <div class="title">
-                        <h2>Air Charter</h2>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="row grid">
-                        @foreach($datas as $data)
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="item">
-                                <figure>
-                                    <img src="/assets/img/partners-logo.jpg" class="center-block img-responsive" alt="">
-                                </figure>
-                                <div class="box-top">
-                                    <h3>{{$data->partner_name}}</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipsum dolor remi obligado remi opsum. 
-                                    This is just a dummy text for you to read meanwhile we are working on new text. Lorem ipsum dolor sit amet consectetur.</p>
-                                    <a class="btn btn-border-gold view_details" id="{{$data->id}}">View details</a>
-                                </div>
-                                <div class="contact-box">
-                                    <h4>Contact {{$data->partner_name}}</h4>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <p>PO Box: {{$data->post_box}} </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p> {{$data->phone}}  </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p> {{$data->phone}}  </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <a href="" target="_blank">{{$data->site_url}}</a>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p> {{$data->email}}  </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>    
-                        @endforeach
-                        {{$datas->links()}}                                       
-                    </div>
+            @endif
+            @if($h_count !=0)
+            <div class="partners-group">
+                <div class="title">
+                    <h2>Norway Partners</h2>
                 </div>
-                <div class="partners-group">
-                    <div class="title">
-                        <h2>Hotels</h2>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="row grid">
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="item">
-                                <figure>
-                                    <img src="/assets/img/partners-logo.jpg" class="center-block img-responsive" alt="">
-                                </figure>
-                                <div class="box-top">
-                                    <h3>Royal Jet Group</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipsum dolor remi obligado remi opsum. 
-                                    This is just a dummy text for you to read meanwhile we are working on new text. Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
-                                <div class="contact-box">
-                                    <h4>Contact Royal Jet Group</h4>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <p>PO Box: 60666, Abu Dhabi, United Arab Emirates </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p> +97 125051777  </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p>+97 125051850  </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <a href="" target="_blank">www.royaljetgroup.com</a>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p> info@royaljetgroup.com  </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="item">
-                                <figure>
-                                    <img src="/assets/img/partners-logo.jpg" class="center-block img-responsive" alt="">
-                                </figure>
-                                <div class="box-top">
-                                    <h3>Royal Jet Group</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipsum dolor remi obligado remi opsum. 
-                                    This is just a dummy text for you to read meanwhile we are working on new text. Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
-                                <div class="contact-box">
-                                    <h4>Contact Royal Jet Group</h4>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <p>PO Box: 60666, Abu Dhabi, United Arab Emirates </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p> +97 125051777  </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p>+97 125051850  </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <a href="" target="_blank">www.royaljetgroup.com</a>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p> info@royaljetgroup.com  </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-12 col-sm-4">
-                            <div class="item">
-                                <figure>
-                                    <img src="/assets/img/partners-logo.jpg" class="center-block img-responsive" alt="">
-                                </figure>
-                                <div class="box-top">
-                                    <h3>Royal Jet Group</h3>
-                                    <p>Lorem ipsum dolor sit amet consectetur ipsum dolor remi obligado remi opsum. 
-                                    This is just a dummy text for you to read meanwhile we are working on new text. Lorem ipsum dolor sit amet consectetur.</p>
-                                </div>
-                                <div class="contact-box">
-                                    <h4>Contact Royal Jet Group</h4>
-                                    <div class="row">
-                                        <div class="col-xs-12">
-                                            <p>PO Box: 60666, Abu Dhabi, United Arab Emirates </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p> +97 125051777  </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p>+97 125051850  </p>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <a href="" target="_blank">www.royaljetgroup.com</a>
-                                        </div>
-                                        <div class="col-xs-12 col-sm-12 col-md-6">
-                                            <p> info@royaljetgroup.com  </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <div class="clearfix"></div>
+                <div class="row grid">
+                    @foreach($datas as $data)
+                    @if($data->type =="norway")
+                    <div class="col-xs-12 col-sm-4">
+                        <div class="item">
+                            <figure>
+                                <img src="/assets/img/partners-logo.jpg" class="center-block img-responsive" alt="">
+                            </figure>
+                            <div class="box-top">
+                                <h3>{{$data->partner_name}}</h3>
+                                <p>{{$data->description}}</p>
+                                <a class="btn btn-border-gold view_details" id="{{$data->id}}">View Partner</a>
+                            </div>                                
                         </div>
                     </div>
+                    @endif
+                    @endforeach
                 </div>
             </div>
-        </section>
-    </div>
+            @endif
+        </div>
+    </section>
+</div>
 @endsection
 
 @section('scripts')
+@include('sweet::alert')
 <script src="/js/accessoslo.js"></script>
 <script>jQuery(function(){new Accessoslo.Controllers.Partners();});</script>
 @endsection

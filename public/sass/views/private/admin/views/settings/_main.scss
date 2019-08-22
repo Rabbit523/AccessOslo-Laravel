@@ -2,15 +2,14 @@
     background: #f8f6f0;
     .content-box{
 		display: block;
-		margin: 30px 0px 0px 20px;
+		margin: 30px 0px 0px 0px;
 		padding-bottom: 50px;
 		padding-top: 0px;
 		background: #fff;
 		.form-group {
 		    position: relative;
-			&.success:after, &.error:after {	
-				right: 5px;
-				top: 40px;		
+			&.success:after, &.error:after {					
+				top: 77px;		
 			}
 		}
 		p {
@@ -68,12 +67,15 @@
 						color: #333333;
 						padding: 7px 10px;
 						height: auto;
+						&.phone-error {
+							border: 1px solid #e71f1f;
+						}
 					}					
 				}        
 			}
 		}
 		.button_section {
-			padding:20px 0px 150px 30px;
+			padding:20px 0px 0px 30px;
 			#save{
 				width:180px;
 				height:auto;

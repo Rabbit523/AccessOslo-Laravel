@@ -17,10 +17,9 @@
 @endsection
 
 @section('scripts')
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+@include('sweet::alert')
 <script src="/js/vendor/wickedpicker.js"></script>
 <script src="/js/vendor/utils.js"></script>
 <script src="/js/vendor/data.js"></script>
 <script src="/js/vendor/intlTelInput.js"></script>
-<script src="/js/vendor/countrySelect.min.js"></script>
 @endsection

@@ -24,7 +24,7 @@ class BookingMeet extends Model
      * @var array
      */
 
-    protected $fillable = ['contact_person', 'phone', 'email', 'company', 'flight_number', 'airline', 'date', 'time', 'luggage', 'travelers', 'booking_reference', 'meet_service','product', 'departure_time', 'connect_flight_number', 'comments', 'total_cost', 'partner_name', 'aircraft'];
+    protected $fillable = ['contact_person', 'phone', 'email', 'company', 'travelers', 'in_flight_number', 'in_airline', 'in_date', 'in_time', 'in_luggage', 'in_booking_reference', 'in_meet_service', 'in_departure_time', 'in_connect_flight_number', 'out_flight_number', 'out_airline', 'out_date', 'out_time', 'out_luggage', 'out_booking_reference', 'out_meet_service', 'out_departure_time', 'out_connect_flight_number', 'comments', 'total_cost', 'payment_id', 'is_departure', 'is_arrival', 'is_added'];
 
     /**
      * The attributes that should be hidden for arrays.

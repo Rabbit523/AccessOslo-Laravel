@@ -24,7 +24,7 @@ class CargoBooking extends Model
      * @var array
      */
 
-    protected $fillable = ['departure', 'destination', 'contact_person', 'date', 'cargo_type', 'width', 'height','depth', 'weight', 'is_danger', 'company', 'phone', 'email', 'status'];
+    protected $fillable = ['departure', 'destination', 'contact_person', 'date', 'width', 'height','depth', 'weight', 'is_danger', 'company', 'phone', 'email', 'status', 'payment_id'];
 
     /**
      * The attributes that should be hidden for arrays.

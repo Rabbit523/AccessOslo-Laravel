@@ -2,10 +2,12 @@
     display: block;
     position: relative;
     width: 100%;
-    padding: 0px;
+    padding: 300px 0px;
     margin: -95px 0px 0px;
     @include breakpoint(tablet){
         margin-top: 0px;
+        padding: 50px 0px;
+
     }
     .wrapper-items {
         position: absolute;
@@ -34,7 +36,7 @@
             .wrapper {
                 background: rgba(255, 255, 255, 0.8);
                 padding: 20px 0px;
-                display: block;         
+                display: block;
             }
             figure{
                 &:after{

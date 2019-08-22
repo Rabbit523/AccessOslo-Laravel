@@ -22,8 +22,9 @@ class LoyaltyController extends Controller
 
     public function login() {
         $redirect = "no redirect";
+        $token = " ";
         $page = PageSettings::where('id', '36')->first();
-        return view('pages.loyalty.login', compact('redirect'), [
+        return view('pages.loyalty.login', compact('redirect', 'token'), [
             "title" => "Home",
             "page" => "accessoslo-login",
             'data'=> $page
@@ -33,10 +34,28 @@ class LoyaltyController extends Controller
     public function loginRedirect(Request $request) {
         $redirect = $request->redirect;
         $page = PageSettings::where('id', '36')->first();
-        return view('pages.loyalty.login', compact('redirect'), [
+        $token = " ";
+        return view('pages.loyalty.login', compact('redirect', 'token'), [
             "title" => "Home",
             "page" => "accessoslo-login",
             'data'=> $page
         ]);
+    }
+
+    public function reset_password_page (Request $request) {
+        $redirect = "reset";
+        $page = PageSettings::where('id', '36')->first();
+        $token = $request->token;
+        return view('pages.loyalty.login', compact('redirect', 'token'), [
+            "title" => "Login",
+            "page" => "accessoslo-login",
+            'data'=> $page
+        ]);
+    }
+
+    public function start_signup (Request $request) {    
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
+          return redirect('/member/profile-settings');
+        }    
     }
 }

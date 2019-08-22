@@ -58,8 +58,7 @@ accessosloAirpassenger.directive('accessosloAirpassenger', ["accessosloAPI", fun
   return {
     templateUrl: '/ng/directives/air-passenger/view.html',
     scope: {},
-    controller: function ($scope) {
-      $scope.visible_step1 = true;$scope.visible_step2 = false;
+    controller: function ($scope) {      
       $scope.passenger = {};
 
       $scope.OnRegister = function () {               
@@ -67,28 +66,31 @@ accessosloAirpassenger.directive('accessosloAirpassenger', ["accessosloAPI", fun
           if ($("#mobile-number").intlTelInput('isValidNumber')) {
             $scope.passenger.phone = $("#mobile-number").intlTelInput("getNumber");
             $scope.passenger.country = $("#country").val();
-            $scope.visible_step1 = false;
-            $scope.visible_step2 = true;
-            var loading = new Loading({ title: 'Please check your email.', discription: 'Loading...' });
-            accessosloAPI.services.booking($scope.passenger, function (response) {              
-              setTimeout(() => loading.out(), 10000);              
+            $(".confirm").addClass("submit");
+            $(".confirm").html("<div class='ld ld-ring ld-spin-fast waiting-animation'></div>");
+            accessosloAPI.services.booking($scope.passenger, function (response) {
+              if (user != null) {
+                $(".confirm").removeClass("submit");
+                $(".confirm").html("Send Tax Registration");
+                $("#BookSuccessMessage_new").modal('show');
+              } else {
+                $(".confirm").removeClass("submit");
+                $(".confirm").html("Send Tax Registration");
+                $("#BookSuccessMessage").modal('show');
+              }
             });         
           } else {
             alert("Invalid Phone number!");
           }
-        } 
+        }
       };
-
-      $scope.OnNew = function () {
-        $scope.visible_step1 = true;
-        $scope.visible_step2 = false;
-        $scope.passenger = {};
+      $scope.closeSuccess = function () {
+        $("#BookSuccessMessage_new").modal('hide');
+        location.reload();
       };
-
-      $scope.upcomingRequest = function () {
-        setTimeout(function () { window.location = "/member/upcoming-request";}, 200);
+      $scope.NewRequest = function () {
+        location.reload();
       };
-
       var init = function () {
         $("#mobile-number").intlTelInput({
           allowDropdown: true,
@@ -98,6 +100,20 @@ accessosloAirpassenger.directive('accessosloAirpassenger', ["accessosloAPI", fun
           preferredCountries: ['no', 'se', 'gb', 'de', 'us'],
           utilsScript: "/js/vendor/utils.js"
         });
+        if (user != null) {          
+          if (user.first_name != null || user.last_name != null) {
+            $scope.passenger.contact_person = user.first_name + " " + user.last_name;            
+          }
+          if (user.email != null) {
+            $scope.passenger.email = user.email;            
+          }
+          if (user.phone != null) {
+            $("#mobile-number").intlTelInput("setNumber", user.phone);           
+          }
+          if (user.company != null) {
+            $scope.passenger.company = user.company;            
+          }
+        }
         $("#country").countrySelect({
           preferredCountries: ['no', 'se', 'gb', 'de', 'us']
         });

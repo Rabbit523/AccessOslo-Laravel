@@ -29,7 +29,7 @@ class MeetEstimation extends Mailable
     public function build()
     {
         return $this->view('email.meet-estimation', compact('meet'))
-        ->from("contact@accessoslo.no", "AccessOslo")
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('Meet & Greet- Booking Estimation');
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.private') @section('title', 'Hjem') @section('content')
+@extends('layouts.private') @section('title', 'Admin Portal') @section('content')
 <div class="page-container">
     <header>
         <div class="container-fluid">
@@ -26,6 +26,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-xs-12 col-sm-12">
+                    <!-- content-box -->
                     <div class="content-box">
                         <div class="header-list">
                             <div class="row">
@@ -36,6 +37,7 @@
                                 <div class="label-table status">Status</div>
                             </div>
                         </div>
+                        <!-- items-list -->
                         <div class="items-list">                            
                             @foreach($datas as $data)
                             <div class="item">
@@ -48,7 +50,7 @@
                                 </div>
                             </div>
                             @endforeach
-                            {{$datas->links()}}                          
+                            {{$datas->links()}} <!-- pagination -->
                         </div><!-- items-list -->
                     </div><!-- content-box -->
                 </div>

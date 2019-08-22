@@ -64,20 +64,30 @@ accessosloGroupcharter.directive('accessosloGroupcharter', ["accessosloAPI", fun
     scope: {},
     controller: function ($scope) {
       $scope.visible_step1 = true;$scope.visible_step2 = false;$scope.visible_step3 = false;
-      $scope.quoteDetails = [];
+      $scope.quoteDetails = {
+        gender: "",
+        full_name: "",        
+        company: "",
+        phone: "",
+        email: ""
+      };
 
       $scope.OnContinue = function () { 
         if ($("#step1_form").valid()) {
-          if ($("#mobile-number").intlTelInput('isValidNumber')) {
-            $scope.quoteDetails.contact.phone = $("#mobile-number").intlTelInput("getNumber");
-            var full_name = $scope.quoteDetails.contact.full_name.split(" ");
-            $scope.quoteDetails.contact.first_name = full_name[0];
-            $scope.quoteDetails.contact.last_name = full_name[1];            
-            accessosloAPI.users.find($scope.quoteDetails.contact, function (response) {          
-              if (response == "error") {
-                var loading = new Loading({ title: 'Please check your email.', discription: 'Loading...' });
-                accessosloAPI.users.create($scope.quoteDetails.contact, function (response) {                                                
-                  window.location = "/loyalty-program/login-redirect?redirect="+"group";                 
+          if ($("#mobile-number").intlTelInput('isValidNumber')) {            
+            var full_name = $scope.quoteDetails.full_name.split(" ");
+            var data = {
+              gender: $scope.quoteDetails.gender,
+              first_name: full_name[0],
+              last_name: full_name[1],
+              company: $scope.quoteDetails.company,
+              phone: $("#mobile-number").intlTelInput("getNumber"),
+              email: $scope.quoteDetails.email
+            };
+            accessosloAPI.users.find(data, function (response) {          
+              if (response == "error") {                
+                accessosloAPI.users.create(data, function (response) {                                                
+                  window.location = "/login-redirect?redirect="+"group";                 
                 });           
               } 
             });
@@ -95,38 +105,135 @@ accessosloGroupcharter.directive('accessosloGroupcharter', ["accessosloAPI", fun
       };
 
       $scope.OnConfirm = function () {     
-        if ($('#step2_form').valid()) {                    
+        if ($('#step2_form').valid()) {
           var flight_data = {
-            departure: $scope.quoteDetails.flight.from_airport, 
-            destination: $scope.quoteDetails.flight.to_airport,
-            date: $scope.quoteDetails.flight.depature_time,
-            travellers: $scope.quoteDetails.flight.passenger_num,
-            flight_type: $scope.quoteDetails.flight.flight_type,
-            contact_person: $scope.quoteDetails.contact.full_name,
-            phone: $scope.quoteDetails.contact.phone,
-            email: $scope.quoteDetails.contact.email,
-            company: $scope.quoteDetails.contact.company,
+            departure: $scope.quoteDetails.from_airport, 
+            destination: $scope.quoteDetails.to_airport,
+            time: $scope.quoteDetails.depature_time,
+            date: $scope.quoteDetails.depature_date,
+            return_time: $scope.quoteDetails.return_depature_time,
+            return_date: $scope.quoteDetails.return_depature_date,
+            travellers: $scope.quoteDetails.passenger_num,
+            flight_type: $scope.quoteDetails.flight_type,
+            bonus: $scope.quoteDetails.bonus,
+            contact_person: $scope.quoteDetails.full_name,
+            phone: $("#mobile-number").intlTelInput("getNumber"),
+            email: $scope.quoteDetails.email,
+            company: $scope.quoteDetails.company,
             status: "awaiting",
-            booking_type: "group"
+            booking_type: "group"            
           };
-          accessosloAPI.charters.create(flight_data, function (response) {            
-            var loading = new Loading({ title: 'Please check your email.', discription: 'Loading...' });
-            setTimeout(() => loading.out(), 10000);
-            $scope.visible_step1 = false;$scope.visible_step2 = false; $scope.visible_step3 = true;
+          $(".confirm").addClass("submit");
+          $(".confirm").html("<div class='ld ld-ring ld-spin-fast waiting-animation'></div>");
+          accessosloAPI.charters.create(flight_data, function (response) {
+            $scope.visible_step1 = false;
             $scope.$apply();
+            if (user != null) {
+              $(".confirm").removeClass("submit");
+              $(".confirm").html("Confirm");
+              $("#BookSuccessMessage_new").modal('show');  
+            } else {
+              $(".confirm").removeClass("submit");
+              $(".confirm").html("Confirm");
+              $("#BookSuccessMessage").modal('show');
+            }            
           });        
         }
       };
-      
-      $scope.UpcomingRequest = function () {
-        setTimeout(function () { window.location = "/member/upcoming-request";}, 1500);
-      };
-
       $scope.NewRequest = function () {
-        $scope.visible_step1 = true; $scope.visible_step2 = false;  $scope.visible_step3 = false;  $scope.quoteDetails = [];
+        location.reload();
       };
+      $scope.closeSuccess = function () {
+        $("#BookSuccessMessage_new").modal('hide');
+        location.reload();
+      };
+      $scope.onFlightTypeChange = function () {
+        if ($scope.quoteDetails.flight_type == 'Round Way') {
+          $(".return-datetime").attr('style', 'display: block');
+          $("#return_datepicker").prop('required',true);
+          $("#return_timepicker").prop('required',true);
+        } else {
+          $(".return-datetime").attr('style', 'display: none');
+          $("#return_datepicker").prop('required',false);
+          $("#return_timepicker").prop('required',false);
+        }
+      };
+      var getAirportInformation = function () {
+        var airports = [];
+        var api_key = 'eb07b45ce0630bf683cd176a0174bec5';
+        $.ajax({
+          url: 'https://airport.api.aero/airport/?user_key=' + api_key,        
+          type: 'GET',
+          contentType: 'application/json',
+          dataType: 'jsonp',            
+          success: function(e) {                
+            e.airports.forEach(sel => {
+              if (sel.name != null) {                    
+                  airports.push(sel.name + "#" + sel.code + "#" + sel.country + "#" + sel.city);
+              }
+            });
+            $('#flight_departure').typeahead('destroy');
+            $('#flight_destination').typeahead('destroy');
+            $("#flight_departure").typeahead({
+              source: airports,
+              highlighter: function (item) {
+                  var parts = item.split("#");
+                  var html = "<div><div class='typehead-inner'>";                        
+                  html += "<div class='item-img'>" + "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' class='bpk-autosuggest__suggestion-icon-2OnBo bpk-icon--rtl-support-1DqTP' style='width: 1.5rem; height: 1.5rem;'><path d='M17.8 20.1l.6-.6c.2-.2.3-.5.2-.8l-2.2-9.3 4.1-4.2c.5-.5.5-1.3 0-1.9-.5-.5-1.4-.5-1.9 0l-4.2 4.1-9.1-2c-.3-.1-.6 0-.8.2l-.6.6c-.4.4-.3 1.1.2 1.4l7.2 3.2-3.7 3.7-2.3-.8c-.3-.1-.6 0-.8.2L3 15.2l4.2 1.6L8.8 21l1.3-1.5c.2-.2.3-.6.2-.8l-.8-2.3 3.7-3.7 3.2 7.2c.3.5 1 .6 1.4.2z'></path></svg></div>";
+                  html += "<div class='item-body'>";
+                  html += "<p class='item-heading'>" + "<span class='item-airport'>" + parts[0] + "<span class='item-code'> (" + parts[1] + ")</p>";
+                  html += "<p class='item-sub'>" + parts[2] + ", " + parts[3] + "</p></div></div></div>";
 
+                  var query = this.query;
+                  var reEscQuery = query.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                  var reQuery = new RegExp('(' + reEscQuery + ')', "gi");
+                  var jElem = $(html);
+                  var textNodes = $(jElem.find('*')).add(jElem).contents().filter(function() {
+                      return this.nodeType === 3;
+                  });
+                  textNodes.replaceWith(function() {
+                      return $(this).text().replace(reQuery, '<strong>$1</strong>');
+                  });
+                  return jElem.html();
+              },
+              updater: function(selectedName) {
+                  var name = selectedName.split('#')[0] + " (" + selectedName.split('#')[1] + ")";
+                  return name;
+              }
+            });
+            $("#flight_destination").typeahead({
+              source: airports,
+              highlighter: function (item) {
+                  var parts = item.split("#");
+                  var html = "<div><div class='typehead-inner'>";                        
+                  html += "<div class='item-img'>" + "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' width='24' height='24' class='bpk-autosuggest__suggestion-icon-2OnBo bpk-icon--rtl-support-1DqTP' style='width: 1.5rem; height: 1.5rem;'><path d='M17.8 20.1l.6-.6c.2-.2.3-.5.2-.8l-2.2-9.3 4.1-4.2c.5-.5.5-1.3 0-1.9-.5-.5-1.4-.5-1.9 0l-4.2 4.1-9.1-2c-.3-.1-.6 0-.8.2l-.6.6c-.4.4-.3 1.1.2 1.4l7.2 3.2-3.7 3.7-2.3-.8c-.3-.1-.6 0-.8.2L3 15.2l4.2 1.6L8.8 21l1.3-1.5c.2-.2.3-.6.2-.8l-.8-2.3 3.7-3.7 3.2 7.2c.3.5 1 .6 1.4.2z'></path></svg></div>";
+                  html += "<div class='item-body'>";
+                  html += "<p class='item-heading'>" + "<span class='item-airport'>" + parts[0] + "<span class='item-code'> (" + parts[1] + ")</p>";
+                  html += "<p class='item-sub'>" + parts[2] + ", " + parts[3] + "</p></div></div></div>";
+
+                  var query = this.query;
+                  var reEscQuery = query.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+                  var reQuery = new RegExp('(' + reEscQuery + ')', "gi");
+                  var jElem = $(html);
+                  var textNodes = $(jElem.find('*')).add(jElem).contents().filter(function() {
+                      return this.nodeType === 3;
+                  });
+                  textNodes.replaceWith(function() {
+                      return $(this).text().replace(reQuery, '<strong>$1</strong>');
+                  });
+                  return jElem.html();
+              },
+              updater: function(selectedName) {
+                  var name = selectedName.split('#')[0] + " (" + selectedName.split('#')[1] + ")";
+                  return name;
+              }
+            });
+          }
+        });
+      };
       var init = function () {
+        getAirportInformation();
+        $(".return-datetime").attr('style', 'display: none');
         $("#mobile-number").intlTelInput({
           allowDropdown: true,
           autoHideDialCode: false,
@@ -134,7 +241,25 @@ accessosloGroupcharter.directive('accessosloGroupcharter', ["accessosloAPI", fun
           dropdownContainer: "body",
           preferredCountries: ['no', 'se', 'gb', 'de', 'us'],
           utilsScript: "/js/vendor/utils.js"
-        });
+        });       
+        if (user != null) {          
+          if (user.gender != null) {                        
+            $scope.quoteDetails.gender = user.gender;
+            $("#gender").val(user.gender);
+          }
+          if (user.first_name != null || user.last_name != null) {
+            $scope.quoteDetails.full_name = user.first_name + " " + user.last_name;            
+          }
+          if (user.email != null) {
+            $scope.quoteDetails.email = user.email;
+          }
+          if (user.phone != null) {
+            $("#mobile-number").intlTelInput("setNumber", user.phone);            
+          }
+          if (user.company != null) {
+            $scope.quoteDetails.company = user.company;
+          }
+        }
         $('#step1_form').validate({             
           errorPlacement: function () { },
           errorClass: "label",
@@ -158,9 +283,26 @@ accessosloGroupcharter.directive('accessosloGroupcharter', ["accessosloAPI", fun
               $(element).parent().removeClass("error");
               $(element).parent().addClass("success");
           }
-        }); 
+        });
+        $("#timepicker").wickedpicker({
+          twentyFour: true,
+          onClose: function () {
+              $('#step2_form').validate().element("#meet_datepicker");
+          }
+        });
         $("#datepicker").datepicker({
-          showOtherMonths: true,selectOtherMonths: true,
+          showOtherMonths: true,selectOtherMonths: true,minDate:new Date(),format: 'mm/dd/yyyy',
+          onClose: function () {
+              $('#step2_form').validate().element("#datepicker");
+        }});
+        $("#return_timepicker").wickedpicker({
+          twentyFour: true,
+          onClose: function () {
+              $('#step2_form').validate().element("#meet_datepicker");
+          }
+        });
+        $("#return_datepicker").datepicker({
+          showOtherMonths: true,selectOtherMonths: true,minDate:new Date(),format: 'mm/dd/yyyy',
           onClose: function () {
               $('#step2_form').validate().element("#datepicker");
         }});

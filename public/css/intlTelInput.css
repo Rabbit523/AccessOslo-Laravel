@@ -187,6 +187,15 @@
     right: auto;
     margin-top: 0px;
     left: 0; }
+    .accessoslo.accessoslo-destination-bergen .content-box .message-form .intl-tel-input.allow-dropdown input, .intl-tel-input.allow-dropdown input[type=text], .intl-tel-input.allow-dropdown input[type=tel], .intl-tel-input.separate-dial-code input, .intl-tel-input.separate-dial-code input[type=text], .intl-tel-input.separate-dial-code input[type=tel] {
+      padding-right: 6px !important;
+      padding-left: 52px !important;
+      margin-top: 0px !important;
+      margin-left: 0; }
+    .accessoslo.accessoslo-destination-bergen .content-box .message-form .intl-tel-input.allow-dropdown .flag-container, .intl-tel-input.separate-dial-code .flag-container {
+      right: auto;
+      margin-top: 0px;
+      left: 0; }
   .accessoslo #AccessModal .modal-content .modal-body .intl-tel-input.allow-dropdown input, .intl-tel-input.allow-dropdown input[type=text], .intl-tel-input.allow-dropdown input[type=tel], .intl-tel-input.separate-dial-code input, .intl-tel-input.separate-dial-code input[type=text], .intl-tel-input.separate-dial-code input[type=tel] {
     padding-right: 6px !important;
     padding-left: 52px !important;
@@ -225,6 +234,16 @@
     margin-top: 0px !important;
     margin-left: 0; }
   .accessoslo-admin .general-wrapper .page-container .accessoslo-setting .content-box .intl-tel-input.allow-dropdown .flag-container, .intl-tel-input.separate-dial-code .flag-container {
+    right: auto;
+    margin-top: 0px;
+    left: 0; }
+  
+  .accessoslo-admin .modal-handling-request .intl-tel-input.allow-dropdown input, .intl-tel-input.allow-dropdown input[type=text], .intl-tel-input.allow-dropdown input[type=tel], .intl-tel-input.separate-dial-code input, .intl-tel-input.separate-dial-code input[type=text], .intl-tel-input.separate-dial-code input[type=tel] {
+    padding-right: 6px !important;
+    padding-left: 52px !important;
+    margin-top: 0px !important;
+    margin-left: 0; }
+  .accessoslo-admin .modal-handling-request .intl-tel-input.allow-dropdown .flag-container, .intl-tel-input.separate-dial-code .flag-container {
     right: auto;
     margin-top: 0px;
     left: 0; }

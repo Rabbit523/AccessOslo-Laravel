@@ -1,4 +1,4 @@
-.form-group {
+.form-group {	
     .form-control {
         @include placeholderColor(#b2b2b2);
         border-radius: 0px;
@@ -15,19 +15,22 @@
             background-repeat: no-repeat;
             background-position: 95% center;
         }
+		label:after {
+			content: "*";
+			color: #e71f1f;
+		}
     }
 	&.success:after, &.error:after {
 		font: normal normal normal 14px/1 FontAwesome;
 		display: block;
-		position: absolute;
-		top: 8px;
-		right: 3px;
+		position: absolute;		
 		z-index: 8;
-		font-size: 20px;
+		font-size: 12px;
 		color: #29d420;
+		font-family: Gotham;
 	}
 	&.error:after {
-		 content: "\f05c";
+		 content: "Required field.";
 		 color: #e71f1f;
 	}
     &.success {
@@ -37,8 +40,7 @@
             background-position: 95% center;
         }
     }
-	&.success:after {
-		content: "\f05d";
+	&.success:after {		
 		color: #29d420;		
 	}	
 }

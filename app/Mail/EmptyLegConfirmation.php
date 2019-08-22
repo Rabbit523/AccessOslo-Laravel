@@ -30,7 +30,7 @@ class EmptyLegConfirmation extends Mailable
     public function build()
     {
         return $this->view('email.emptyleg-confirmation', compact('emptyleg'))
-        ->from("contact@accessoslo.no", "AccessOslo")
+        ->from("contact@accessoslo.no", "Access Oslo")
         ->subject('EmptyLeg - Booking Confirmation');
     }
 }

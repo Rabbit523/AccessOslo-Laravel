@@ -4,24 +4,37 @@
     .label-table{
         display: block;
         float: left;
-        &.company{
-            width: 18%;
+        &.contact{
+            width: 13%;
+			text-align: left;
         }
         &.phone{
-            width: 18%;           
+            width: 14%;
+			text-align: center;
         }
         &.email{
-            width: 21%;
-        }
-        &.contact{
             width: 18%;
+			text-align: center;
         }
-        &.gender{
+        &.departure{
+            width: 14%;
+			text-align: center;
+        }
+		&.destination{
+            width: 14%;
+			text-align: center;
+        }
+        &.end_date{
             width: 10%;
+			text-align: center;
         }
 		&.status {
-			width: 15%;
+			width: 6%;
 			text-align: center;
+		}
+		&.action {
+			width: 11%;
+			text-align: right;
 		}		
         
     }
