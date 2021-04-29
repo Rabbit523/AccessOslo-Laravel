@@ -1,0 +1,22 @@
+version: 2
+updates:
+- package-ecosystem: composer
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
+  ignore:
+  - dependency-name: twilio/sdk
+    versions:
+    - 6.21.0
+  - dependency-name: filp/whoops
+    versions:
+    - 2.12.0
+  - dependency-name: symfony/http-foundation
+    versions:
+    - 3.4.47
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 10
