@@ -5067,16 +5067,16 @@
         },
         {
             "name": "twilio/sdk",
-            "version": "6.20.0",
+            "version": "6.27.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twilio/twilio-php.git",
-                "reference": "7494b78da4f5af5b761dd7b4fd9bbe52bd746f55"
+                "reference": "2e36a394c854719091136c09ad69f5b839716a64"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/7494b78da4f5af5b761dd7b4fd9bbe52bd746f55",
-                "reference": "7494b78da4f5af5b761dd7b4fd9bbe52bd746f55",
+                "url": "https://api.github.com/repos/twilio/twilio-php/zipball/2e36a394c854719091136c09ad69f5b839716a64",
+                "reference": "2e36a394c854719091136c09ad69f5b839716a64",
                 "shasum": ""
             },
             "require": {
@@ -5115,9 +5115,9 @@
             ],
             "support": {
                 "issues": "https://github.com/twilio/twilio-php/issues",
-                "source": "https://github.com/twilio/twilio-php/tree/6.20.0"
+                "source": "https://github.com/twilio/twilio-php/tree/6.27.1"
             },
-            "time": "2021-03-24T21:42:05+00:00"
+            "time": "2021-07-28T19:07:01+00:00"
         },
         {
             "name": "uxweb/sweet-alert",
